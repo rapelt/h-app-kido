@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/rapelt/h-app-kido#readme",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "express": "^4.13.3",
-    "mime" : "~1.2.7"
+    "mime": "~1.2.7"
   },
   "engines": {
     "node": "5.2.0"

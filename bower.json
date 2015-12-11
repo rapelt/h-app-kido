@@ -1,0 +1,21 @@
+{
+  "name": "h-app-kido",
+  "description": "happkido app",
+  "main": "index.js",
+  "authors": [
+    "rapelt <rebekahapelt@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rapelt/h-app-kido",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

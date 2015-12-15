@@ -1,8 +1,16 @@
 // main.js
-var React = require('react');
-var ReactDOM = require('react-dom');
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('example')
-);
+
+// Bootstrap wants jQuery global =(
+window.jQuery = $ = require('jquery')
+var cssify = require('cssify')
+// Bootstrap doesn't have a "main" field / export anything =(
+var bootstrap = require('bootstrap/dist/js/bootstrap')
+
+require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+var react = require('react');
+var reactDOM = require('react-dom');
+
+
+

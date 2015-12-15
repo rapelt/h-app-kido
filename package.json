@@ -2,7 +2,7 @@
   "name": "h-app-kido",
   "version": "1.0.0",
   "description": "happkido app",
-  "main": "index.js",
+  "main": "public/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,11 +17,22 @@
   },
   "homepage": "https://github.com/rapelt/h-app-kido#readme",
   "dependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
     "bootstrap": "^3.3.6",
+    "cssify": "^1.0.1",
     "express": "^4.13.3",
-    "mime": "~1.2.7"
+    "jquery": "^2.1.4",
+    "mime": "~1.2.7",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
   },
   "engines": {
     "node": "5.2.0"
+  },
+  "browserify": {
+    "transform": [
+      "cssify"
+    ]
   }
 }

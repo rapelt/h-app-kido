@@ -27,7 +27,11 @@
         }
 
         function GetByUsername(username) {
-            return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+            if(username != undefined){
+                return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+            } else {
+                return null;
+            }
         }
 
         function Create(user) {

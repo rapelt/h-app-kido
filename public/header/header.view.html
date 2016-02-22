@@ -1,5 +1,3 @@
-
-
 <div class="happkido-header-white-space">
 </div>
 <nav class="navbar navbar-default happkido-header">
@@ -29,7 +27,7 @@
 
     <div id="mid">
       <div>
-        <span class="users-name">{{vm.user.firstName}}</span>
+        <span class="users-name" ng-if="isLoggedIn">{{user.firstName}}</span>
       </div>
     </div>
   </div>

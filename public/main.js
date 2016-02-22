@@ -13,6 +13,7 @@ var app = require('./app.js')
 require('./app-services/authentication.service.js');
 require('./app-services/user.service.local-storage.js');
 require('./home/home.controller.js');
+require('./header/header.controller.js');
 require('./login/login.controller.js')
 require('./register/register.controller.js')
 require('./app-services/flash.service.js')

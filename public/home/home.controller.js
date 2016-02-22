@@ -21,6 +21,8 @@
         }
 
         function loadCurrentUser() {
+            $rootScope.isLoggedIn = true;
+            console.log($rootScope);
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
                     vm.user = user;

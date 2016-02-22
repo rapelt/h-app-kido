@@ -42365,6 +42365,46 @@ return jQuery;
 
     angular
         .module('app')
+        .controller('HeaderController', HeaderController)
+        .directive('header', function(){
+            return {
+                restrict: 'E',
+                templateUrl: 'header/header.view.html',
+                controller: 'HeaderController'
+            }
+        });
+
+    HeaderController.$inject = ['UserService', '$rootScope'];
+    function HeaderController(UserService, $rootScope) {
+        var vm = $rootScope;
+        vm.user = null;
+        $rootScope.isLoggedIn = false;
+
+        initController();
+
+        function initController() {
+            console.log($rootScope);
+            if($rootScope.isLoggedIn){
+                loadCurrentUser();
+            }
+        }
+
+        function loadCurrentUser() {
+            UserService.GetByUsername($rootScope.globals.currentUser.username)
+                .then(function (user) {
+                    vm.user = user;
+                });
+        }
+
+    }
+
+})();
+},{}],16:[function(require,module,exports){
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['UserService', '$rootScope'];
@@ -42383,6 +42423,8 @@ return jQuery;
         }
 
         function loadCurrentUser() {
+            $rootScope.isLoggedIn = true;
+            console.log($rootScope);
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
                     vm.user = user;
@@ -42405,7 +42447,7 @@ return jQuery;
     }
 
 })();
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function () {
     'use strict';
 
@@ -42439,7 +42481,7 @@ return jQuery;
     }
 
 })();
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 window.jQuery = $ = require('jquery')
 var cssify = require('cssify')
 
@@ -42455,10 +42497,11 @@ var app = require('./app.js')
 require('./app-services/authentication.service.js');
 require('./app-services/user.service.local-storage.js');
 require('./home/home.controller.js');
+require('./header/header.controller.js');
 require('./login/login.controller.js')
 require('./register/register.controller.js')
 require('./app-services/flash.service.js')
-},{"../node_modules/bootstrap/dist/css/bootstrap.min.css":7,"./app-services/authentication.service.js":11,"./app-services/flash.service.js":12,"./app-services/user.service.local-storage.js":13,"./app.js":14,"./home/home.controller.js":15,"./login/login.controller.js":16,"./register/register.controller.js":18,"angular":6,"angular-cookies":2,"angular-route":4,"bootstrap/dist/js/bootstrap":8,"cssify":9,"jquery":10}],18:[function(require,module,exports){
+},{"../node_modules/bootstrap/dist/css/bootstrap.min.css":7,"./app-services/authentication.service.js":11,"./app-services/flash.service.js":12,"./app-services/user.service.local-storage.js":13,"./app.js":14,"./header/header.controller.js":15,"./home/home.controller.js":16,"./login/login.controller.js":17,"./register/register.controller.js":19,"angular":6,"angular-cookies":2,"angular-route":4,"bootstrap/dist/js/bootstrap":8,"cssify":9,"jquery":10}],19:[function(require,module,exports){
 
 (function () {
     'use strict';
@@ -42489,4 +42532,4 @@ require('./app-services/flash.service.js')
     }
 
 })();
-},{}]},{},[17]);
+},{}]},{},[18]);

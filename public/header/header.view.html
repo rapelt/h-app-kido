@@ -17,8 +17,8 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="#">Action</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Log Out</a></li>
+              <li role="separator" class="divider" ng-if="isLoggedIn"></li>
+              <li ng-if="isLoggedIn"><a ng-href="#/login" ng-click="logout()">Log Out</a></li>
             </ul>
           </li>
         </ul>
@@ -27,7 +27,7 @@
 
     <div id="mid">
       <div>
-        <span class="users-name" ng-if="isLoggedIn">{{user.firstName}}</span>
+        <span class="users-name" ng-bind="user.firstName" ng-if="isLoggedIn"></span>
       </div>
     </div>
   </div>

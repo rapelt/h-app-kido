@@ -42374,16 +42374,19 @@ return jQuery;
             }
         });
 
-    HeaderController.$inject = ['UserService', '$rootScope'];
-    function HeaderController(UserService, $rootScope) {
+    HeaderController.$inject = ['UserService', '$rootScope', 'AuthenticationService'];
+    function HeaderController(UserService, $rootScope, AuthenticationService) {
         var vm = $rootScope;
         vm.user = null;
         $rootScope.isLoggedIn = false;
+        $rootScope.logout = logout;
+        $rootScope.user = null;
+
 
         initController();
 
         function initController() {
-            console.log($rootScope);
+            console.log($rootScope.isLoggedIn);
             if($rootScope.isLoggedIn){
                 loadCurrentUser();
             }
@@ -42392,8 +42395,14 @@ return jQuery;
         function loadCurrentUser() {
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
-                    vm.user = user;
+                    $rootScope.user = user;
                 });
+        }
+
+        function logout(){
+            console.log("loggedout");
+            AuthenticationService.ClearCredentials();
+            $rootScope.isLoggedIn = false;
         }
 
     }
@@ -42407,13 +42416,15 @@ return jQuery;
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService', '$rootScope', 'AuthenticationService'];
+    function HomeController(UserService, $rootScope, AuthenticationService) {
         var vm = this;
 
         vm.user = null;
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
+        vm.logout = logout;
+
 
         initController();
 
@@ -42424,10 +42435,11 @@ return jQuery;
 
         function loadCurrentUser() {
             $rootScope.isLoggedIn = true;
-            console.log($rootScope);
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
                     vm.user = user;
+                    $rootScope.user = user;
+
                 });
         }
 
@@ -42443,6 +42455,12 @@ return jQuery;
             .then(function () {
                 loadAllUsers();
             });
+        }
+
+        function logout(){
+            console.log("loggedout");
+            AuthenticationService.ClearCredentials();
+            $rootScope.isLoggedIn = false;
         }
     }
 

@@ -5,13 +5,15 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService', '$rootScope', 'AuthenticationService'];
+    function HomeController(UserService, $rootScope, AuthenticationService) {
         var vm = this;
 
         vm.user = null;
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
+        vm.logout = logout;
+
 
         initController();
 
@@ -22,10 +24,11 @@
 
         function loadCurrentUser() {
             $rootScope.isLoggedIn = true;
-            console.log($rootScope);
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
                     vm.user = user;
+                    $rootScope.user = user;
+
                 });
         }
 
@@ -41,6 +44,12 @@
             .then(function () {
                 loadAllUsers();
             });
+        }
+
+        function logout(){
+            console.log("loggedout");
+            AuthenticationService.ClearCredentials();
+            $rootScope.isLoggedIn = false;
         }
     }
 

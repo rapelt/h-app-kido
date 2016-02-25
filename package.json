@@ -1,46 +1,19 @@
 {
-  "name": "h-app-kido",
-  "version": "1.0.0",
-  "description": "happkido app",
-  "main": "public/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rapelt/h-app-kido.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rapelt/h-app-kido/issues"
-  },
-  "homepage": "https://github.com/rapelt/h-app-kido#readme",
-  "dependencies": {
-    "angular": "^1.4.8",
-    "angular-cookies": "^1.4.8",
-    "angular-route": "^1.4.8",
-    "babel-preset-react": "^6.3.13",
-    "babelify": "^7.2.0",
-    "bootstrap": "^3.3.6",
-    "cssify": "^1.0.1",
-    "express": "^4.13.3",
-    "jquery": "^2.1.4",
-    "mime": "~1.2.7"
-  },
-  "scripts": {
-    "watch": "watchify -t cssify public/main.js -o public/bundle.js"
-  },
-  "engines": {
-    "node": "5.2.0"
-  },
-  "browserify": {
-    "transform": [
-      "cssify"
-    ]
-  },
-  "devDependencies": {
-    "watchify": "^3.6.1"
-  }
-  
+    "name": "mean-stack-registration-login-example",
+    "description": "MEAN Stack User Registration and Login Example Application",
+    "dependencies": {
+        "bcryptjs": "^2.1.0",
+        "body-parser": "^1.13.2",
+        "ejs": "^2.3.3",
+        "express": "^4.13.0",
+        "express-jwt": "^3.0.1",
+        "express-session": "^1.11.3",
+        "jsonwebtoken": "^5.0.2",
+        "lodash": "^3.10.0",
+        "mongodb": "^1.4.40",
+        "monk": "^1.0.1",
+        "q": "^1.4.1",
+        "request": "^2.58.0",
+        "rootpath": "^0.1.2"
+    }
 }

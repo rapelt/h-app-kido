@@ -1,48 +1,32 @@
-var http = require("http");
-var fs = require("fs");
-var path = require("path");
-var mime = require("mime");
+﻿require('rootpath')();
+var express = require('express');
+var app = express();
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var expressJwt = require('express-jwt');
+var config = require('config.json');
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
+// use JWT auth to secure the api
+app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
 
-function send404(response) {
-  response.writeHead(404, {"Content-type" : "text/plain"});
-  response.write("Error 404: resource not found");
-  response.end();
-}
+// routes
+app.use('/login', require('./controllers/login.controller'));
+app.use('/register', require('./controllers/register.controller'));
+app.use('/app', require('./controllers/app.controller'));
+app.use('/api/users', require('./controllers/api/users.controller'));
 
-function sendPage(response, filePath, fileContents) {
-  response.writeHead(200, {"Content-type" : mime.lookup(path.basename(filePath))});
-  response.end(fileContents);
-}
-
-function serverWorking(response, absPath) {
-  fs.exists(absPath, function(exists) {
-    if (exists) {
-      fs.readFile(absPath, function(err, data) {
-        if (err) {
-          send404(response)
-        } else {
-          sendPage(response, absPath, data);
-        }
-      });
-    } else {
-      send404(response);
-    }
-  });
-}
-
-var server = http.createServer(function(request, response) {
-  var filePath = false;
-
-  if (request.url == '/') {
-    filePath = "public/index.html";
-  } else {
-    filePath = "public" + request.url;
-  }
-
-  var absPath = "./" + filePath;
-  serverWorking(response, absPath);
+// make '/app' default route
+app.get('/', function (req, res) {
+    return res.redirect('/app');
 });
 
-var port_number = server.listen(process.env.PORT || 3000);
+// start server
+var server = app.listen(3000, function () {
+    console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
+});

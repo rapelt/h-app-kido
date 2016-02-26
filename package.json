@@ -1,6 +1,6 @@
 {
-    "name": "mean-stack-registration-login-example",
-    "description": "MEAN Stack User Registration and Login Example Application",
+    "name": "Happkido",
+    "description": "A web application to assist with home training of Hapkido",
     "dependencies": {
         "bcryptjs": "^2.1.0",
         "body-parser": "^1.13.2",

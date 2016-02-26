@@ -10,7 +10,7 @@
         "express-session": "^1.11.3",
         "jsonwebtoken": "^5.0.2",
         "lodash": "^3.10.0",
-        "mongodb": "^1.4.40",
+        "mongodb": "^1.4.34",
         "monk": "^1.0.1",
         "q": "^1.4.1",
         "request": "^2.58.0",

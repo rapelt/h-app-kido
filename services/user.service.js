@@ -1,7 +1,7 @@
 ﻿var config = require('config.json');
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk(config.connectionString);
+var db = monk(process.env.MONGOLAB_URI);
 var usersDb = db.get('users');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
@@ -26,7 +26,7 @@ function authenticate(username, password) {
 
         if (user && bcrypt.compareSync(password, user.hash)) {
             // authentication successful
-            deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
+            deferred.resolve(jwt.sign({ sub: user._id }, process.env.secret));
         } else {
             // authentication failed
             deferred.resolve();
@@ -62,6 +62,7 @@ function create(userParam) {
         { username: userParam.username },
         function (err, user) {
             if (err) deferred.reject(err);
+
 
             if (user) {
                 // username already exists

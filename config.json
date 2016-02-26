@@ -1,5 +1,3 @@
 ﻿{
-    "connectionString": "mongodb://rebekahapelt:if(i<10){@ds017258.mlab.com:17258/heroku_hn0t1vgc",
-    "apiUrl":  "http://localhost:3000/api",
     "secret": "REPLACE THIS WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
 }

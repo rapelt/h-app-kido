@@ -92,6 +92,7 @@ function create(userParam) {
 }
 
 function update(_id, userParam) {
+    console.log(userParam);
     var deferred = Q.defer();
 
     // validation
@@ -123,6 +124,8 @@ function update(_id, userParam) {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
             username: userParam.username,
+            grade: userParam.grade,
+            isAdmin: userParam.isAdmin
         };
 
         // update password if it was entered

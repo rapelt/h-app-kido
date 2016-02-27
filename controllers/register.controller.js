@@ -18,14 +18,14 @@ router.post('/', function (req, res) {
             return res.render('register', { error: 'An error occurred' });
         }
 
-        console.log(response.statusCode);
-
         if (response.statusCode !== 200) {
             return res.render('register', {
                 error: response.body,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                username: req.body.username
+                username: req.body.username,
+                grade: req.body.grade,
+                isAdmin: req.body.isAdmin
             });
         }
 

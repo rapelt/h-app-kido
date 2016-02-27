@@ -92,7 +92,6 @@ function create(userParam) {
 }
 
 function update(_id, userParam) {
-    console.log(userParam);
     var deferred = Q.defer();
 
     // validation

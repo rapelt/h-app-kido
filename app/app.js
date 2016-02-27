@@ -24,6 +24,13 @@
                 controller: 'Account.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'account' }
+            })
+            .state('register2', {
+                url: '/register2',
+                templateUrl: 'register/index.html',
+                controller: 'Register.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'register2' }
             });
     }
 

@@ -15,6 +15,8 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
+service.getAll = getAll;
+
 
 module.exports = service;
 
@@ -40,6 +42,24 @@ function getById(_id) {
     var deferred = Q.defer();
 
     usersDb.findById(_id, function (err, user) {
+        if (err) deferred.reject(err);
+
+        if (user) {
+            // return user (without hashed password)
+            deferred.resolve(_.omit(user, 'hash'));
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
+function getAll() {
+    var deferred = Q.defer();
+
+    usersDb.find({}, function (err, user) {
         if (err) deferred.reject(err);
 
         if (user) {

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router'])
+        .module('app', ['permission', 'ui.router'])
         .config(config)
         .run(run);
 
@@ -30,12 +30,46 @@
                 templateUrl: 'register/index.html',
                 controller: 'Register.IndexController',
                 controllerAs: 'vm',
-                data: { activeTab: 'register2' }
+                data: {
+                    activeTab: 'editUser',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
+            })
+            .state('editUser', {
+                url: '/editUser',
+                templateUrl: 'editUser/index.html',
+                controller: 'EditUser.IndexController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'editUser',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
             });
     }
 
-    function run($http, $rootScope, $window) {
-        // add JWT token as default auth header
+    function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
+
+        PermissionStore.definePermission('student', function() {
+            if($rootScope.currentUser != undefined){
+                return $rootScope.currentUser.isAdmin === false;
+            }
+            return true;
+        });
+
+        PermissionStore.definePermission('admin', function() {
+            if($rootScope.currentUser != undefined){
+                return $rootScope.currentUser.isAdmin;
+            }
+            return false;
+        });
+
+        //add JWT token as default auth header
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
 
         // update active tab on state change

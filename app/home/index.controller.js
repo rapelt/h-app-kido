@@ -5,10 +5,11 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller(UserService) {
+    function Controller($rootScope, UserService) {
         var vm = this;
 
         vm.user = null;
+        $rootScope.currentUser = null;;
 
         initController();
 
@@ -16,6 +17,7 @@
             // get current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
+                $rootScope.currentUser = user;
             });
         }
     }

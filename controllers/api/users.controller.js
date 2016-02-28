@@ -10,6 +10,8 @@ router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.post('/', registerUser);
+router.get('/', getAllUsers);
+
 
 
 module.exports = router;
@@ -54,14 +56,23 @@ function getCurrentUser(req, res) {
         });
 }
 
-function updateUser(req, res) {
-    var userId = req.user.sub;
-    if (req.params._id !== userId) {
-        // can only update own account
-        return res.status(401).send('You can only update your own account');
-    }
+function getAllUsers(req, res) {
+    userService.getAll()
+        .then(function (users) {
+            if (users) {
+                res.send(users);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-    userService.update(userId, req.body)
+function updateUser(req, res) {
+    console.log(req);
+    userService.update(req.params._id, req.body)
         .then(function () {
             res.sendStatus(200);
         })
@@ -71,13 +82,7 @@ function updateUser(req, res) {
 }
 
 function deleteUser(req, res) {
-    var userId = req.user.sub;
-    if (req.params._id !== userId) {
-        // can only delete own account
-        return res.status(401).send('You can only delete your own account');
-    }
-
-    userService.delete(userId)
+    userService.delete(req.params._id)
         .then(function () {
             res.sendStatus(200);
         })

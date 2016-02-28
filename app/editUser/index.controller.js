@@ -3,16 +3,18 @@
 
     angular
         .module('app')
-        .controller('Account.IndexController', Controller);
+        .controller('EditUser.IndexController', Controller);
 
-    function Controller($window, $rootScope, UserService, FlashService) {
+    function Controller($window, $rootScope, $state, UserService, FlashService) {
         var vm = this;
 
         $rootScope.currentUser = null;;
 
         vm.user = null;
-        vm.saveUser = saveUser;
+        vm.editUser = editUser;
         vm.deleteUser = deleteUser;
+        vm.allUsers = [];
+        vm.refresh = refresh;
 
         initController();
 
@@ -22,27 +24,28 @@
                 vm.user = user;
                 $rootScope.currentUser = user;
             });
+
+            UserService.GetAll().then(function (users){
+                vm.allUsers = users;
+            })
         }
 
-        function saveUser() {
-            UserService.Update(vm.user)
+        function deleteUser(id) {
+            UserService.Delete(id)
                 .then(function () {
-                    FlashService.Success('User updated');
+                    refresh();
                 })
                 .catch(function (error) {
                     FlashService.Error(error);
                 });
         }
 
-        function deleteUser() {
-            UserService.Delete(vm.user._id)
-                .then(function () {
-                    // log user out
-                    $window.location = '/login';
-                })
-                .catch(function (error) {
-                    FlashService.Error(error);
-                });
+        function editUser(user) {
+            $rootScope.editUser = user;
+        }
+
+        function refresh() {
+            $state.reload();
         }
     }
 

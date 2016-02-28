@@ -1,0 +1,8 @@
+﻿<h1>Edit User</h1>
+<li ng-repeat="user in vm.allUsers">
+    {{user.username}} ({{user.firstName}} {{user.lastName}})
+    - <a ui-sref="register2" ng-click="vm.editUser(user)">Edit</a>
+    - <a href="#" ng-click="vm.deleteUser(user._id)">Delete</a>
+</li>
+
+<a class="add-new-user-btn" ui-sref="register2"><button type="submit" class="btn btn-primary">Add new user</button></a>

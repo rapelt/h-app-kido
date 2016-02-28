@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2>Register</h2>
-    <h1>My Account</h1>
+    <h1>New Account</h1>
     <div class="form-container">
         <form method="post">
             <div class="form-group">
@@ -39,7 +39,7 @@
                 <input type="checkbox" name="admin" class="form-control" ng-model="vm.user.isAdmin" id="isAdmin" value="true"> Administrator<br>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" ng-click="vm.create()">Register</button>
+                <a class="add-new-user-btn" ui-sref="editUser"><button type="submit" class="btn btn-primary" ng-click="vm.create()">Save</button></a>
             </div>
         </form>
     </div>

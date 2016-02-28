@@ -5,7 +5,7 @@
         .module('app')
         .factory('UserService', Service);
 
-    function Service($http, $q) {
+    function Service($http, $q, $rootScope) {
         var service = {};
 
         service.GetCurrent = GetCurrent;

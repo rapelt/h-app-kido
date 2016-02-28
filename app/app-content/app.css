@@ -1,5 +1,6 @@
 ﻿body {
     padding: 20px 0;
+    background-color: #000066;
 }
 
 .flash-message {
@@ -23,5 +24,17 @@ a:active {
 }
 
 .add-new-user-btn{
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+h1{
+    color: white;
+}
+
+label{
     color: white;
 }

@@ -5,7 +5,7 @@
         .module('app')
         .controller('Register.IndexController', Controller);
 
-    function Controller($window, $state, $rootScope, UserService, FlashService) {
+    function Controller($window, $state, $rootScope, UserService, FlashService, GradeService) {
         var vm = this;
 
         vm.user = null;
@@ -20,6 +20,8 @@
         }
 
         function createUser() {
+            vm.user.grade = GradeService.GetCurrent(vm.user.grade);
+
             if($rootScope.editUser != null){
                 UserService.Update(vm.user)
                     .then(function () {

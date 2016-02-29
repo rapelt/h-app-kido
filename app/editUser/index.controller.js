@@ -5,7 +5,7 @@
         .module('app')
         .controller('EditUser.IndexController', Controller);
 
-    function Controller($window, $rootScope, $state, UserService, FlashService) {
+    function Controller($window, $rootScope, $state, UserService, FlashService, GradeService) {
         var vm = this;
 
         $rootScope.currentUser = null;;
@@ -15,6 +15,7 @@
         vm.deleteUser = deleteUser;
         vm.allUsers = [];
         vm.refresh = refresh;
+        vm.addGrade = addGrade;
 
         initController();
 
@@ -46,6 +47,11 @@
 
         function refresh() {
             $state.reload();
+        }
+
+        function addGrade(user){
+            user.grade = GradeService.AddGrade(user.grade.grade);
+            UserService.Update(user);
         }
     }
 

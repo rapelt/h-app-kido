@@ -20,7 +20,7 @@
         }
 
         function createUser() {
-            vm.user.grade = GradeService.GetCurrent(vm.user.grade);
+            vm.user.grade = GradeService.GetCurrent(vm.user.grade.grade);
 
             if($rootScope.editUser != null){
                 UserService.Update(vm.user)

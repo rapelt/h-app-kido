@@ -37,6 +37,18 @@
                         redirectTo: 'home'
                     }
                 }
+            }).state('techniques', {
+                url: '/techniques',
+                templateUrl: 'techniques/index.html',
+                controller: 'Techniques.IndexController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'techniques',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
             })
             .state('editUser', {
                 url: '/editUser',
@@ -54,7 +66,6 @@
     }
 
     function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
-
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){
                 return $rootScope.currentUser.isAdmin === false;
@@ -74,7 +85,9 @@
 
         // update active tab on state change
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $rootScope.activeTab = toState.data.activeTab;
+            if(toState != undefined) {
+                $rootScope.activeTab = toState.data.activeTab;
+            }
         });
     }
 

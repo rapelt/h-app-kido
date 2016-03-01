@@ -42,3 +42,11 @@ h2{
 label{
     color: white;
 }
+
+.modal-text-colour p{
+    color: black;
+}
+
+.modal-text-colour label{
+    color: black;
+}

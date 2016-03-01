@@ -71,7 +71,6 @@ function getAllUsers(req, res) {
 }
 
 function updateUser(req, res) {
-    console.log(req);
     userService.update(req.params._id, req.body)
         .then(function () {
             res.sendStatus(200);

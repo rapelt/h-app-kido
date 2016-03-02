@@ -1,4 +1,6 @@
-﻿<h1>Edit Techniques</h1>
+﻿<div class="blue-box"></div>
+
+<h1>Edit Techniques</h1>
 <li ng-repeat="technique in vm.techniques">
     <p>{{technique.techniqueSet}}
         - <a ng-click="vm.editTechnique(technique, $index)" data-toggle="modal" data-target="#techniqueModal">Edit</a>

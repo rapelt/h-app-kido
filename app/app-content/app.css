@@ -52,7 +52,7 @@ label{
 }
 
 .header-padding {
-    padding-top: 30px;
+    padding-top: 38px;
 }
 
 .nav-bar-colour{
@@ -77,4 +77,15 @@ label{
 .header-logo-centre{
     margin-left: auto;
     margin-right: auto;
+}
+
+.blue-box {
+    height: 40px;
+    background-color: #0dadda;
+    margin-left: -52%;
+    margin-right: -50%;
+    text-align: center;
+    font-size: 28px;
+    color: #000000;
+
 }

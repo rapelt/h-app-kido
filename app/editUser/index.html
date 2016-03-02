@@ -1,4 +1,6 @@
-﻿<h1>Edit User</h1>
+﻿<div class="blue-box"></div>
+
+<h1>Edit User</h1>
 <li ng-repeat="user in vm.allUsers">
     <p>{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.grade.displayName}}
     - <a ui-sref="register2" ng-click="vm.editUser(user)">Edit</a>

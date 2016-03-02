@@ -50,3 +50,31 @@ label{
 .modal-text-colour label{
     color: black;
 }
+
+.header-padding {
+    padding-top: 30px;
+}
+
+.nav-bar-colour{
+    background-color: #00004d;
+    color: white;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.nav-bar-white{
+    color: white;
+    font-size: 22px;
+}
+
+.header-logo-centre{
+    margin-left: auto;
+    margin-right: auto;
+}

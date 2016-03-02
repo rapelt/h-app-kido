@@ -38,19 +38,58 @@
 <body class="container">
     <!-- header -->
     <header>
-        <ul class="nav nav-tabs">
-            <li ng-click="testing2()" ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
-            <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-            <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Edit User</a></li>
-            <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Edit Techniques</a></li>
+<!--
+        <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ng-click="testing2()" ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+                    <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Edit User</a></li>
+                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Edit Techniques</a></li>
+                    <li><a href="/login" target="_self">Logout</a></li>
+
+                </ul>
+            </div>
+        </nav>-->
 
 
-            <li><a href="/login" target="_self">Logout</a></li>
-        </ul>
+
+        <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour" role="navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img class="header-logo-centre" src="/images/happkido-icon.png" alt="Happkido Logo" width="7%">
+                </a>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li ng-click="testing2()" ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home nav-bar-white" aria-hidden="true"></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger nav-bar-white" aria-hidden="true"></a>
+                            <ul class="dropdown-menu">
+                                <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+                                <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Users</a></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Techniques</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/login" target="_self">Logout</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
         <div class="flash-message" ng-if="flash">
             <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
         </div>
     </header>
+    <div class="header-padding"/>
 
     <!-- main -->
     <main ui-view></main>

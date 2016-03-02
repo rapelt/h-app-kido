@@ -16,7 +16,7 @@
                 templateUrl: 'home/index.html',
                 controller: 'Home.IndexController',
                 controllerAs: 'vm',
-                data: { activeTab: 'home' }
+                data: { activeTab: '' }
             })
             .state('account', {
                 url: '/account',

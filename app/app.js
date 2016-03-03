@@ -6,7 +6,13 @@
         .config(config)
         .run(run);
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider, $urlRouterProvider, $locationProvider) {
+        //$locationProvider.html5Mode({
+        //    enabled:true,
+        //    requireBase: false
+        //
+        //})
+
         // default route
         $urlRouterProvider.otherwise("/");
 
@@ -63,9 +69,12 @@
                     }
                 }
             });
+
     }
 
     function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
+
+
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){
                 return $rootScope.currentUser.isAdmin === false;
@@ -96,8 +105,15 @@
         // get JWT token from server
         $.get('/app/token', function (token) {
             window.jwtToken = token;
-
             angular.bootstrap(document, ['app']);
         });
     });
+
+
+
 })();
+var googleApiClientReady = function() {
+    window.initGapi();
+}
+
+

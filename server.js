@@ -29,6 +29,11 @@ app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
 app.use('/api/technique', require('./controllers/api/technique.controller'));
 
+/*app.all('/!*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname });
+});*/
+
 
 // make '/app' default route
 app.get('/', function (req, res) {

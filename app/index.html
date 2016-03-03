@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>H-app-kido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link href="app-content/app.css" rel="stylesheet" />
@@ -20,19 +21,23 @@
     <script src="https://rawgit.com/Narzerus/angular-permission/master/dist/angular-permission.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-
     <script src="app.js"></script>
+
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady" async defer></script>
+
     <script src="app-services/user.service.js"></script>
     <script src="app-services/flash.service.js"></script>
     <script src="app-services/grade.service.js"></script>
     <script src="app-services/technique.service.js"></script>
+    <script src="app-services/youtube.service.js"></script>
+
 
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
     <script src="editUser/index.controller.js"></script>
     <script src="register/index.controller.js"></script>
     <script src="techniques/index.controller.js"></script>
+
 
 </head>
 <body class="container">

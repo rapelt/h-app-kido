@@ -5,7 +5,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller($rootScope, UserService) {
+    function Controller($rootScope, $window, UserService, YoutubeService) {
         var vm = this;
 
         vm.user = null;
@@ -17,8 +17,12 @@
             // get current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
-                $rootScope.currentUser = user;
+                $rootScope.currentUser = user
             });
+        }
+
+        $window.initGapi = function() {
+            YoutubeService.initGapi();
         }
     }
 

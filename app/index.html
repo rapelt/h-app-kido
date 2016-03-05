@@ -12,7 +12,9 @@
     <script></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<!--
     <script src="https://www.youtube.com/iframe_api"></script>
+-->
 
     <!--
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
@@ -32,8 +34,6 @@
     <script src="app-services/flash.service.js"></script>
     <script src="app-services/grade.service.js"></script>
     <script src="app-services/technique.service.js"></script>
-    <script src="app-services/youtube.service.js"></script>
-
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
     <script src="editUser/index.controller.js"></script>
@@ -49,7 +49,7 @@
                 <a class="navbar-brand" href="#">
                     <img class="header-logo-centre" src="/images/happkido-icon.png" alt="Happkido Logo" height="25px">
                 </a>
-                <div class="navbar-collapse collapse">
+                <div>
                     <ul class="nav navbar-nav navbar-left nav-bar-left">
                         <li ng-click="testing2()" ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home nav-bar-white" aria-hidden="true"></a></li>
                     </ul>

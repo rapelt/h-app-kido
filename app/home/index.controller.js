@@ -5,7 +5,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller($rootScope, $window, UserService, YoutubeService) {
+    function Controller($rootScope, $window, UserService) {
         var vm = this;
 
         vm.video1 = "https://youtu.be/p4rEQz3qw8U";
@@ -20,10 +20,6 @@
                 vm.user = user;
                 $rootScope.currentUser = user
             });
-        }
-
-        $window.initGapi = function() {
-            YoutubeService.handleClientLoad();
         }
     }
 

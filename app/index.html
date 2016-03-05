@@ -9,8 +9,10 @@
     <link href="app-content/app.css" rel="stylesheet" />
 
     <!-- external scripts -->
+    <script></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <!--
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
@@ -21,16 +23,16 @@
     <script src="https://rawgit.com/Narzerus/angular-permission/master/dist/angular-permission.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular-youtube-embed.js"></script>
+
     <script src="app.js"></script>
 
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady" async defer></script>
 
     <script src="app-services/user.service.js"></script>
     <script src="app-services/flash.service.js"></script>
     <script src="app-services/grade.service.js"></script>
     <script src="app-services/technique.service.js"></script>
     <script src="app-services/youtube.service.js"></script>
-
 
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
@@ -41,27 +43,7 @@
 
 </head>
 <body class="container">
-    <!-- header -->
     <header>
-<!--
-        <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li ng-click="testing2()" ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
-                    <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Edit User</a></li>
-                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Edit Techniques</a></li>
-                    <li><a href="/login" target="_self">Logout</a></li>
-
-                </ul>
-            </div>
-        </nav>-->
-
-
-
         <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour" role="navigation">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">

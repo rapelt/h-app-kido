@@ -7,78 +7,56 @@
 
     function Service($http, $rootScope, $q, $window) {
 
-        var OAUTH2_SCOPES = [
-            'https://www.googleapis.com/auth/youtube.readonly'
-        ];
         var service = {};
 
-        service.login = login;
         service.handleClientLoad = handleClientLoad;
-        service.handleAuthClick = handleAuthClick;
-        service.checkAuth = checkAuth;
-        service.initGapi = initGapi;
 
         return service;
 
-        var clientId = '419351503178-k28g7593kdggrpf48vqgslf43om65klt.apps.googleusercontent.com';
-        var apiKey = 'AIzaSyAjHu_mLXCkLq32DU9Zg-ltn7h3n8PZhoA';
-        var scopes = OAUTH2_SCOPES;
-
-        function initGapi() {
-            var something = gapi.auth.authorize({
-                client_id: '419351503178-2iu5p1rdjou9e3lnsvkhe315mfm06th5.apps.googleusercontent.com',
-                redirect_uri: "http://localhost:3000/app/account",
-                response_type: "token",
-                scope: 'https://www.googleapis.com/auth/youtube',
-                approval_prompt: 'auto'
-            }, this.handleAuthResult);
-
-            console.log(something);
-
-            return $q.defer().promise;
+        function handleClientLoad() {
+            // Step 2: Reference the API key
+            gapi.client.setApiKey('AIzaSyAjHu_mLXCkLq32DU9Zg-ltn7h3n8PZhoA');
+            window.setTimeout(checkAuth,1);
         }
-
-        function login () {
-        }
-
-        function handleClientLoad () {
-            gapi.client.setApiKey(apiKey);
-            gapi.auth.init(function () { });
-            window.setTimeout(checkAuth, 1);
-        };
 
         function checkAuth() {
             gapi.auth.authorize({
-                client_id: clientId,
-                scope: scopes,
-                immediate: true,
-            }, this.handleAuthResult);
-        };
+                client_id: '419351503178-2iu5p1rdjou9e3lnsvkhe315mfm06th5.apps.googleusercontent.com',
+                //redirect_uri: "http://localhost:3000/app/account",
+                //response_type: "token",
+                scope: 'https://www.googleapis.com/auth/youtube.readonly'
+                //approval_prompt: 'auto'
+            }, handleAuthResult);
+            //gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+        }
 
-        this.handleAuthResult = function(authResult) {
+        function handleAuthResult(authResult) {
             if (authResult && !authResult.error) {
-                var data = {};
-                gapi.client.load('oauth2', 'v2', function () {
-                    var request = gapi.client.oauth2.userinfo.get();
-                    request.execute(function (resp) {
-                        data.email = resp.email;
-                    });
-                });
-                deferred.resolve(data);
-            } else {
-                deferred.reject('error');
+                makeApiCall();
             }
-        };
+        }
 
-        function handleAuthClick(event) {
-            gapi.auth.authorize({
-                client_id: clientId,
-                scope: scopes,
-                immediate: false,
-            }, this.handleAuthResult);
-            return false;
-        };
+        // Load the API and make an API call.  Display the results on the screen.
+        function makeApiCall() {
+            // Step 4: Load the Google+ API
+            gapi.client.load('plus', 'v1').then(function() {
+                // Step 5: Assemble the API request
+                var token = gapi.auth.getToken();
+                console.log(token);
+                // Step 6: Execute the API request
+                /*request.then(function(resp) {
+                    var heading = document.createElement('h4');
+                    var image = document.createElement('img');
+                    image.src = resp.result.image.url;
+                    heading.appendChild(image);
+                    heading.appendChild(document.createTextNode(resp.result.displayName));
 
+                    document.getElementById('content').appendChild(heading);
+                }, function(reason) {
+                    console.log('Error: ' + reason.result.error.message);
+                });*/
+            });
+        }
     }
 
 })();

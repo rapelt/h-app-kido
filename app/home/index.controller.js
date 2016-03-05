@@ -8,6 +8,7 @@
     function Controller($rootScope, $window, UserService, YoutubeService) {
         var vm = this;
 
+        vm.video1 = "https://youtu.be/p4rEQz3qw8U";
         vm.user = null;
         $rootScope.currentUser = null;;
 
@@ -22,7 +23,7 @@
         }
 
         $window.initGapi = function() {
-            YoutubeService.initGapi();
+            YoutubeService.handleClientLoad();
         }
     }
 

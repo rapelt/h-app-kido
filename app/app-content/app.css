@@ -81,13 +81,13 @@ label{
     text-align: center;
     font-size: 28px;
     color: #000000;
-
+    width: 100%;
 }
 
 .nav-bar-left{
-    margin-left: 120px;
+    margin-left: 140px;
 }
 
 .nav-bar-right{
-    margin-right: 120px;
+    margin-right: 140px;
 }

@@ -73,9 +73,6 @@
     }
 
     function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
-        var tag = { src: "https://www.youtube.com/iframe_api"};
-        var firstScriptTag = document.getElementsByTagName('script')[1];
-        firstScriptTag.src = firstScriptTag;
 
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){

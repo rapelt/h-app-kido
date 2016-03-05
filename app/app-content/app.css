@@ -1,5 +1,5 @@
 ﻿body {
-    padding: 20px 0;
+    padding: 58px 0;
     background-color: #000066;
 }
 
@@ -51,10 +51,6 @@ label{
     color: black;
 }
 
-.header-padding {
-    padding-top: 38px;
-}
-
 .nav-bar-colour{
     background-color: #00004d;
     color: white;
@@ -82,10 +78,16 @@ label{
 .blue-box {
     height: 40px;
     background-color: #0dadda;
-    margin-left: -52%;
-    margin-right: -50%;
     text-align: center;
     font-size: 28px;
     color: #000000;
 
+}
+
+.nav-bar-left{
+    margin-left: 120px;
+}
+
+.nav-bar-right{
+    margin-right: 120px;
 }

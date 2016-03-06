@@ -73,10 +73,10 @@
     }
 
     function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        //var tag = document.createElement('script');
+        //tag.src = "https://www.youtube.com/iframe_api";
+        //var firstScriptTag = document.getElementsByTagName('script')[0];
+        //firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){

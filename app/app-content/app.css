@@ -84,3 +84,12 @@ label{
     color: #000000;
     width: 100%;
 }
+
+.nav-bar-right{
+    position: relative;
+    float: right;
+}
+
+.nav-bar-left{
+    position: absolute;
+}

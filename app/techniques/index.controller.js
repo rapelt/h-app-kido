@@ -5,12 +5,13 @@
         .module('app')
         .controller('Techniques.IndexController', Controller);
 
-    function Controller($window, $rootScope, $state, TechniqueService, FlashService, GradeService) {
+    function Controller($window, $rootScope, $state, TechniqueService, FlashService, GradeService, UserService) {
         var vm = this;
         vm.deleteTechnique = deleteTechnique;
         vm.editTechnique = editTechnique;
         vm.create = create;
         vm.dismiss = dismiss;
+        vm.user = {};
 
 
         vm.technique = null;
@@ -28,6 +29,10 @@
         function initController() {
             TechniqueService.GetAll().then(function (techniques){
                 vm.techniques = techniques;
+            })
+
+            UserService.GetCurrent().then(function(user){
+                vm.user = user;
             })
 
         }

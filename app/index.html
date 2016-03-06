@@ -45,7 +45,7 @@
         <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-collapse">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand nav-bar-brand" href="#">
                         <img class="header-logo-centre" src="/images/happkido-icon.png" alt="Happkido Logo" height="25px">
                     </a>
                     <div>
@@ -72,11 +72,8 @@
         </nav>
 
 
-        <div class="flash-message" ng-if="flash">
-            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
-        </div>
+
     </header>
-    <div class="header-padding"/>
 
     <!-- main -->
     <main ui-view></main>

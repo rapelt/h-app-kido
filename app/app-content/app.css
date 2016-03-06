@@ -1,6 +1,10 @@
 ﻿body {
-    padding: 38px 0;
+    padding: 58px 0;
     background-color: #000066;
+}
+
+.header-padding{
+    padding-top: 40px;
 }
 
 .flash-message {
@@ -78,7 +82,6 @@ label{
 
 .blue-box {
     height: 40px;
-    background-color: #0dadda;
     text-align: center;
     font-size: 28px;
     color: #000000;
@@ -95,4 +98,52 @@ label{
 
 .nav-bar-left{
     position: absolute;
+}
+
+.nav-bar-brand{
+    margin-left: auto !important;
+}
+
+.box-white{
+    background-color: whitesmoke;
+}
+
+.box-yellow1{
+    background-color: #ffd400;
+}
+
+.box-yellow2{
+    background-color: #ffd400;
+}
+
+.box-yellow3{
+    background-color: #ffd400;
+}
+
+.box-blue1{
+    background-color: #0dadda;
+}
+
+.box-blue2{
+    background-color: #0dadda;
+}
+
+.box-blue3{
+    background-color: #0dadda;
+}
+
+.box-red1{
+    background-color: #f96666;
+}
+
+.box-red2{
+    background-color: #f96666;
+}
+
+.box-red3{
+    background-color: #f96666;
+}
+
+.box-black{
+    background-color: #111111;
 }

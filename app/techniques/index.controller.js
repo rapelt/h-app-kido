@@ -38,7 +38,7 @@
         }
 
         function deleteTechnique(id) {
-            UserService.Delete(id)
+            TechniqueService.Delete(id)
                 .then(function () {
                     refresh();
                 })
@@ -55,7 +55,9 @@
         }
 
         function refresh() {
-            $state.reload();
+            TechniqueService.GetAll().then(function (techniques){
+                vm.techniques = techniques;
+            })
         }
 
         function dismiss(technique) {

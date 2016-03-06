@@ -147,3 +147,7 @@ label{
 .box-black{
     background-color: #111111;
 }
+
+.technique-modal-padding {
+    margin-bottom: 10px;
+}

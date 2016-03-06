@@ -55,6 +55,14 @@
                         redirectTo: 'home'
                     }
                 }
+            }).state('technique', {
+                url: '/technique',
+                templateUrl: 'techniques/techniques.html',
+                controller: 'Techniques.TechniquesController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'technique',
+                }
             })
             .state('editUser', {
                 url: '/editUser',

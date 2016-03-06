@@ -26,6 +26,7 @@
         service.SubtractGrade = SubtractGrade;
         service.AddGrade = AddGrade;
         service.GetDisplayName = GetDisplayName;
+        service.UserCanSeeAsset = UserCanSeeAsset;
 
         return service;
 
@@ -46,6 +47,19 @@
         function SubtractGrade(gradestr) {
             var indexOfGrade =  _.indexOf(grades, GetCurrent(gradestr));
             return grades[indexOfGrade > 0 ? indexOfGrade - 1 : indexOfGrade];
+        }
+
+        function UserCanSeeAsset(technique, user){
+            var indexOfTechnique =  _.indexOf(grades, GetCurrent(technique));
+            var indexOfUser =  _.indexOf(grades, GetCurrent(user));
+
+            if(indexOfTechnique <= indexOfUser){
+                return true;
+            }
+            return false;
+
+
+
         }
     }
 

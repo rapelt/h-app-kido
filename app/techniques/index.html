@@ -7,9 +7,9 @@
 
 <h1>Edit Techniques</h1>
 <li ng-repeat="technique in vm.techniques">
-    <p>{{technique.techniqueSet}}
+    <p>{{technique.techniqueName}}
         - <a ng-click="vm.editTechnique(technique, $index)" data-toggle="modal" data-target="#techniqueModal">Edit</a>
-        - <a href="#" ng-click="vm.deleteUTechnique(technique._id)">Delete</a>
+        - <a href="#" ng-click="vm.deleteTechnique(technique._id)">Delete</a>
     </p>
 </li>
 

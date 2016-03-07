@@ -11,7 +11,7 @@
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
 
-
+        vm.filters = ['grades', 'techniques'];
         vm.user = {};
 
         vm.techniques = []
@@ -22,6 +22,8 @@
 
         vm.availableGrades = [];
         vm.filterBy = filterBy;
+        vm.filterByType = filterByType;
+
 
         initController();
 
@@ -44,12 +46,12 @@
         }
 
         function removeWhiteSpace(str){
-            return str.replace(/\s+/g, '');
+            return str.replace(/\s+/g, '')+ '-id';
 
         }
 
         function removeWhiteSpaceId(str){
-            return '#' + str.replace(/\s+/g, '');
+            return '#' + str.replace(/\s+/g, '') + '-id';
 
         }
 
@@ -69,6 +71,27 @@
             }
             vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.techniqueSet });
             vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+        }
+
+        function filterByType(type){
+            if(type === "techniques"){
+                var gradeTechniques =_.filter(vm.techniques, function(technique){
+                    if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
+                        return technique;
+                    }
+                });
+                vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.techniqueSet });
+                vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+            } else if(type === "grades"){
+                var gradeTechniques =_.filter(vm.techniques, function(technique){
+                    if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
+                        return technique;
+                    }
+                });
+                vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.grade.displayName });
+                vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+            }
+
         }
 
     }

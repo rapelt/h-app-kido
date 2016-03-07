@@ -1,8 +1,12 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
-    <div class="technique-filters"></div>
-    <span class="sort-by">Sort by:</span>
-    <div ng-repeat="grade in vm.availableGrades" class="filter-grades">
-        <div class="filter-grade"><button class="btn btn-default" ng-click="vm.filterBy(grade)">{{grade.displayName}}</button></div>
+    <div class="technique-filters">
+        <span class="sort-by">Sort by:</span>
+        <!--<div ng-repeat="grade in vm.availableGrades" class="filter-grades">
+            <div class="filter-grade"><button class="btn btn-default" ng-click="vm.filterBy(grade)">{{grade.displayName}}</button></div>
+        </div>-->
+        <select  class="form-control sort-by-options" ng-model="filteredBy" ng-change="vm.filterByType(filteredBy)"
+                 data-ng-options="filter for filter in vm.filters">
+        </select>
     </div>
 
 </div>
@@ -28,7 +32,10 @@
                 <div class="panel-body">
                     <div class="outer">
                         <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
-                            <div class="thumbnail-box"><p>{{technique.techniqueName}}</p></div>
+                            <div class="thumbnail-box">
+                                <p>{{technique.techniqueName}}</p>
+                                <a ui-sref="technique({id: technique._id})">{{technique.techniqueName}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>

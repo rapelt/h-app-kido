@@ -43,40 +43,49 @@
                         redirectTo: 'home'
                     }
                 }
-            }).state('techniques', {
-                url: '/techniques',
+            }).state('editTechniques', {
+                url: '/editTechniques',
                 templateUrl: 'techniques/index.html',
                 controller: 'Techniques.IndexController',
                 controllerAs: 'vm',
                 data: {
-                    activeTab: 'techniques',
+                    activeTab: 'editTechniques',
                     permissions: {
                         only: ['admin'],
                         redirectTo: 'home'
                     }
                 }
-            }).state('technique', {
-                url: '/technique',
-                templateUrl: 'techniques/techniques.html',
-                controller: 'Techniques.TechniquesController',
-                controllerAs: 'vm',
-                data: {
-                    activeTab: 'technique',
+        }).state('technique', {
+            url: '/technique/:id',
+            templateUrl: 'techniques/technique.html',
+            controller: 'Technique.TechniqueController',
+            controllerAs: 'vm',
+            data: {
+                activeTab: 'technique',
+            }
+
+        }).state('techniques', {
+            url: '/techniques',
+            templateUrl: 'techniques/techniques.html',
+            controller: 'Techniques.TechniquesController',
+            controllerAs: 'vm',
+            data: {
+                activeTab: 'techniques',
+            }
+        })
+        .state('editUser', {
+            url: '/editUser',
+            templateUrl: 'editUser/index.html',
+            controller: 'EditUser.IndexController',
+            controllerAs: 'vm',
+            data: {
+                activeTab: 'editUser',
+                permissions: {
+                    only: ['admin'],
+                    redirectTo: 'home'
                 }
-            })
-            .state('editUser', {
-                url: '/editUser',
-                templateUrl: 'editUser/index.html',
-                controller: 'EditUser.IndexController',
-                controllerAs: 'vm',
-                data: {
-                    activeTab: 'editUser',
-                    permissions: {
-                        only: ['admin'],
-                        redirectTo: 'home'
-                    }
-                }
-            });
+            }
+        });
 
     }
 

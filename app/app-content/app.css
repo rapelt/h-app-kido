@@ -181,7 +181,7 @@ label{
 .sort-by{
     color: dimgray;
     text-align: left;
-    margin-left: 140px;
+    margin-left: 10%;
     font-size: 18px;
     vertical-align: middle;
 }
@@ -201,4 +201,12 @@ label{
 .video-length{
     color: dimgray;
     font-style: italic;
+}
+
+.sort-by-options{
+    vertical-align: top;
+    margin-top: 12px;
+    width: auto;
+    display: inline-block;
+    height: 22px;
 }

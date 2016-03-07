@@ -27,6 +27,9 @@
         service.AddGrade = AddGrade;
         service.GetDisplayName = GetDisplayName;
         service.UserCanSeeAsset = UserCanSeeAsset;
+        service.GetAvaliableGrades = GetAvaliableGrades;
+        service.FilterByGrade = FilterByGrade;
+
 
         return service;
 
@@ -57,9 +60,21 @@
                 return true;
             }
             return false;
+        }
 
+        function GetAvaliableGrades(userGrade){
+            var indexOfUser =  _.indexOf(grades, GetCurrent(userGrade));
+            return grades.slice(0, indexOfUser + 1);
+        }
 
+        function FilterByGrade(grade, techniqueGrade){
+            var indexOfGrade =  _.indexOf(grades, GetCurrent(grade.grade));
+            var indexOfTechniqueGrade =  _.indexOf(grades, GetCurrent(techniqueGrade.grade));
 
+            if(indexOfTechniqueGrade == indexOfGrade){
+                return true;
+            }
+            return false;
         }
     }
 

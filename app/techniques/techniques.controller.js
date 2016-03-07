@@ -20,12 +20,16 @@
 
         vm.sets = [];
 
+        vm.availableGrades = [];
+        vm.filterBy = filterBy;
+
         initController();
 
         function initController() {
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
-
+                vm.availableGrades = GradeService.GetAvaliableGrades(vm.user.grade.grade);
+                vm.availableGrades.unshift({grade: "all", displayName: "All"});
                 TechniqueService.GetAll().then(function (techniques){
                     vm.techniques =_.filter(techniques, function(technique){
                         if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
@@ -35,10 +39,6 @@
                     vm.techniqueSets = _.groupBy(vm.techniques, function(technique){ return technique.techniqueSet });
 
                     vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
-
-                    console.log(vm.sets);
-
-                    console.log(vm.techniqueSets[vm.sets[0]]);
                 });
             });
         }
@@ -51,6 +51,24 @@
         function removeWhiteSpaceId(str){
             return '#' + str.replace(/\s+/g, '');
 
+        }
+
+        function filterBy(grade){
+            if(grade.grade === "all"){
+                var gradeTechniques =_.filter(vm.techniques, function(technique){
+                    if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
+                        return technique;
+                    }
+                });
+            } else {
+                var gradeTechniques = _.filter(vm.techniques, function (technique) {
+                    if (GradeService.FilterByGrade(grade, technique.grade)) {
+                        return technique;
+                    }
+                });
+            }
+            vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.techniqueSet });
+            vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
         }
 
     }

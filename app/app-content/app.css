@@ -82,13 +82,16 @@ label{
 
 .blue-box {
     height: 40px;
-    text-align: center;
     font-size: 28px;
     color: #000000;
     right: 0;
     left: 0;
     position: fixed;
     z-index: 100;
+}
+
+.blue-box-centered{
+    text-align: center;
 }
 
 .nav-bar-right{
@@ -169,4 +172,33 @@ label{
     width: 100%;
     overflow: auto;
     white-space: nowrap;
+}
+
+.technique-filters{
+    text-align: left;
+}
+
+.sort-by{
+    color: dimgray;
+    text-align: left;
+    margin-left: 140px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.filter-grades{
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    margin-top: 3px;
+
+}
+.filter-grade{
+
+}
+
+.video-length{
+    color: dimgray;
+    font-style: italic;
 }

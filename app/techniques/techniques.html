@@ -1,4 +1,11 @@
-<div class="blue-box" ng-class="'box-' + vm.user.grade.grade"></div>
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+    <div class="technique-filters"></div>
+    <span class="sort-by">Sort by:</span>
+    <div ng-repeat="grade in vm.availableGrades" class="filter-grades">
+        <div class="filter-grade"><button class="btn btn-default" ng-click="vm.filterBy(grade)">{{grade.displayName}}</button></div>
+    </div>
+
+</div>
 <div class="header-padding"></div>
 <div class="flash-message" ng-if="flash">
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
@@ -13,7 +20,7 @@
             <div class="panel-heading" role="tab" id="{{set}}">
                 <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
-                        {{set}}
+                        {{set}} - <span class="video-length">{{(vm.techniqueSets[set]).length}} videos</span>
                     </a>
                 </h4>
             </div>

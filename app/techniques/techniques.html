@@ -12,15 +12,17 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="{{set}}">
                 <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="vm.removeWhiteSpace(set)">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
                         {{set}}
                     </a>
                 </h4>
             </div>
             <div ng-attr-id="{{vm.removeWhiteSpace(set)}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{set}}">
                 <div class="panel-body">
-                    <div ng-repeat="technique in vm.techniqueSets[set]">
-                        <p>{{technique.techniqueName}}</p>
+                    <div class="outer">
+                        <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
+                            <div class="thumbnail-box"><p>{{technique.techniqueName}}</p></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -29,12 +29,17 @@
         service.UserCanSeeAsset = UserCanSeeAsset;
         service.GetAvaliableGrades = GetAvaliableGrades;
         service.FilterByGrade = FilterByGrade;
+        service.SortGrades = SortGrades;
 
 
         return service;
 
         function GetCurrent(gradestr) {
             return _.find(grades, function(grade){ return grade.grade == gradestr  });
+        }
+
+        function GetCurrentByDisplayName(gradestr) {
+            return _.find(grades, function(grade){ return grade.displayName == gradestr  });
         }
 
         function GetDisplayName(gradestr) {
@@ -75,6 +80,15 @@
                 return true;
             }
             return false;
+        }
+
+        function SortGrades(gradesArray){
+            gradesArray.sort(function(a, b){
+                var indexOfa =  _.indexOf(grades, GetCurrentByDisplayName(a));
+                var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b));
+                return indexOfa - indexOfb;
+            })
+            return gradesArray;
         }
     }
 

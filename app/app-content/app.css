@@ -167,7 +167,7 @@ label{
 }
 
 .thumbnail-box{
-    width: 150px;
+    width: 170px;
     margin-bottom: -0;
     text-align: center;
 }
@@ -179,8 +179,6 @@ label{
 .thumb-nail-container{
     display: inline-block;
     margin-right: 10px;
-    white-space: nowrap;
-
 }
 
 .outer{

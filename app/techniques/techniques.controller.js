@@ -39,11 +39,15 @@
                             return technique;
                         }
                     });
-                    vm.techniqueSets = _.groupBy(vm.techniques, function(technique){ return technique.techniqueSet });
-
-                    vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+                    setTechniquesForDisplay();
                 });
             });
+        }
+
+        function setTechniquesForDisplay(){
+            vm.techniqueSets = _.groupBy(vm.techniques, function(technique){ return technique.techniqueSet });
+            var techniqueSets = Object.getOwnPropertyNames(vm.techniqueSets);
+            vm.sets = TechniqueService.SortTechniques(techniqueSets);
         }
 
         function removeWhiteSpace(str){
@@ -70,8 +74,7 @@
                     }
                 });
             }
-            vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.techniqueSet });
-            vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+            setTechniquesForDisplay();
         }
 
         function filterByType(type){
@@ -81,8 +84,7 @@
                         return technique;
                     }
                 });
-                vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.techniqueSet });
-                vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+                setTechniquesForDisplay();
             } else if(type === "grades"){
                 var gradeTechniques =_.filter(vm.techniques, function(technique){
                     if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
@@ -90,7 +92,8 @@
                     }
                 });
                 vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.grade.displayName });
-                vm.sets = Object.getOwnPropertyNames(vm.techniqueSets);
+                var grades = Object.getOwnPropertyNames(vm.techniqueSets);
+                vm.sets = GradeService.SortGrades(grades);
             }
 
         }

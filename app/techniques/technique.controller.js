@@ -5,7 +5,7 @@
         .module('app')
         .controller('Technique.TechniqueController', Controller);
 
-    function Controller($stateParams, UserService, TechniqueService) {
+    function Controller($stateParams, $rootScope, UserService, TechniqueService) {
         var vm = this;
         vm.user = {};
         vm.technique = {};

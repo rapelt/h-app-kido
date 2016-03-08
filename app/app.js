@@ -89,10 +89,7 @@
 
     }
 
-    function run($http, $rootScope, $window, $q, RoleStore, PermissionStore, UserService) {
-        UserService.GetCurrent().then(function (user) {
-            $rootScope.currentUser = user;
-        });
+    function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
 
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){

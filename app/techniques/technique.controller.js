@@ -10,13 +10,13 @@
         vm.user = {};
         vm.technique = {};
 
-
         initController();
 
         function initController() {
             console.log($stateParams.id);
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
+                $rootScope.currentUser = user;
             })
 
             TechniqueService.GetById($stateParams.id).then(function(technique){

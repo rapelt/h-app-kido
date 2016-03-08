@@ -67,6 +67,8 @@
                         vm.techniques[index] = newTechnique;
                     })
             }
+            vm.technique = null;
+
         }
 
         function create() {

@@ -8,7 +8,6 @@
     function Controller($rootScope, $window, UserService) {
         var vm = this;
 
-        vm.video1 = "p4rEQz3qw8U";
         vm.user = null;
         $rootScope.currentUser = null;;
 

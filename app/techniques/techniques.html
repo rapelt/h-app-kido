@@ -32,10 +32,13 @@
                 <div class="panel-body">
                     <div class="outer">
                         <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
-                            <div class="thumbnail-box">
-                                <p>{{technique.techniqueName}}</p>
-                                <a ui-sref="technique({id: technique._id})">{{technique.techniqueName}}</a>
-                            </div>
+                            <a ui-sref="technique({id: technique._id})">
+                                <div class="thumbnail-box thumbnail" ng-class="'box-' + technique.grade.grade">
+                                    <img src="http://img.youtube.com/vi/p4rEQz3qw8U/0.jpg">
+                                    <h5>{{technique.techniqueName}}</h5>
+
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,7 @@
         function initController() {
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
+                $rootScope.currentUser = user;
                 vm.availableGrades = GradeService.GetAvaliableGrades(vm.user.grade.grade);
                 vm.availableGrades.unshift({grade: "all", displayName: "All"});
                 TechniqueService.GetAll().then(function (techniques){

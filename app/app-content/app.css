@@ -109,46 +109,57 @@ label{
 
 .box-white{
     background-color: whitesmoke;
+    color: black;
 }
 
 .box-yellow1{
     background-color: #ffd400;
+    color: black;
 }
 
 .box-yellow2{
     background-color: #ffd400;
+    color: black;
 }
 
 .box-yellow3{
     background-color: #ffd400;
+    color: black;
 }
 
 .box-blue1{
     background-color: #0dadda;
+    color: white;
 }
 
 .box-blue2{
     background-color: #0dadda;
+    color: white;
 }
 
 .box-blue3{
     background-color: #0dadda;
+    color: white;
 }
 
 .box-red1{
     background-color: #f96666;
+    color: white;
 }
 
 .box-red2{
     background-color: #f96666;
+    color: white;
 }
 
 .box-red3{
     background-color: #f96666;
+    color: white;
 }
 
 .box-black{
     background-color: #111111;
+    color: white;
 }
 
 .technique-modal-padding {
@@ -156,14 +167,18 @@ label{
 }
 
 .thumbnail-box{
-    background-color: red;
     width: 150px;
-    height: 150px;
+    margin-bottom: -0;
+    text-align: center;
+}
+
+.thumbnail-box:hover{
+    border: 1px solid;
 }
 
 .thumb-nail-container{
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
     white-space: nowrap;
 
 }

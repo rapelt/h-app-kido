@@ -235,3 +235,8 @@ label{
 .translation-table{
     color: white;
 }
+
+.hover-attempt:hover {
+    background-color: #353593;
+    opacity: 0.9;
+}

@@ -55,37 +55,67 @@
                         redirectTo: 'home'
                     }
                 }
-        }).state('technique', {
-            url: '/technique/:id',
-            templateUrl: 'techniques/technique.html',
-            controller: 'Technique.TechniqueController',
-            controllerAs: 'vm',
-            data: {
-                activeTab: 'technique',
-            }
-
-        }).state('techniques', {
-            url: '/techniques',
-            templateUrl: 'techniques/techniques.html',
-            controller: 'Techniques.TechniquesController',
-            controllerAs: 'vm',
-            data: {
-                activeTab: 'techniques',
-            }
-        })
-        .state('editUser', {
-            url: '/editUser',
-            templateUrl: 'editUser/index.html',
-            controller: 'EditUser.IndexController',
-            controllerAs: 'vm',
-            data: {
-                activeTab: 'editUser',
-                permissions: {
-                    only: ['admin'],
-                    redirectTo: 'home'
+            }).state('editTranslations', {
+                url: '/editTranslations',
+                templateUrl: 'translations/index.html',
+                controller: 'Translations.IndexController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'editTranslations',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
                 }
-            }
-        });
+            }).state('technique', {
+                url: '/technique/:id',
+                templateUrl: 'techniques/technique.html',
+                controller: 'Technique.TechniqueController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'technique'
+                }
+
+            }).state('techniques', {
+                url: '/techniques',
+                templateUrl: 'techniques/techniques.html',
+                controller: 'Techniques.TechniquesController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'techniques'
+                }
+            })
+            .state('translation', {
+                url: '/translation/:id',
+                templateUrl: 'translations/translation.html',
+                controller: 'Translation.TranslationController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'translation'
+                }
+
+            }).state('translations', {
+                url: '/translations',
+                templateUrl: 'translations/translations.html',
+                controller: 'Translations.TranslationsController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'translations'
+                }
+            })
+            .state('editUser', {
+                url: '/editUser',
+                templateUrl: 'editUser/index.html',
+                controller: 'EditUser.IndexController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'editUser',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
+            });
 
     }
 

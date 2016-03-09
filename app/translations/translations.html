@@ -1,0 +1,31 @@
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+</div>
+<div class="header-padding"></div>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+
+<h1>Terminology</h1>
+
+<div class="table-responsive">
+    <table class="table translation-table">
+        <thead>
+            <tr>
+                <th>Korean</th>
+                <th>English</th>
+                <th>Video</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="translation in vm.translations">
+                <td>{{translation.korean}}</td>
+                <td>{{translation.english}}</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

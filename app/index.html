@@ -30,11 +30,13 @@
 
     <script src="app.js"></script>
 
-
+    <!--services-->
     <script src="app-services/user.service.js"></script>
     <script src="app-services/flash.service.js"></script>
     <script src="app-services/grade.service.js"></script>
     <script src="app-services/technique.service.js"></script>
+    <script src="app-services/translation.service.js"></script>
+
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
     <script src="editUser/index.controller.js"></script>
@@ -42,7 +44,9 @@
     <script src="techniques/index.controller.js"></script>
     <script src="techniques/techniques.controller.js"></script>
     <script src="techniques/technique.controller.js"></script>
-
+    <script src="translations/translation.controller.js"></script>
+    <script src="translations/translations.controller.js"></script>
+    <script src="translations/index.controller.js"></script>
 
 </head>
 <body class="container">
@@ -65,9 +69,12 @@
                                 <ul class="dropdown-menu">
                                     <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
                                     <li ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Techniques</a></li>
+                                    <li ng-class="{active: activeTab === 'translations'}"><a ui-sref="translations">Translations</a></li>
                                     <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
                                     <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Edit Users</a></li>
                                     <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTechniques'}"><a ui-sref="editTechniques">Edit Techniques</a></li>
+                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTranslations'}"><a ui-sref="editTranslations">Edit Translations</a></li>
+
                                     <li role="separator" class="divider"></li>
                                     <li><a href="/login" target="_self">Logout</a></li>
 

@@ -8,7 +8,7 @@
 }
 
 .header-padding{
-    padding-top: 40px;
+    padding-top: 45px;
 }
 
 .flash-message {
@@ -85,13 +85,13 @@ label{
 }
 
 .blue-box {
-    height: 40px;
+    height: 45px;
     font-size: 28px;
     color: #000000;
     right: 0;
     left: 0;
     position: fixed;
-    z-index: 1500;
+    z-index: 999;
 }
 
 .blue-box-centered{
@@ -226,4 +226,12 @@ label{
     width: auto;
     display: inline-block;
     height: 31px;
+}
+
+.padding-remover {
+    padding: 0px 15px 10px 15px;
+}
+
+.translation-table{
+    color: white;
 }

@@ -18,15 +18,15 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div ng-repeat="set in vm.sets">
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="{{set}}">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
-                        {{set}} - <span class="video-length">{{(vm.techniqueSets[set]).length}} videos</span>
-                    </a>
-                </h4>
-            </div>
+            <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
+                <div class="panel-heading" role="tab" id="{{set}}">
+                    <h4 class="panel-title">
+                            {{set}} - <span class="video-length">{{(vm.techniqueSets[set]).length}} videos</span>
+                    </h4>
+                </div>
+            </a>
             <div ng-attr-id="{{vm.removeWhiteSpace(set)}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{set}}">
-                <div class="panel-body">
+                <div class="panel-body padding-remover">
                     <div class="outer">
                         <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
                             <a ng-if="technique.url != undefined && technique.url != null" ui-sref="technique({id: technique._id})">

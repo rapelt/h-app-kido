@@ -1,0 +1,69 @@
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade"></div>
+<div class="header-padding"></div>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+
+<h1>Edit Translations</h1>
+<li ng-repeat="translation in vm.translations">
+    <p>{{translation.korean}} - {{translation.english}}
+        - <a ng-click="vm.editTranslation(translation, $index)" data-toggle="modal" data-target="#translationModal">Edit</a>
+        - <a href="#" ng-click="vm.deleteTranslation(translation._id)">Delete</a>
+    </p>
+</li>
+
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#translationModal">
+    Add new translation
+</button>
+
+<!-- Modal -->
+<div class="modal fade modal-text-colour" id="translationModal" tabindex="-1" role="dialog" aria-labelledby="translationModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a new translation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="url">Url</label>
+                            <input type="text" id="url" class="form-control" ng-model="vm.translation.url" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="korean">Korean</label>
+                            <input type="text" id="korean" class="form-control" ng-model="vm.translation.korean" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="english">English</label>
+                            <input type="text" id="english" class="form-control" ng-model="vm.translation.english" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">Grade</label>
+                            <select name="grade" id="grade" class="form-control" ng-model="vm.translation.grade.grade" required>
+                                <option value="white">White</option>
+                                <option value="yellow1">Yellow 1</option>
+                                <option value="yellow2">Yellow 2</option>
+                                <option value="yellow3">Yellow 3</option>
+                                <option value="blue1">Blue 1</option>
+                                <option value="blue2">Blue 2</option>
+                                <option value="blue3">Blue 3</option>
+                                <option value="red1">Red 1</option>
+                                <option value="red2">Red 2</option>
+                                <option value="red3">Red 3</option>
+                                <option value="black">Black</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.dismiss(vm.translation)">Close</button>
+                <button type="submit" class="btn btn-primary" ng-click="vm.create()" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

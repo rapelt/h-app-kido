@@ -61,7 +61,7 @@
             var indexOfTechnique =  _.indexOf(grades, GetCurrent(technique));
             var indexOfUser =  _.indexOf(grades, GetCurrent(user));
 
-            if(indexOfTechnique <= indexOfUser){
+            if(indexOfTechnique <= indexOfUser+1){
                 return true;
             }
             return false;
@@ -69,7 +69,7 @@
 
         function GetAvaliableGrades(userGrade){
             var indexOfUser =  _.indexOf(grades, GetCurrent(userGrade));
-            return grades.slice(0, indexOfUser + 1);
+            return grades.slice(0, indexOfUser + 2);
         }
 
         function FilterByGrade(grade, techniqueGrade){

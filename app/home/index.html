@@ -8,9 +8,20 @@
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
 </div>
 
-<h1>Hi {{vm.user.firstName}}</h1>
+<div class="home-page-centered">
 
-<a ng-class="{active: activeTab === 'techniques'}" class="btn btn-default" ui-sref="techniques" role="button">Techniques</a>
-<a ng-class="{active: activeTab === 'translations'}" class="btn btn-default" ui-sref="translations" role="button">Translations</a>
+<a ng-class="{active: activeTab === 'techniques'}" class="btn btn-default home-page-button" ui-sref="techniques" role="button">
+    <img src="/images/Techniques.png" height="150px" width="150px">
+    <h3>Techniques</h3>
+</a>
+<a ng-class="{active: activeTab === 'translations'}" class="btn btn-default home-page-button" ui-sref="translations" role="button">
+    <img src="/images/Hangul.png" height="150px" width="150px">
+    <h3>Translations</h3>
+</a>
+<a class="btn btn-default home-page-button" role="button">
+    <img src="/images/Manual.png" height="150px" width="150px">
+    <h3>Student Manual</h3>
+</a>
+</div>
 
 

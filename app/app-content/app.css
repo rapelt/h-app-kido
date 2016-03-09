@@ -47,6 +47,10 @@ h2{
     color: white;
 }
 
+h3{
+    color: white;
+}
+
 label{
     color: white;
 }
@@ -137,7 +141,7 @@ label{
 }
 
 .box-blue2{
-    background-color: #4acbef;
+    background-color: #22aed8;
     color: white;
 }
 
@@ -238,4 +242,52 @@ label{
 .hover-attempt:hover {
     background-color: #353593;
     opacity: 0.9;
+}
+
+.home-page-button{
+    background-color: transparent;
+    border: none;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+}
+
+.home-page-button:hover{
+    background-color: transparent;
+    opacity: 0.8;
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    z-index: 12;
+}
+
+.home-page-button:active{
+    background-color: transparent;
+    opacity: 0.8;
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    z-index: 12;
+}
+
+.home-page-button:active:hover{
+    background-color: transparent;
+    opacity: 0.8;
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    z-index: 12;
+}
+
+.home-page-button:focus{
+    background-color: transparent;
+    opacity: 0.8;
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    z-index: 12;
+}
+
+.home-page-centered{
+    text-align: center;
 }

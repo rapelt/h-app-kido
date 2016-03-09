@@ -29,18 +29,20 @@
                 <div class="panel-body">
                     <div class="outer">
                         <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
-                            <a ui-sref="technique({id: technique._id})">
+                            <a ng-if="technique.url != undefined && technique.url != null" ui-sref="technique({id: technique._id})">
                                 <div class="thumbnail-box thumbnail" ng-class="'box-' + technique.grade.grade">
-                                    <div ng-if="technique.url === undefined || technique.url === null">
-                                        <img src="/images/no_video_available.png" height="113px" width="150px">
-                                    </div>
-                                    <div ng-if="technique.url != undefined">
                                         <img src="http://img.youtube.com/vi/{{technique.url}}/0.jpg" height="113px" width="150px">
-                                    </div>
                                     <h5>{{technique.techniqueName}}</h5>
-
                                 </div>
                             </a>
+                            <div ng-if="technique.url === undefined || technique.url === null">
+                                <div class="thumbnail-box thumbnail" ng-class="'box-' + technique.grade.grade">
+                                        <img src="/images/no_video_available.png" height="113px" width="150px">
+                                    <h5>{{technique.techniqueName}}</h5>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

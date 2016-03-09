@@ -11,7 +11,7 @@
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
 
-        vm.filters = ['Grades', 'Techniques'];
+        vm.filters = ['Grade', 'Techniques'];
         vm.user = {};
 
         vm.techniques = []

@@ -117,12 +117,12 @@ label{
 }
 
 .box-yellow1{
-    background-color: #ffd400;
+    background-color: #ffea91;
     color: black;
 }
 
 .box-yellow2{
-    background-color: #ffd400;
+    background-color: #fcdc6a;
     color: black;
 }
 
@@ -132,12 +132,12 @@ label{
 }
 
 .box-blue1{
-    background-color: #0dadda;
+    background-color: #8fe4fc;
     color: white;
 }
 
 .box-blue2{
-    background-color: #0dadda;
+    background-color: #4acbef;
     color: white;
 }
 
@@ -147,22 +147,22 @@ label{
 }
 
 .box-red1{
-    background-color: #f96666;
+    background-color: #ff8787;
     color: white;
 }
 
 .box-red2{
-    background-color: #f96666;
+    background-color: #ff5151;
     color: white;
 }
 
 .box-red3{
-    background-color: #f96666;
+    background-color: #f70707;
     color: white;
 }
 
 .box-black{
-    background-color: #111111;
+    background-color: #353434;
     color: white;
 }
 
@@ -196,7 +196,6 @@ label{
 }
 
 .sort-by{
-    color: dimgray;
     text-align: left;
     margin-left: 10%;
     font-size: 18px;

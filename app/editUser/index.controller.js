@@ -20,15 +20,11 @@
         initController();
 
         function initController() {
-            // get current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
                 $rootScope.currentUser = user;
             });
-
-            UserService.GetAll().then(function (users){
-                vm.allUsers = users;
-            })
+            refresh();
         }
 
         function deleteUser(id) {
@@ -46,7 +42,9 @@
         }
 
         function refresh() {
-            $state.reload();
+            UserService.GetAll().then(function (users){
+                vm.allUsers = users;
+            })
         }
 
         function addGrade(user){

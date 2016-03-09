@@ -1,5 +1,5 @@
 ﻿body {
-    padding: 58px 0;
+    padding: 63px 0;
     background-color: #000066;
 }
 
@@ -58,6 +58,7 @@ label{
 .nav-bar-colour{
     background-color: #00004d;
     color: white;
+    border: none;
 }
 
 .navbar-brand
@@ -218,8 +219,8 @@ label{
 
 .sort-by-options{
     vertical-align: top;
-    margin-top: 12px;
+    margin-top: 4px;
     width: auto;
     display: inline-block;
-    height: 22px;
+    height: 31px;
 }

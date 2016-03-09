@@ -21,8 +21,6 @@
 
             TechniqueService.GetById($stateParams.id).then(function(technique){
                 vm.technique = technique;
-                console.log(vm.technique);
-
             })
 
         }

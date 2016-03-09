@@ -1,5 +1,5 @@
 ﻿body {
-    padding: 63px 0;
+    padding: 58px 0;
     background-color: #000066;
     background-image: url("/images/kick-icon-blue.png");
     background-repeat: no-repeat;
@@ -62,7 +62,6 @@ label{
 .nav-bar-colour{
     background-color: #00004d;
     color: white;
-    border: none;
 }
 
 .navbar-brand
@@ -92,7 +91,7 @@ label{
     right: 0;
     left: 0;
     position: fixed;
-    z-index: 100;
+    z-index: 1500;
 }
 
 .blue-box-centered{

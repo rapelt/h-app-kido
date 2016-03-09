@@ -1,9 +1,6 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
     <div class="technique-filters">
         <span class="sort-by">Sort by:</span>
-        <!--<div ng-repeat="grade in vm.availableGrades" class="filter-grades">
-            <div class="filter-grade"><button class="btn btn-default" ng-click="vm.filterBy(grade)">{{grade.displayName}}</button></div>
-        </div>-->
         <select  class="form-control sort-by-options" ng-model="filteredBy" ng-change="vm.filterByType(filteredBy)"
                  data-ng-options="filter for filter in vm.filters">
         </select>
@@ -34,7 +31,12 @@
                         <div ng-repeat="technique in vm.techniqueSets[set]" class="thumb-nail-container">
                             <a ui-sref="technique({id: technique._id})">
                                 <div class="thumbnail-box thumbnail" ng-class="'box-' + technique.grade.grade">
-                                    <img src="http://img.youtube.com/vi/p4rEQz3qw8U/0.jpg">
+                                    <div ng-if="technique.url === undefined || technique.url === null">
+                                        <img src="/images/no_video_available.png" height="113px" width="150px">
+                                    </div>
+                                    <div ng-if="technique.url != undefined">
+                                        <img src="http://img.youtube.com/vi/{{technique.url}}/0.jpg" height="113px" width="150px">
+                                    </div>
                                     <h5>{{technique.techniqueName}}</h5>
 
                                 </div>

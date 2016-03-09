@@ -11,7 +11,7 @@
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
 
-        vm.filters = ['grades', 'techniques'];
+        vm.filters = ['Grades', 'Techniques'];
         vm.user = {};
 
         vm.techniques = []
@@ -36,7 +36,9 @@
                 TechniqueService.GetAll().then(function (techniques){
                     vm.techniques =_.filter(techniques, function(technique){
                         if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
-                            return technique;
+                            if(technique.assetType === "video"){
+                                return technique;
+                            }
                         }
                     });
                     setTechniquesForDisplay();
@@ -78,14 +80,14 @@
         }
 
         function filterByType(type){
-            if(type === "techniques"){
+            if(type === vm.filters[1]){
                 var gradeTechniques =_.filter(vm.techniques, function(technique){
                     if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
                         return technique;
                     }
                 });
                 setTechniquesForDisplay();
-            } else if(type === "grades"){
+            } else if(type === vm.filters[0]){
                 var gradeTechniques =_.filter(vm.techniques, function(technique){
                     if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
                         return technique;

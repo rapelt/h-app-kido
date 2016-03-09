@@ -1,6 +1,10 @@
 ﻿body {
     padding: 63px 0;
     background-color: #000066;
+    background-image: url("/images/kick-icon-blue.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: -80px 380px;
 }
 
 .header-padding{

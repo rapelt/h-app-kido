@@ -1,0 +1,15 @@
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+    <div class="blue-box-centered">
+        <div>{{vm.document.fileName}}</div>
+    </div>
+</div>
+<div class="header-padding"></div>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+<br/>
+<div class="centered-manual">
+    <div class="wrapper">
+        <ng-pdf template-url="manual/viewer.html" scale="1" canvasid="pdf"></ng-pdf>
+    </div>
+</div>

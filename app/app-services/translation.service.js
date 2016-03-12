@@ -5,7 +5,7 @@
         .module('app')
         .factory('TranslationService', Service);
 
-    function Service($http, $q, $rootScope) {
+    function Service($http, $q) {
         var service = {};
         
         service.GetCurrent = GetCurrent;

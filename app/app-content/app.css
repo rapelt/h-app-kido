@@ -146,7 +146,7 @@ label{
 }
 
 .box-blue3{
-    background-color: #0dadda;
+    background-color: #0b96bc;
     color: white;
 }
 
@@ -289,5 +289,9 @@ label{
 }
 
 .home-page-centered{
+    text-align: center;
+}
+
+.centered-manual{
     text-align: center;
 }

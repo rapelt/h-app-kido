@@ -1,0 +1,16 @@
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+</div>
+<div class="header-padding"></div>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+
+<h1>Student Manual</h1>
+<li ng-repeat="document in vm.documents">
+    <a ng-if="document.fileName != undefined" ui-sref="manual({id: document._id})">
+        <div class="thumbnail-box thumbnail" ng-class="'box-' + document.grade.grade">
+            <h5>{{document.fileName}}</h5>
+        </div>
+    </a>
+</li>

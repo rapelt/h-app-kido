@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use(session({ secret: process.env.secret, resave: false, saveUninitialized: true }));
 app.use('/images', express.static('app/media/images'));
 app.use('/', express.static('app/media'));
+app.use('/', express.static('app/pdf'));
+
 
 
 // use JWT auth to secure the api
@@ -29,6 +31,8 @@ app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
 app.use('/api/technique', require('./controllers/api/technique.controller'));
 app.use('/api/translation', require('./controllers/api/translation.controller'));
+app.use('/api/document', require('./controllers/api/document.controller'));
+
 
 
 /*app.all('/!*', function(req, res, next) {

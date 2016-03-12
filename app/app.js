@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['permission', 'ui.router', 'youtube-embed'])
+        .module('app', ['permission', 'ui.router', 'youtube-embed', 'pdf'])
         .config(config)
         .run(run);
 
@@ -101,6 +101,36 @@
                 controllerAs: 'vm',
                 data: {
                     activeTab: 'translations'
+                }
+            }).state('manual', {
+                url: '/manual/:id',
+                templateUrl: 'manual/manual.html',
+                controller: 'Manual.ManualController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'manual'
+                }
+            })
+            .state('editDocuments', {
+                url: '/editDocuments',
+                templateUrl: 'manual/index.html',
+                controller: 'Documents.IndexController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'editDocuemnts',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
+            })
+            .state('manuals', {
+                url: '/manuals',
+                templateUrl: 'manual/manuals.html',
+                controller: 'Manuals.ManualsController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'manuals'
                 }
             })
             .state('editUser', {

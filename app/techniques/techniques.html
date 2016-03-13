@@ -18,7 +18,8 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div ng-repeat="set in vm.sets">
         <div class="panel panel-default">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}" aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" ng-href="{{vm.removeWhiteSpaceId(set)}}"
+               aria-expanded="false" aria-controls="{{vm.removeWhiteSpace(set)}}">
                 <div class="panel-heading" role="tab" id="{{set}}">
                     <h4 class="panel-title">
                             {{set}} - <span class="video-length">{{(vm.techniqueSets[set]).length}} videos</span>

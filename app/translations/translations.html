@@ -14,22 +14,28 @@
             <tr>
                 <th>Korean</th>
                 <th>English</th>
-                <th>Video</th>
+                <th class="hidden-xs hidden-sm">Listen</th>
+                <th class="hidden-md hidden-lg">Video</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="translation in vm.translations" class="hover-attempt">
                 <td>{{translation.korean}}</td>
                 <td>{{translation.english}}</td>
-                <td>
+                <td class="hidden-xs hidden-sm">
                     <button type="button" class="btn btn-default btn-xs" ng-disabled="vm.disable">
-                        <span class="glyphicon glyphicon-play" aria-hidden="true" ng-click="vm.playTranslation(translation.url)"></span>
+                        <span class="glyphicon glyphicon-play" ng-click="vm.playTranslation(translation.url)"></span>
                     </button></td>
+                <td class="hidden-md hidden-lg" ng-if="vm.isMobile">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <youtube-video class="embed-responsive-item" video-id="translation.url" player="translationsPlayer" player-vars="vm.playerVars"></youtube-video>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <div ng-if="vm.url != ''">
+    <div class="hidden-sm hidden-xs" ng-if="vm.url != ''">
         <div class="embed-responsive embed-responsive-16by9 hide-video" visability="hidden">
             <youtube-video class="embed-responsive-item " video-id="vm.url" player="translationsPlayer"></youtube-video>
         </div>

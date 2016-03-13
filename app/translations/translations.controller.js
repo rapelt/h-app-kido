@@ -8,6 +8,17 @@
     function Controller($window, $rootScope, $scope, $state, TranslationService, FlashService, GradeService, UserService) {
         var vm = this;
 
+        vm.playerVars = {
+            autoplay: 0,
+            loop: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            enablejsapi: 1,
+            rel: 0
+        };
+
+        vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
         vm.playTranslation = playTranslation;
@@ -57,14 +68,18 @@
 
         $scope.$on('youtube.player.ready', function ($event, player) {
             // play it again
-            vm.disable = true;
-            player.playVideo();
+            if(!vm.isMobile) {
+                vm.disable = true;
+                player.playVideo();
+            }
         });
 
         $scope.$on('youtube.player.ended', function ($event, player) {
             // play it again
-            vm.url = "";
-            vm.disable = false;
+            if(!vm.isMobile) {
+                vm.url = "";
+                vm.disable = false;
+            }
         });
 
     }

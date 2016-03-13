@@ -180,6 +180,11 @@ label{
     text-align: center;
 }
 
+.thumbnail-box-manual{
+    height: 140px;
+    padding-top: 10px;
+}
+
 .thumbnail-box:hover{
     border: 1px solid;
 }
@@ -300,6 +305,16 @@ label{
     width: 70px;
     display: inline-block;
     margin-bottom: -20px;
+}
+
+.documents-in-manual{
+    display: inline-flex;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.file-icon{
+    font-size: 75px;
 }
 
 .rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }

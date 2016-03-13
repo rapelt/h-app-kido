@@ -60,6 +60,7 @@
         scope.pageNum = pageToDisplay;
 
         scope.renderPage = function(num) {
+
           if (renderTask) {
               renderTask._internalRenderTask.cancel();
           }

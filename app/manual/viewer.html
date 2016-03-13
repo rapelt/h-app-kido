@@ -1,19 +1,13 @@
 <nav ng-class="getNavStyle(scroll)">
-  <button ng-click="goPrevious()"><</span></button>
-  <button ng-click="goNext()">></span></button>
+  <button type="button" class="btn btn-default" ng-click="goPrevious()"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+  <button type="button" class="btn btn-default" ng-click="goNext()"><span class="glyphicon glyphicon-forward glyphicon-backward" aria-hidden="true"></span></button>
 
-  <button ng-click="zoomIn()">+</span></button>
-  <button ng-click="fit()">100%</span></button>
-  <button ng-click="zoomOut()">-</span></button>
+  <button type="button" class="btn btn-default" ng-click="zoomIn()"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
+  <button type="button" class="btn btn-default" ng-click="fit()"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></button>
+  <button type="button" class="btn btn-default" ng-click="zoomOut()"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></button>
 
-  <button ng-click="rotate()">90</span></button>
-
-  <span>Page: </span>
-  <input type="text" min=1 ng-model="pageNum">
-  <span> / {{pageCount}}</span>
+    <div class="well well-sm viewer-well"><span>{{pageNum}} / {{pageCount}}</span></div>
 </nav>
 
 <hr>
-
-{{loading}}
-<canvas id="pdf" class="rotate0"></canvas>
+<canvas ng-class="'rotate' + vm.document.rotation" id="pdf"></canvas>

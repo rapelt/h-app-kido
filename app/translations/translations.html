@@ -22,10 +22,16 @@
                 <td>{{translation.korean}}</td>
                 <td>{{translation.english}}</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-default btn-xs" ng-disabled="vm.disable">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true" ng-click="vm.playTranslation(translation.url)"></span>
                     </button></td>
             </tr>
         </tbody>
     </table>
+
+    <div ng-if="vm.url != ''">
+        <div class="embed-responsive embed-responsive-16by9 hide-video">
+            <youtube-video class="embed-responsive-item " video-id="vm.url" player="translationsPlayer"></youtube-video>
+        </div>
+    </div>
 </div>

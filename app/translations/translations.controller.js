@@ -5,14 +5,18 @@
         .module('app')
         .controller('Translations.TranslationsController', Controller);
 
-    function Controller($window, $rootScope, $state, TranslationService, FlashService, GradeService, UserService) {
+    function Controller($window, $rootScope, $scope, $state, TranslationService, FlashService, GradeService, UserService) {
         var vm = this;
 
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
+        vm.playTranslation = playTranslation;
+        vm.disable = false;
 
         vm.filters = ['Grades', 'Translations'];
         vm.user = {};
+
+        vm.url = "";
 
         vm.translations = []
 
@@ -36,6 +40,11 @@
             });
         }
 
+        function playTranslation(url){
+            vm.url = url;
+            console.log(vm.url);
+        }
+
         function removeWhiteSpace(str){
             return str.replace(/\s+/g, '')+ '-id';
 
@@ -45,6 +54,18 @@
             return '#' + str.replace(/\s+/g, '') + '-id';
 
         }
+
+        $scope.$on('youtube.player.ready', function ($event, player) {
+            // play it again
+            vm.disable = true;
+            player.playVideo();
+        });
+
+        $scope.$on('youtube.player.ended', function ($event, player) {
+            // play it again
+            vm.url = "";
+            vm.disable = false;
+        });
 
     }
 

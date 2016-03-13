@@ -317,6 +317,11 @@ label{
     font-size: 75px;
 }
 
+.hide-video{
+    height: 0;
+    width: 0;
+}
+
 .rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
 .rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
 .rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }

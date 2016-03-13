@@ -10,6 +10,15 @@
         vm.user = {};
         vm.technique = {};
 
+        vm.playerVars = {
+            autoplay: 1,
+            loop: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            enablejsapi: 1,
+            rel: 0
+        };
+
         initController();
 
         function initController() {

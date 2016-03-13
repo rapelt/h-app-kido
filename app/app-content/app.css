@@ -320,6 +320,9 @@ label{
 .hide-video{
     /*height: 0;
     width: 0;*/
+    /*
+    visibility: hidden;
+    */
 }
 
 .rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }

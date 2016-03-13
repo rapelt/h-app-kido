@@ -93,9 +93,7 @@ function update(_id, documentParam) {
 
     // validation
     documentsDb.findById(_id, function (err, document) {
-        console.log(document);
         if (err) deferred.reject(err);
-
         if (document.fileName !== documentParam.fileName) {
             // username has changed so check if the new username is already taken
             documentsDb.findOne(
@@ -118,7 +116,7 @@ function update(_id, documentParam) {
     function updateDocument() {
         // fields to update
         var set = {
-            url: documentParam.url,
+            filePath: documentParam.filePath,
             fileName: documentParam.fileName,
             grade: documentParam.grade,
         };

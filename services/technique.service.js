@@ -93,7 +93,6 @@ function update(_id, techniqueParam) {
 
     // validation
     techniquesDb.findById(_id, function (err, technique) {
-        console.log(technique);
         if (err) deferred.reject(err);
 
         if (technique.techniqueName !== techniqueParam.techniqueName) {

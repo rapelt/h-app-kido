@@ -29,7 +29,6 @@ function getCurrentTranslation(req, res) {
     translationService.getById(req.params._id)
         .then(function (translation) {
             if (translation) {
-                console.log(translation);
                 res.send(translation);
             } else {
                 res.sendStatus(404);

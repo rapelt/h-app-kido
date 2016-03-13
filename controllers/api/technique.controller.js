@@ -29,7 +29,6 @@ function getCurrentTechnique(req, res) {
     techniqueService.getById(req.params._id)
         .then(function (technique) {
             if (technique) {
-                console.log(technique);
                 res.send(technique);
             } else {
                 res.sendStatus(404);

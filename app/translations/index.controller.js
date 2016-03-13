@@ -73,7 +73,6 @@
 
         function create() {
             vm.translation.grade = GradeService.GetCurrent(vm.translation.grade.grade);
-            console.log(vm.translation);
 
             if(isEdit == true){
                 TranslationService.Update(vm.translation)

@@ -29,7 +29,6 @@ function getCurrentDocument(req, res) {
     documentService.getById(req.params._id)
         .then(function (document) {
             if (document) {
-                console.log(document);
                 res.send(document);
             } else {
                 res.sendStatus(404);
@@ -55,6 +54,7 @@ function getAllDocuments(req, res) {
 }
 
 function updateDocument(req, res) {
+    console.log(req.body);
     documentService.update(req.params._id, req.body)
         .then(function () {
             res.sendStatus(200);

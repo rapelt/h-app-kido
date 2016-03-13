@@ -73,8 +73,6 @@
 
         function create() {
             vm.technique.grade = GradeService.GetCurrent(vm.technique.grade.grade);
-            console.log(vm.technique);
-
             if(isEdit == true){
                 TechniqueService.Update(vm.technique)
                     .then(function () {

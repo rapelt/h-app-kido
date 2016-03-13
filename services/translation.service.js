@@ -93,7 +93,6 @@ function update(_id, translationParam) {
 
     // validation
     translationsDb.findById(_id, function (err, translation) {
-        console.log(translation);
         if (err) deferred.reject(err);
 
         if (translation.korean !== translationParam.korean) {

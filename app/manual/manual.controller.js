@@ -25,7 +25,7 @@
 
                 DocumentService.GetById($stateParams.id).then(function(document){
                     vm.document = document;
-                    $scope.pdfUrl =  '/pdf/' + document.fileName + '.pdf';
+                    $scope.pdfUrl =  '/pdf/' + document.filePath + '.pdf';
                 })
             });
         }

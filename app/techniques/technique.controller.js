@@ -13,7 +13,6 @@
         initController();
 
         function initController() {
-            console.log($stateParams.id);
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
                 $rootScope.currentUser = user;

@@ -118,6 +118,7 @@ function update(_id, documentParam) {
         var set = {
             filePath: documentParam.filePath,
             fileName: documentParam.fileName,
+            rotation: documentParam.rotation,
             grade: documentParam.grade,
         };
 

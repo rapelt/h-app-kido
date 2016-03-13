@@ -76,13 +76,10 @@
             if(isEdit == true){
                 TechniqueService.Update(vm.technique)
                     .then(function () {
-                        FlashService.Success('Technique created');
+                        FlashService.Success('Technique updated');
                         isEdit = false;
-                        //$state.reload();
+                        refresh();
                         vm.technique = null;
-                        TechniqueService.GetAll().then(function (techniques){
-                            vm.techniques = techniques;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);
@@ -91,11 +88,8 @@
                 TechniqueService.Create(vm.technique)
                     .then(function () {
                         FlashService.Success('Technique created');
-                        $state.reload();
+                        refresh();
                         vm.technique = null;
-                        TechniqueService.GetAll().then(function (techniques){
-                            vm.techniques = techniques;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);

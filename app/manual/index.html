@@ -38,6 +38,15 @@
                             <input type="text" id="fileName" class="form-control" ng-model="vm.document.fileName" required />
                         </div>
                         <div class="form-group">
+                            <label for="rotation">Rotation</label>
+                            <select name="rotation" id="rotation" class="form-control" ng-model="vm.document.rotation" required>
+                                <option value="0">0</option>
+                                <option value="90">90</option>
+                                <option value="180">180</option>
+                                <option value="170">270</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="grade">Grade</label>
                             <select name="grade" id="grade" class="form-control" ng-model="vm.document.grade.grade" required>
                                 <option value="white">White</option>

@@ -77,13 +77,10 @@
             if(isEdit == true){
                 TranslationService.Update(vm.translation)
                     .then(function () {
-                        FlashService.Success('Translation created');
+                        FlashService.Success('Translation updated');
                         isEdit = false;
-                        //$state.reload();
+                        refresh();
                         vm.translation = null;
-                        TranslationService.GetAll().then(function (translations){
-                            vm.translations = translations;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);
@@ -92,11 +89,8 @@
                 TranslationService.Create(vm.translation)
                     .then(function () {
                         FlashService.Success('Translation created');
-                        $state.reload();
+                        refresh();
                         vm.translation = null;
-                        TranslationService.GetAll().then(function (translations){
-                            vm.translations = translations;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);

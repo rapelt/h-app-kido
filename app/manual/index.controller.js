@@ -77,13 +77,10 @@
             if(isEdit == true){
                 DocumentService.Update(vm.document)
                     .then(function () {
-                        FlashService.Success('Document created');
+                        FlashService.Success('Document updated');
                         isEdit = false;
-                        //$state.reload();
+                        refresh();
                         vm.document = null;
-                        DocumentService.GetAll().then(function (documents){
-                            vm.documents = documents;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);
@@ -92,11 +89,8 @@
                 DocumentService.Create(vm.document)
                     .then(function () {
                         FlashService.Success('Document created');
-                        $state.reload();
+                        refresh();
                         vm.document = null;
-                        DocumentService.GetAll().then(function (documents){
-                            vm.documents = documents;
-                        })
                     })
                     .catch(function (error) {
                         FlashService.Error(error);

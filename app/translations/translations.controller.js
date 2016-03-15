@@ -5,7 +5,7 @@
         .module('app')
         .controller('Translations.TranslationsController', Controller);
 
-    function Controller($window, $rootScope, $scope, $state, TranslationService, FlashService, GradeService, UserService) {
+    function Controller($window, $rootScope, $scope, $state, $sce, TranslationService, FlashService, GradeService, UserService) {
         var vm = this;
 
         vm.playerVars = {
@@ -43,6 +43,9 @@
                 vm.availableGrades.unshift({grade: "all", displayName: "All"});
                 TranslationService.GetAll().then(function (translations){
                     vm.translations =_.filter(translations, function(translation){
+                        translation.loadSound = false;
+                        translation.url = $sce.trustAsResourceUrl(translation.url);
+
                         if(GradeService.UserCanSeeAsset(translation.grade.grade, vm.user.grade.grade)){
                             return translation;
                         }
@@ -51,9 +54,8 @@
             });
         }
 
-        function playTranslation(url){
-            vm.url = url;
-            console.log(vm.url);
+        function playTranslation(translation){
+            translation.loadSound = true;
         }
 
         function removeWhiteSpace(str){

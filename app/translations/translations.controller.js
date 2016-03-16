@@ -62,7 +62,6 @@
 
         function trustedUrl(url)
         {
-            url = "http://docs.google.com/gview?url=" + url + "&embedded=true";
             return $sce.trustAsResourceUrl(url);
         }
 

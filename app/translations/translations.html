@@ -26,7 +26,10 @@
                     <button type="button" class="btn btn-default btn-xs" ng-if="!translation.loadSound">
                         <span class="glyphicon glyphicon-play" ng-click="vm.playTranslation(translation)"></span>
                     </button>
-                    <iframe ng-if="translation.loadSound" ng-src="{{translation.url}}" width="65px" height="70" scrolling="no" frameborder="no"></iframe>
+
+                    <div ng-if="translation.loadSound">
+                        <iframe width="65px" height="70px" scrolling="no" frameborder="no" ng-src="{{vm.trustedUrl(translation.url)}}"></iframe>
+                    </div>
                 </td>
 
 

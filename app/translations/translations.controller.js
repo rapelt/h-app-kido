@@ -52,7 +52,7 @@
                             translation.url = translation.url + "&amp;color=ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"
                         }
 
-                        if(GradeService.UserCanSeeAsset(translation.grade.grade, vm.user.grade.grade)){
+                        if(GradeService.UserCanSeeAsset(translation.grade.grade, vm.user.grade.grade) && (translation.url != undefined && translation.url.length > 200)){
                             return translation;
                         }
                     });
@@ -62,6 +62,7 @@
 
         function trustedUrl(url)
         {
+            url = "http://docs.google.com/gview?url=" + url + "&embedded=true";
             return $sce.trustAsResourceUrl(url);
         }
 

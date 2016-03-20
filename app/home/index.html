@@ -24,4 +24,40 @@
 </a>
 </div>
 
+<!-- Modal -->
+<div class="modal fade passwordResetModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <a data-controls-modal="myModal" data-backdrop="static" data-keyboard="false" href="#"></a>
 
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Welcome to Happkido</h4>
+            </div>
+            <div class="modal-body">
+                <div class="flash-message" ng-if="flash">
+                    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+                </div>
+                Welcome to Happkido. It is your first time logging into our app. Please change your password
+
+                <h1 class="color-black">Change Password</h1>
+                <div class="form-container">
+                    <form method="post">
+                        <div class="form-group">
+                            <label class="color-black" for="password">New Password</label>
+                            <input type="password" id="password" class="form-control" ng-model="vm.user.password" />
+                        </div>
+                        <div class="form-group">
+                            <label class="color-black" for="passwordConfirm">Confirm Password</label>
+                            <input type="password" id="passwordConfirm" class="form-control" ng-model="vm.confirmPassword" />
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-Click="vm.newPassword()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

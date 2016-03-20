@@ -144,7 +144,8 @@ function update(_id, userParam) {
             lastName: userParam.lastName,
             username: userParam.username,
             grade: userParam.grade,
-            isAdmin: userParam.isAdmin
+            isAdmin: userParam.isAdmin,
+            isFirstLogin: userParam.isFirstLogin
         };
 
         // update password if it was entered

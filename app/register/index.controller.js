@@ -35,6 +35,7 @@
 
                     });
             } else {
+                vm.user.isFirstLogin = true;
                 UserService.Create(vm.user)
                     .then(function () {
                         FlashService.Success('User created');

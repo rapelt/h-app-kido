@@ -8,7 +8,8 @@
     function Controller($window, $rootScope, UserService, FlashService) {
         var vm = this;
 
-        $rootScope.currentUser = null;;
+        $rootScope.currentUser = null;
+        vm.confirmPassword = "";
 
         vm.user = null;
         vm.saveUser = saveUser;
@@ -25,13 +26,18 @@
         }
 
         function saveUser() {
-            UserService.Update(vm.user)
-                .then(function () {
-                    FlashService.Success('User updated');
-                })
-                .catch(function (error) {
-                    FlashService.Error(error);
-                });
+            if(vm.user.password === vm.confirmPassword) {
+                UserService.Update(vm.user)
+                    .then(function () {
+                        FlashService.Success('User updated');
+                    })
+                    .catch(function (error) {
+                        FlashService.Error(error);
+                    });
+            } else {
+                FlashService.Error("The new password does not match the confirmation password");
+            }
+
         }
 
         function deleteUser() {

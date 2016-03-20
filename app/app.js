@@ -6,12 +6,7 @@
         .config(config)
         .run(run);
 
-    function config($stateProvider, $urlRouterProvider, $locationProvider) {
-        //$locationProvider.html5Mode({
-        //    enabled:true,
-        //    requireBase: false
-        //
-        //})
+    function config($stateProvider, $urlRouterProvider) {
 
         // default route
         $urlRouterProvider.otherwise("/");
@@ -149,7 +144,7 @@
 
     }
 
-    function run($http, $rootScope, $window, $q, RoleStore, PermissionStore) {
+    function run($http, $rootScope, $window, PermissionStore) {
 
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){
@@ -184,8 +179,6 @@
             angular.bootstrap(document, ['app']);
         });
     });
-
-
 
 })();
 

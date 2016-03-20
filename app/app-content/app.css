@@ -325,7 +325,10 @@ label{
     */
 }
 
-.rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
-.rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
-.rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }
-.rotate270 {-webkit-transform: rotate(270deg); transform: rotate(270deg); }
+.color-black{
+    color: black;
+}
+
+.passwordResetModal{
+    display: none;
+}

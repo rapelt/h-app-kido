@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['permission', 'ui.router', 'youtube-embed', 'pdf', 'soundcloud-widget'])
+        .module('app', ['permission', 'ui.router', 'youtube-embed', 'soundcloud-widget'])
         .config(config)
         .run(run);
 

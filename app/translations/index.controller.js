@@ -13,6 +13,10 @@
         vm.dismiss = dismiss;
         vm.user = {};
 
+        vm.result1 = '';
+        vm.options1 = null;
+        vm.details1 = '';
+
 
         vm.translation = null;
         vm.oldTranslation = null;

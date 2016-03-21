@@ -59,7 +59,6 @@ function getCurrentUser(req, res) {
 }
 
 function getUserById(req, res) {
-    console.log(req);
     userService.getById(req.params.id)
         .then(function (user) {
             if (user) {

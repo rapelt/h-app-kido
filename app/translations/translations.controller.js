@@ -9,29 +9,24 @@
     function Controller($window, $rootScope, $scope, $state, $sce, TranslationService, FlashService, GradeService, UserService) {
         var vm = this;
 
-        vm.playerVars = {
-            autoplay: 0,
-            loop: 1,
-            modestbranding: 1,
-            showinfo: 0,
-            enablejsapi: 1,
-            rel: 0
-        };
-
         vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         vm.removeWhiteSpace = removeWhiteSpace;
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
         vm.playTranslation = playTranslation;
+        vm.filterByType = filterByType;
         vm.disable = false;
         vm.trustedUrl = trustedUrl;
 
-        vm.filters = ['Grades', 'Translations'];
+        vm.filters = [];
         vm.user = {};
 
         vm.url = "";
 
-        vm.translations = []
+        vm.translationSets = [];
+
+        vm.translations = [];
+        vm.filteredTranslations = [];
 
         vm.availableGrades = [];
 
@@ -44,6 +39,10 @@
                 vm.availableGrades = GradeService.GetAvaliableGrades(vm.user.grade.grade);
                 vm.availableGrades.unshift({grade: "all", displayName: "All"});
                 TranslationService.GetAll().then(function (translations){
+                    vm.translationSets = _.groupBy(translations, function(translation){ return translation.group });
+                    vm.filters = Object.getOwnPropertyNames(vm.translationSets);
+                    vm.filters.push("All");
+
                     vm.translations =_.filter(translations, function(translation){
                         translation.loadSound = false;
                         if(translation.url != undefined && translation.url.length > 200){
@@ -56,6 +55,7 @@
                             return translation;
                         }
                     });
+                    vm.filteredTranslations = vm.translations;
                 });
             });
         }
@@ -79,22 +79,13 @@
 
         }
 
-        $scope.$on('youtube.player.ready', function ($event, player) {
-            // play it again
-            if(!vm.isMobile) {
-                vm.disable = true;
-                player.playVideo();
-            }
-        });
+        function filterByType(type){
+            vm.filteredTranslations = vm.translationSets[type];
 
-        $scope.$on('youtube.player.ended', function ($event, player) {
-            // play it again
-            if(!vm.isMobile) {
-                vm.url = "";
-                vm.disable = false;
+            if(type === "All"){
+                vm.filteredTranslations = vm.translations;
             }
-        });
-
+        }
     }
 
 })();

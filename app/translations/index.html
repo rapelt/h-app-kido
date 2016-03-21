@@ -1,4 +1,5 @@
-<div class="blue-box" ng-class="'box-' + vm.user.grade.grade"></div>
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+</div>
 <div class="header-padding"></div>
 <div class="flash-message" ng-if="flash">
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
@@ -40,6 +41,10 @@
                         <div class="form-group">
                             <label for="english">English</label>
                             <input type="text" id="english" class="form-control" ng-model="vm.translation.english" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="group">Group</label>
+                            <input type="text" id="group" class="form-control" ng-model="vm.translation.group" required />
                         </div>
                         <div class="form-group">
                             <label for="grade">Grade</label>

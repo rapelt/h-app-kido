@@ -120,7 +120,8 @@ function update(_id, translationParam) {
             url: translationParam.url,
             korean: translationParam.korean,
             english: translationParam.english,
-            grade: translationParam.grade
+            grade: translationParam.grade,
+            group: translationParam.group
         };
 
         translationsDb.findAndModify(

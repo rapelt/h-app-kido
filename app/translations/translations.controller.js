@@ -21,6 +21,7 @@
         vm.filters = [];
         vm.user = {};
 
+        
         vm.url = "";
 
         vm.translationSets = [];

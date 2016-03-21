@@ -8,10 +8,70 @@
 <h1>Edit User</h1>
 <li ng-repeat="user in vm.allUsers">
     <p>{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.grade.displayName}}
-    - <a ui-sref="register2" ng-click="vm.editUser(user)">Edit</a>
+    - <a href="#" ng-click="vm.editUser(user, $index)" data-toggle="modal" data-target="#userModal">Edit</a>
     - <a href="#" ng-click="vm.deleteUser(user._id)">Delete</a>
     - <a href="#" ng-click="vm.addGrade(user)">Increase Grade</a>
     </p>
 </li>
 
-<a class="add-new-user-btn" ui-sref="register2"><button type="submit" class="btn btn-primary">Add new user</button></a>
+<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#userModal">
+    Add new user test
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade modal-text-colour" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a new user</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" class="form-control" ng-model="vm.userForEdit.firstName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" class="form-control" ng-model="vm.userForEdit.lastName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control" ng-model="vm.userForEdit.username" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-control" ng-model="vm.userForEdit.password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">Grade</label>
+                            <select name="grade" id="grade" class="form-control" ng-model="vm.userForEdit.grade.grade" required>
+                                <option value="white">White</option>
+                                <option value="yellow1">Yellow 1</option>
+                                <option value="yellow2">Yellow 2</option>
+                                <option value="yellow3">Yellow 3</option>
+                                <option value="blue1">Blue 1</option>
+                                <option value="blue2">Blue 2</option>
+                                <option value="blue3">Blue 3</option>
+                                <option value="red1">Red 1</option>
+                                <option value="red2">Red 2</option>
+                                <option value="red3">Red 3</option>
+                                <option value="black">Black</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p><input type="checkbox" name="admin" class="form-control" ng-model="vm.userForEdit.isAdmin" id="isAdmin" value="true"> Administrator</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.dismiss(vm.userForEdit)">Close</button>
+                <button type="submit" class="btn btn-primary" ng-click="vm.create()" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

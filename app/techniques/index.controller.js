@@ -15,8 +15,6 @@
 
 
         vm.technique = null;
-        vm.oldTechnique = null;
-
 
         var isEdit = false;
         var index = -1;
@@ -48,7 +46,6 @@
         }
 
         function editTechnique(technique, indexs) {
-            vm.oldTechnique = Object.create(technique);
             vm.technique = technique;
             isEdit = true;
             index = indexs;

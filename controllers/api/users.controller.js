@@ -11,6 +11,8 @@ router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.post('/', registerUser);
 router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+
 
 
 
@@ -43,8 +45,22 @@ function registerUser(req, res) {
 }
 
 function getCurrentUser(req, res) {
-    console.log(req);
     userService.getById(req.user.sub)
+        .then(function (user) {
+            if (user) {
+                res.send(user);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getUserById(req, res) {
+    console.log(req);
+    userService.getById(req.params.id)
         .then(function (user) {
             if (user) {
                 res.send(user);

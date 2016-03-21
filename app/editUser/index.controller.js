@@ -85,6 +85,7 @@
                         FlashService.Error(error);
                     });
             } else {
+                vm.userForEdit.isFirstLogin = true;
                 UserService.Create(vm.userForEdit)
                     .then(function () {
                         FlashService.Success('User created');

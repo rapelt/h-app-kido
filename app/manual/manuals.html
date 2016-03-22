@@ -7,13 +7,21 @@
 
 
 <h1>Student Manual</h1>
-<li ng-repeat="document in vm.documents" class="documents-in-manual">
 
-    <a ng-if="document.fileName != undefined" ui-sref="manual({id: document._id})">
-        <div class="thumbnail-box-manual thumbnail-box thumbnail" ng-class="'box-' + document.grade.grade">
-            <span class="glyphicon glyphicon-file file-icon"></span>
-            <h5>{{document.fileName}}</h5>
-        </div>
-    </a>
+<table class="table translation-table">
+    <thead>
+    <tr>
+        <th>Document Name</th>
+        <th>View Document</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="document in vm.documents | orderBy:'fileName'" class="hover-attempt">
+        <td>{{document.fileName}}</td>
+        <td><a ng-if="document.fileName != undefined" ui-sref="manual({id: document._id})">
+            Open
+        </a></td>
 
-</li>
+    </tr>
+    </tbody>
+</table>

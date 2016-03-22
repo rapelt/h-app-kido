@@ -242,6 +242,8 @@ label{
 
 .translation-table{
     color: white;
+    background-color: #00004d;
+    opacity: 0.9;
 }
 
 .hover-attempt:hover {

@@ -8,6 +8,9 @@
     function Controller($rootScope, GradeService, UserService, DocumentService) {
         var vm = this;
 
+        vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+
         vm.user = {};
 
         vm.documents = {};

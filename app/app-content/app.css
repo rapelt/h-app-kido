@@ -7,8 +7,10 @@
     background-position: -80px 380px;
 }
 
-.menu-link:hover{
-    color: white;
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
+        color: white;
+    }
 }
 
 .header-padding{

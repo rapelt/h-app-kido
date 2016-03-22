@@ -68,15 +68,15 @@
                                     <span class="glyphicon glyphicon-menu-hamburger nav-bar-white" aria-hidden="true"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-                                    <li ng-class="{active: activeTab === 'techniques'}"><a ui-sref="techniques">Techniques</a></li>
-                                    <li ng-class="{active: activeTab === 'translations'}"><a ui-sref="translations">Translations</a></li>
-                                    <li ng-class="{active: activeTab === 'manuals'}"><a ui-sref="manuals">Manual</a></li>
+                                    <li ng-class="{active: activeTab === 'account'}"><a class="menu-link" ui-sref="account">Account</a></li>
+                                    <li ng-class="{active: activeTab === 'techniques'}"><a class="menu-link" ui-sref="techniques">Techniques</a></li>
+                                    <li ng-class="{active: activeTab === 'translations'}"><a class="menu-link" ui-sref="translations">Translations</a></li>
+                                    <li ng-class="{active: activeTab === 'manuals'}"><a class="menu-link" ui-sref="manuals">Manual</a></li>
                                     <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
-                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a ui-sref="editUser">Edit Users</a></li>
-                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTechniques'}"><a ui-sref="editTechniques">Edit Techniques</a></li>
-                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTranslations'}"><a ui-sref="editTranslations">Edit Translations</a></li>
-                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editDocuments'}"><a ui-sref="editDocuments">Edit Documents</a></li>
+                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a class="menu-link" ui-sref="editUser">Edit Users</a></li>
+                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTechniques'}"><a class="menu-link" ui-sref="editTechniques">Edit Techniques</a></li>
+                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTranslations'}"><a class="menu-link" ui-sref="editTranslations">Edit Translations</a></li>
+                                    <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editDocuments'}"><a class="menu-link" ui-sref="editDocuments">Edit Documents</a></li>
 
                                     <li role="separator" class="divider"></li>
                                     <li><a href="/login" target="_self">Logout</a></li>

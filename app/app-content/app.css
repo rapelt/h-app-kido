@@ -7,6 +7,10 @@
     background-position: -80px 380px;
 }
 
+.menu-link:hover{
+    color: white;
+}
+
 .header-padding{
     padding-top: 45px;
 }

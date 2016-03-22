@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="translation in vm.filteredTranslations" class="hover-attempt">
+            <tr ng-repeat="translation in vm.filteredTranslations | orderBy:'english'" class="hover-attempt">
                 <td>{{translation.korean}}</td>
                 <td>{{translation.english}}</td>
                 <td>

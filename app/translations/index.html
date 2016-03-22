@@ -44,7 +44,11 @@
                         </div>
                         <div class="form-group">
                             <label for="group">Group</label>
-                            <input type="text" id="group" class="form-control" ng-model="vm.translation.group" required />
+                            <div mass-autocomplete>
+                                <input mass-autocomplete-item="autocomplete_options" type="text" id="group" class="form-control" ng-model="vm.translation.group" required />
+                            </div>
+
+
                         </div>
                         <div class="form-group">
                             <label for="grade">Grade</label>

@@ -5,7 +5,7 @@
         .module('app')
         .controller('Translations.IndexController', Controller);
 
-    function Controller($state, TranslationService, FlashService, GradeService, UserService) {
+    function Controller($scope, TranslationService, FlashService, GradeService, UserService) {
         var vm = this;
         vm.deleteTranslation = deleteTranslation;
         vm.editTranslation = editTranslation;
@@ -20,6 +20,8 @@
 
         vm.translation = null;
         vm.oldTranslation = null;
+        vm.translationSets =[];
+        vm.filters = [];
 
 
         var isEdit = false;
@@ -33,6 +35,8 @@
         function initController() {
             TranslationService.GetAll().then(function (translations){
                 vm.translations = translations;
+                vm.translationSets = _.groupBy(translations, function(translation){ return translation.group });
+                vm.filters = Object.getOwnPropertyNames(vm.translationSets);
             })
 
             UserService.GetCurrent().then(function(user){
@@ -61,6 +65,8 @@
         function refresh() {
             TranslationService.GetAll().then(function (translations){
                 vm.translations = translations;
+                vm.translationSets = _.groupBy(translations, function(translation){ return translation.group });
+                vm.filters = Object.getOwnPropertyNames(vm.translationSets);
             })
         }
 
@@ -102,6 +108,33 @@
             }
 
         }
+
+
+        function suggest_state(term) {
+            var q = term.toLowerCase().trim();
+            var results = [];
+
+            if (term.length < 2){
+                for (var i = 0; i < vm.filters.length; i++) {
+                    var state = vm.filters[i];
+                    results.push({ label: state, value: state });
+                }
+            } else {
+                for (var i = 0; i < vm.filters.length; i++) {
+                    var state = vm.filters[i];
+                    if (state.toLowerCase().indexOf(q) === 0)
+                        results.push({ label: state, value: state });
+                }
+
+
+            }
+
+            return results;
+        }
+
+        $scope.autocomplete_options = {
+            suggest: suggest_state
+        };
 
     }
 

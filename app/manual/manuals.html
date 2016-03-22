@@ -18,12 +18,14 @@
     <tbody>
     <tr ng-repeat="document in vm.documents | orderBy:'fileName'" class="hover-attempt">
         <td>{{document.fileName}}</td>
-        <td><a ng-if="document.fileName != undefined && !vm.isMobile" ui-sref="manual({id: document._id})">
-            Open
-        </a>
+        <td>
+            <a ng-if="document.fileName != undefined && !vm.isMobile" ui-sref="manual({id: document._id})">
+                Open
+            </a>
             <a ng-if="document.fileName != undefined && vm.isMobile" ui-sref="manual({id: document._id})">
                 Download
-            </a></td>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>

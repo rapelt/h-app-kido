@@ -11,12 +11,15 @@
         vm.editTranslation = editTranslation;
         vm.create = create;
         vm.dismiss = dismiss;
+        vm.sort = sort;
+
         vm.user = {};
+
+        vm.sortBy = ["No Sound File", "All"];
 
         vm.result1 = '';
         vm.options1 = null;
         vm.details1 = '';
-
 
         vm.translation = null;
         vm.oldTranslation = null;
@@ -28,13 +31,16 @@
         var index = -1;
 
 
-        vm.translations = [];
+        vm.translations = []
+        vm.sortedTranslations = [];
 
         initController();
 
         function initController() {
             TranslationService.GetAll().then(function (translations){
                 vm.translations = translations;
+                vm.sortedTranslations = translations;
+
                 vm.translationSets = _.groupBy(translations, function(translation){ return translation.group });
                 vm.filters = Object.getOwnPropertyNames(vm.translationSets);
             })
@@ -42,6 +48,17 @@
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
             })
+
+        }
+
+        function sort(sortbyThis){
+            if(sortbyThis === "No Sound File"){
+                var some= _.filter(vm.translations, function(translation){ return translation.url == undefined });
+                vm.sortedTranslations = some;
+
+            } else {
+                vm.sortedTranslations = vm.translations;
+            }
 
         }
 

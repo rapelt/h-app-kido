@@ -1,4 +1,10 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+    <div class="technique-filters">
+        <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Sort by:</span>
+        <select  class="form-control sort-by-options" ng-model="sortBy" ng-change="vm.sort(sortBy)"
+                 data-ng-options="sort for sort in vm.sortBy">
+        </select>
+    </div>
 </div>
 <div class="header-padding"></div>
 <div class="flash-message" ng-if="flash">
@@ -7,7 +13,7 @@
 
 
 <h1>Edit Translations</h1>
-<li ng-repeat="translation in vm.translations">
+<li ng-repeat="translation in vm.sortedTranslations">
     <p>{{translation.korean}} - {{translation.english}}
         - <a ng-click="vm.editTranslation(translation, $index)" data-toggle="modal" data-target="#translationModal">Edit</a>
         - <a href="#" ng-click="vm.deleteTranslation(translation._id)">Delete</a>

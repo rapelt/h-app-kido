@@ -11,6 +11,10 @@
     .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
         color: white;
     }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a{
+        color: white;
+    }
 }
 
 .header-padding{

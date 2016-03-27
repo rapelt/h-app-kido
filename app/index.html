@@ -52,7 +52,47 @@
 </head>
 <body class="container">
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour" role="navigation">
+
+        <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+
+                    </button>
+                    <li class="navbar-happkido" ng-class="{active: activeTab === 'home'}">
+                        <a ui-sref="home" class="navbar-happkido">
+                            <span class="nav-bar-white" aria-hidden="true">
+                                <img src="/images/happkidoiconwhite.png" alt="Happkido Logo" height="25px">
+                            </span>
+                        </a>
+                    </li>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                                <li ng-class="{active: activeTab === 'account'}"><a class="menu-link" ui-sref="account">Account</a></li>
+                                <li ng-class="{active: activeTab === 'techniques'}"><a class="menu-link" ui-sref="techniques">Techniques</a></li>
+                                <li ng-class="{active: activeTab === 'translations'}"><a class="menu-link" ui-sref="translations">Translations</a></li>
+                                <li ng-class="{active: activeTab === 'manuals'}"><a class="menu-link" ui-sref="manuals">Manual</a></li>
+                                <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editUser'}"><a class="menu-link" ui-sref="editUser">Edit Users</a></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTechniques'}"><a class="menu-link" ui-sref="editTechniques">Edit Techniques</a></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTranslations'}"><a class="menu-link" ui-sref="editTranslations">Edit Translations</a></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editDocuments'}"><a class="menu-link" ui-sref="editDocuments">Edit Documents</a></li>
+
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/login" target="_self">Logout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+       <!-- <nav class="navbar navbar-default navbar-fixed-top nav-bar-colour" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-collapse">
                     <a class="navbar-brand nav-bar-brand" href="#">
@@ -87,7 +127,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
 
 

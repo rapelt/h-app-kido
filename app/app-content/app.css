@@ -1,5 +1,5 @@
 ﻿body {
-    padding: 58px 0;
+    padding: 51px 0;
     background-color: #000066;
     background-image: url("/images/kick-icon-blue.png");
     background-repeat: no-repeat;
@@ -7,20 +7,16 @@
     background-position: -80px 380px;
 }
 
-@media (max-width: 767px) {
-    body {
-        padding: 64px 0;
-    }
+.navbar-default .navbar-nav>li>a{
+    color: white;
 }
 
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
-        color: white;
-    }
+.navbar-fixed-top .navbar-collapse{
+    max-height: 500px;
+}
 
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a{
-        color: white;
-    }
+.navbar-default .navbar-nav>li>a:hover{
+    color: #0dadda;
 }
 
 .header-padding{
@@ -82,16 +78,14 @@ label{
 .nav-bar-colour{
     background-color: #00004d;
     color: white;
+    list-style-type: none;
 }
 
-.navbar-brand
+.navbar-happkido
 {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin: auto;
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 100%;
 }
 
 .nav-bar-white{
@@ -99,10 +93,10 @@ label{
     font-size: 22px;
 }
 
-.header-logo-centre{
+/*.header-logo-centre{
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 .blue-box {
     height: 45px;
@@ -118,18 +112,20 @@ label{
     text-align: center;
 }
 
-.nav-bar-right{
+/*.nav-bar-right{
     position: relative;
     float: right;
-}
+}*/
+/*
 
 .nav-bar-left{
     position: absolute;
 }
+*/
 
-.nav-bar-brand{
+/*.nav-bar-brand{
     margin-left: auto !important;
-}
+}*/
 
 .box-white{
     background-color: whitesmoke;
@@ -349,4 +345,11 @@ label{
 
 .passwordResetModal{
     display: none;
+}
+
+.divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
 }

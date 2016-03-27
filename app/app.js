@@ -146,6 +146,8 @@
 
     function run($http, $rootScope, $window, PermissionStore) {
 
+        $rootScope.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
         PermissionStore.definePermission('student', function() {
             if($rootScope.currentUser != undefined){
                 return $rootScope.currentUser.isAdmin === false;

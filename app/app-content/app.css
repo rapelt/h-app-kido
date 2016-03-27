@@ -353,3 +353,7 @@ label{
     overflow: hidden;
     background-color: #e5e5e5;
 }
+
+.profile-picture{
+    border-radius: 50px;
+}

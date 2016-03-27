@@ -76,10 +76,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                                <li ng-class="{active: activeTab === 'account'}"><a class="menu-link" ui-sref="account">Account</a></li>
-                                <li ng-class="{active: activeTab === 'techniques'}"><a class="menu-link" ui-sref="techniques">Techniques</a></li>
-                                <li ng-class="{active: activeTab === 'translations'}"><a class="menu-link" ui-sref="translations">Translations</a></li>
-                                <li ng-class="{active: activeTab === 'manuals'}"><a class="menu-link" ui-sref="manuals">Manual</a></li>
+                                <li ng-class="{active: activeTab === 'account'}"><a class="menu-link" ui-sref="account">Account <img class="profile-picture" src="/images/no-profile-picture.gif" height="22px"></a></li>
+                                <li ng-class="{active: activeTab === 'techniques'}"><a class="menu-link" ui-sref="techniques">Techniques <img src="/images/Techniques.png" height="22px"></a></li>
+                                <li ng-class="{active: activeTab === 'translations'}"><a class="menu-link" ui-sref="translations">Translations <img src="/images/Hangul.png" height="22px"></a></li>
+                                <li ng-class="{active: activeTab === 'manuals'}"><a class="menu-link" ui-sref="manuals">Manual <img src="/images/Manual.png" height="22px"></a></li>
                                 <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
                                 <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editUser'}"><a class="menu-link" ui-sref="editUser">Edit Users</a></li>
                                 <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editTechniques'}"><a class="menu-link" ui-sref="editTechniques">Edit Techniques</a></li>

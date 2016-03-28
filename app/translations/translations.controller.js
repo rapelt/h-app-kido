@@ -49,7 +49,7 @@
                         if(translation.url != undefined && translation.url.length > 200){
                             translation.url = translation.url.substring(71, translation.url.length);
                             translation.url = translation.url.substring(0, translation.url.length -  136);
-                            translation.url = translation.url + "&amp;color=ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"
+                            translation.url = translation.url + "&amp;color=ff5500&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"
                         }
 
                         if(GradeService.UserCanSeeAsset(translation.grade.grade, vm.user.grade.grade) && (translation.url != undefined && translation.url.length > 200)){

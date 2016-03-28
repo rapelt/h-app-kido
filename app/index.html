@@ -82,10 +82,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" ng-click="closeDropDownOpenProfileModal()" class="menu-link"><img class="profile-picture" src="/images/no-profile-picture.gif" height="22px"> Account</a></li>
                         <li ng-class="{active: activeTab === 'techniques'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="techniques"><img src="/images/Techniques.png" height="22px"> Techniques</a></li>
                         <li ng-class="{active: activeTab === 'translations'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="translations"> <img src="/images/Hangul.png" height="22px"> Translations</a></li>
                         <li ng-class="{active: activeTab === 'manuals'}"><a ng-click="closeDropDown()" class="menu-link dropdown-toggle" ui-sref="manuals"><img src="/images/Manual.png" height="22px"> Manual</a></li>
+                        <li><a href="#" ng-click="closeDropDownOpenProfileModal()" class="menu-link"><img class="profile-picture" src="/images/no-profile-picture.gif" height="22px"> Account</a></li>
                         <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editUser'}"><a ng-click="closeDropDown()" class="menu-link dropdown-toggle" ui-sref="editUser">Edit Users</a></li>
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editTechniques'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="editTechniques">Edit Techniques</a></li>

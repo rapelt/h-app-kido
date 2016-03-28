@@ -150,6 +150,11 @@
             $('.navbar-collapse').collapse('hide');
         };
 
+        $rootScope.closeDropDownOpenProfileModal = function(){
+            $('.navbar-collapse').collapse('hide');
+            $('#profileModal').modal('show')
+        };
+
         $rootScope.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         PermissionStore.definePermission('student', function() {

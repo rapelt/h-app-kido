@@ -1,0 +1,33 @@
+.profile-content h1{
+    color: black;
+}
+
+.profile-content h2{
+    color: black;
+}
+
+.profile-content h3{
+    color: black;
+}
+
+.profile-content h4{
+    color: black;
+}
+
+.profile-content p{
+    color: black;
+}
+
+.profile-content label{
+    color: black;
+}
+
+.personal-info-picture-col{
+    padding-left: 30px;
+
+}
+
+.personal-info-profile-picture{
+    height: 100px;
+    border-radius: 50px;
+}

@@ -1,0 +1,82 @@
+<div ng-controller="Account.ProfileController">
+    <!-- Modal -->
+    <div class="modal fade passwordResetModal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myProfileModal">
+        <a data-controls-modal="profileModal" data-backdrop="static" data-keyboard="false" href="#"></a>
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myProfileModal">My Profile</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="flash-message" ng-if="flash">
+                        <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+                    </div>
+
+                    <div class="profile-content">
+                        <personal-information></personal-information>
+
+
+                        <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Personal Information
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <personal-information></personal-information>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Classes and Grades
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <classes></classes>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Fees
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        <fees></fees>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+-->
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+<!--
+                    <button type="button" class="btn btn-primary">Save</button>
+-->
+
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -25,9 +25,3 @@
 
         });
 })();
-
-
-
-/*
-return '<iframe ng-if="translation.loadSound" width="65px" height="70px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/251782188%3Fsecret_token%3Ds-AlABk&amp;color=ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>';
-*/

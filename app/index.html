@@ -7,6 +7,8 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link href="app-content/app.css" rel="stylesheet" />
+    <link href="app-content/account.css" rel="stylesheet" />
+
     <link href="app-content/massautocomplete.theme.css" rel="stylesheet" type="text/css">
 
 
@@ -29,13 +31,17 @@
 
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
+    <script src="account/profile.directive.js"></script>
+    <script src="account/classes.controller.js"></script>
+    <script src="account/fees.controller.js"></script>
+    <script src="account/personalInformation.controller.js"></script>
+
     <script src="editUser/index.controller.js"></script>
     <script src="manual/index.controller.js"></script>
     <script src="techniques/index.controller.js"></script>
     <script src="techniques/techniques.controller.js"></script>
     <script src="techniques/technique.controller.js"></script>
     <script src="translations/translations.controller.js"></script>
-    <script src="translations/soundcloud.directive.js"></script>
     <script src="translations/index.controller.js"></script>
     <script src="manual/manuals.controller.js"></script>
     <script src="manual/manual.controller.js"></script>
@@ -76,7 +82,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-class="{active: activeTab === 'account'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="account"><img class="profile-picture" src="/images/no-profile-picture.gif" height="22px"> Account</a></li>
+                        <li><a href="#" ng-click="closeDropDownOpenProfileModal()" class="menu-link"><img class="profile-picture" src="/images/no-profile-picture.gif" height="22px"> Account</a></li>
                         <li ng-class="{active: activeTab === 'techniques'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="techniques"><img src="/images/Techniques.png" height="22px"> Techniques</a></li>
                         <li ng-class="{active: activeTab === 'translations'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="translations"> <img src="/images/Hangul.png" height="22px"> Translations</a></li>
                         <li ng-class="{active: activeTab === 'manuals'}"><a ng-click="closeDropDown()" class="menu-link dropdown-toggle" ui-sref="manuals"><img src="/images/Manual.png" height="22px"> Manual</a></li>
@@ -107,6 +113,7 @@
 
     <!-- main -->
     <main ui-view></main>
+    <profile></profile>
 
     <!-- footer -->
     <footer></footer>

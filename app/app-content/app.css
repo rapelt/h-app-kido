@@ -19,6 +19,10 @@
     color: #0dadda;
 }
 
+.navbar-default .navbar-nav>li>a:focus{
+    color: #0dadda;
+}
+
 .header-padding{
     padding-top: 45px;
 }

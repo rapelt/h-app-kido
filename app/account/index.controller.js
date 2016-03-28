@@ -19,10 +19,15 @@
 
         function initController() {
             // get current user
-            UserService.GetCurrent().then(function (user) {
-                vm.user = user;
-                $rootScope.currentUser = user;
-            });
+            if($rootScope.user == null){
+                UserService.GetCurrent().then(function (user) {
+                    vm.user = user;
+                    $rootScope.currentUser = user;
+                });
+            } else {
+                vm.user = $rootScope.user;
+            }
+
         }
 
         function saveUser() {

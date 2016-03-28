@@ -146,6 +146,10 @@
 
     function run($http, $rootScope, $window, PermissionStore) {
 
+        $rootScope.closeDropDown =  function(){
+            $('.navbar-collapse').collapse('hide');
+        };
+
         $rootScope.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         PermissionStore.definePermission('student', function() {

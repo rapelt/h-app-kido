@@ -8,7 +8,6 @@
     function Controller($window, $rootScope, UserService, FlashService) {
         var vm = this;
 
-        $rootScope.currentUser = null;
         vm.confirmPassword = "";
 
         vm.user = null;

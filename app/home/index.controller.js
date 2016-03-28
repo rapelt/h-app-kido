@@ -10,30 +10,40 @@
 
         vm.user = null;
         vm.newPassword = newPassword;
-        $rootScope.currentUser = null;
         vm.confirmPassword = "";
         vm.isFL = false;
 
         initController();
 
+
+
         function initController() {
             // get current user
-            UserService.GetCurrent().then(function (user) {
-                vm.user = user;
-                vm.isFL = vm.user.isFirstLogin;
-                $rootScope.currentUser = user;
-                if(user.isFirstLogin){
-                    $('#myModal').modal({
-                        backdrop: 'static',
-                        keyboard: false
-                    });
-                    $('#myModal').modal('show')
-                } else {
-                    $('#myModal').modal('hide')
+            if($rootScope.currentUser == null){
+                UserService.GetCurrent().then(function (user) {
+                    $rootScope.currentUser = user;
+                    afterInit(user);
 
-                }
+                });
+            } else {
+                afterInit($rootScope.currentUser);
+            }
 
-            });
+        }
+
+        function afterInit(user) {
+            vm.user = user;
+            vm.isFL = vm.user.isFirstLogin;
+            if (user.isFirstLogin) {
+                $('#myModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $('#myModal').modal('show')
+            } else {
+                $('#myModal').modal('hide')
+
+            }
         }
 
         function newPassword(){

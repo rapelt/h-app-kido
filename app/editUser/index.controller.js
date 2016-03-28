@@ -8,8 +8,6 @@
     function Controller($window, $rootScope, $state, UserService, FlashService, GradeService) {
         var vm = this;
 
-        $rootScope.currentUser = null;;
-
         vm.user = null;
         vm.userForEdit = {};
         vm.deleteUser = deleteUser;

@@ -30,6 +30,7 @@
         service.GetAvaliableGrades = GetAvaliableGrades;
         service.FilterByGrade = FilterByGrade;
         service.SortGrades = SortGrades;
+        service.SortTechniquesByGrades = SortTechniquesByGrades;
 
 
         return service;
@@ -88,6 +89,15 @@
                 var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b));
                 return indexOfa - indexOfb;
             })
+            return gradesArray;
+        }
+
+        function SortTechniquesByGrades(gradesArray){
+            gradesArray.sort(function(a, b){
+                var indexOfa =  _.indexOf(grades, GetCurrentByDisplayName(a.grade.displayName));
+                var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b.grade.displayName));
+                return indexOfa - indexOfb;
+            });
             return gradesArray;
         }
     }

@@ -80,8 +80,19 @@
                 vm.techniqueSets = _.groupBy(gradeTechniques, function(technique){ return technique.grade.displayName });
                 var grades = Object.getOwnPropertyNames(vm.techniqueSets);
                 vm.sets = GradeService.SortGrades(grades);
+                sortAlphabetically();
             }
 
+        }
+
+        function sortAlphabetically(){
+            _.each(vm.techniqueSets, function(sets){
+                sets.sort(function(a, b) {
+                    if (a.techniqueName < b.techniqueName) return -1;
+                    if (a.techniqueName > b.techniqueName) return 1;
+                    return 0;
+                });
+            });
         }
 
         function sortSets(){

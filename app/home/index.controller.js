@@ -5,7 +5,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller($rootScope, $window, UserService, FlashService) {
+    function Controller($rootScope, $window, UserService, FlashService, GoogleService) {
         var vm = this;
 
         vm.user = null;
@@ -15,7 +15,25 @@
 
         initController();
 
+        $window.checkAuth = function() {
+            if($rootScope.currentUser == null){
+                UserService.GetCurrent().then(function (user) {
+                    $rootScope.currentUser = user;
+                    afterInit(user);
+                    googleServiceCall()
 
+                });
+            } else {
+                afterInit($rootScope.currentUser);
+                googleServiceCall()
+            }
+        };
+
+        function googleServiceCall(){
+            if(vm.user.isAdmin){
+                GoogleService.checkAuth();
+            }
+        }
 
         function initController() {
             // get current user

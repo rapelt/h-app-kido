@@ -12,7 +12,6 @@
         });
 
     function Controller($scope) {
-        console.log("yay");
 
     }
 })();

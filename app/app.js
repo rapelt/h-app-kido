@@ -62,6 +62,18 @@
                         redirectTo: 'home'
                     }
                 }
+        }).state('classAttendance', {
+            url: '/classAttendance',
+            templateUrl: 'classAttendance/classAttendance.html',
+            controller: 'ClassAttendance.ClassAttendanceController',
+            controllerAs: 'vm',
+            data: {
+                activeTab: 'classAttendance',
+                permissions: {
+                    only: ['admin'],
+                    redirectTo: 'home'
+                }
+            }
             }).state('technique', {
                 url: '/technique/:id',
                 templateUrl: 'techniques/technique.html',
@@ -144,7 +156,11 @@
 
     }
 
-    function run($http, $rootScope, $window, PermissionStore) {
+
+
+
+    function run($http, $rootScope, $window, PermissionStore, GoogleService) {
+
 
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
@@ -192,5 +208,9 @@
     });
 
 })();
+
+var googleApiClientReady = function() {
+    window.checkAuth();
+};
 
 

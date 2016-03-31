@@ -38,14 +38,15 @@
             }
         }
 
-        function callScriptFunction(functionCall) {
+        function callScriptFunction(functionCall, sheetName) {
             return  $q(function(resolve, reject){
                 var scriptId = "MBV_Z3D3OWA25DQYD_33QWMMdb2HX2nNI";
 
                 // Create an execution request object.
                 var request = {
                     'function': functionCall,
-                    'devMode': true
+                    'devMode': true,
+                    'parameters': [sheetName]
                 };
 
                 // Make the API request.

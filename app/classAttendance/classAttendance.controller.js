@@ -15,7 +15,9 @@
         var firstTrainingColumn = 0;
         var lastTraingingColumn = 0;
         vm.studentsAttendance = [];
+        vm.sheetNames = [];
         $scope.tableDataLoaded = false;
+        vm.getSheetData = getSheetData;
 
         initController();
 
@@ -28,19 +30,34 @@
                 });
             } else {
                 vm.user = $rootScope.currentUser;
-                GoogleService.callScriptFunction("getDataByMonth").then(function(result){
-
-                    firstTrainingColumn = _.findIndex(result[0], findDay);
-                    lastTraingingColumn = _.findLastIndex(result[0], findDay);
-                    constructDates(result);
-                    studentAttendance(result);
-                    UserService.GetAll().then(function(users){
-                        populateUsersAttendance(users)
-                    });
+                GoogleService.callScriptFunction("getSheets").then(function(result){
+                    vm.sheetNames = result;
+                    console.log(vm.sheetNames);
+                    getSheetData(vm.sheetNames[0]);
                 }, function(error){
                     console.log(error);
                 });
+
+
+
             }
+        }
+
+        function getSheetData(sheetName){
+            vm.dates = [];
+            vm.studentsAttendance = [];
+            GoogleService.callScriptFunction("getDataByMonth", sheetName).then(function(result){
+
+                firstTrainingColumn = _.findIndex(result[0], findDay);
+                lastTraingingColumn = _.findLastIndex(result[0], findDay);
+                constructDates(result);
+                studentAttendance(result);
+                UserService.GetAll().then(function(users){
+                    populateUsersAttendance(users)
+                });
+            }, function(error){
+                console.log(error);
+            });
         }
 
         function populateUsersAttendance(users){

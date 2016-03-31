@@ -5,8 +5,14 @@
 </div>
 
 <h1> Class Attendance</h1>
+
 <div class="color-white" ng-if="vm.isMobile">This feature is not ready for the mobile enviroment yet</div>
 <div ng-if="!vm.isMobile">
+    <div ng-repeat="sheet in vm.sheetNames">
+        <button type="button" class="btn btn-default">
+            <span ng-click="vm.getSheetData(sheet)"> {{sheet}}</span>
+        </button>
+    </div>
     <div class="table-responsive">
         <table class="table translation-table translation-table-header">
             <thead class="class-attendance-table-header">

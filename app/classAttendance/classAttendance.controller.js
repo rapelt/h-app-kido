@@ -18,6 +18,7 @@
         vm.sheetNames = [];
         $scope.tableDataLoaded = false;
         vm.getSheetData = getSheetData;
+        vm.buttonsDisabled = false;
 
         initController();
 
@@ -32,22 +33,18 @@
                 vm.user = $rootScope.currentUser;
                 GoogleService.callScriptFunction("getSheets").then(function(result){
                     vm.sheetNames = result;
-                    console.log(vm.sheetNames);
                     getSheetData(vm.sheetNames[0]);
                 }, function(error){
                     console.log(error);
                 });
-
-
-
             }
         }
 
         function getSheetData(sheetName){
-            vm.dates = [];
-            vm.studentsAttendance = [];
+            vm.buttonsDisabled = true;
             GoogleService.callScriptFunction("getDataByMonth", sheetName).then(function(result){
-
+                vm.dates = [];
+                vm.studentsAttendance = [];
                 firstTrainingColumn = _.findIndex(result[0], findDay);
                 lastTraingingColumn = _.findLastIndex(result[0], findDay);
                 constructDates(result);
@@ -89,6 +86,7 @@
                     UserService.Update(user);
                 }
             });
+            vm.buttonsDisabled = false;
 
         }
 

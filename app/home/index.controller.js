@@ -31,9 +31,7 @@
             }
         };
 
-        $window.onload = function () {
-            window.checkAuth();
-        };
+        window.checkAuth();
 
         function googleServiceCall(){
             if(vm.user.isAdmin){

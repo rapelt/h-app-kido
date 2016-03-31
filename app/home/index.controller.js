@@ -25,7 +25,9 @@
                 });
             } else {
                 afterInit($rootScope.currentUser);
-                googleServiceCall()
+                angular.element(document).ready(function () {
+                    googleServiceCall()
+                });
             }
         };
 

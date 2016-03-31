@@ -31,6 +31,10 @@
             }
         };
 
+        $window.onload = function () {
+            window.checkAuth();
+        };
+
         function googleServiceCall(){
             if(vm.user.isAdmin){
                 GoogleService.checkAuth();
@@ -86,7 +90,3 @@
     }
 
 })();
-
-window.onload = function () {
-    window.checkAuth();
-};

@@ -5,7 +5,7 @@
         .module('app')
         .controller('ClassAttendance.ClassAttendanceController', Controller);
 
-    function Controller($rootScope, $scope, GoogleService, FlashService) {
+    function Controller($rootScope, $scope, GoogleService, FlashService, UserService) {
         var vm = this;
 
         vm.user = null;
@@ -28,14 +28,50 @@
             } else {
                 vm.user = $rootScope.currentUser;
                 GoogleService.callScriptFunction("getDataByMonth").then(function(result){
+
                     firstTrainingColumn = _.findIndex(result[0], findDay);
                     lastTraingingColumn = _.findLastIndex(result[0], findDay);
                     constructDates(result);
                     studentAttendance(result);
+                    UserService.GetAll().then(function(users){
+                        populateUsersAttendance(users)
+                    });
                 }, function(error){
                     console.log(error);
                 });
             }
+        }
+
+        function populateUsersAttendance(users){
+            _.each(users, function(user){
+                var studentAttendance = _.find(vm.studentsAttendance, function(student){
+                    if(student.name == (user.firstName + " " + user.lastName)){
+                        return true;
+                    }
+                });
+
+                if(studentAttendance != null){
+                    //user.attendance = [];
+                    _.each(studentAttendance.attendance, function(attended){
+                        if(attended.didAttend == 1){
+                            var attend = _.find(user.attendance, function(userAttened){
+                                if(userAttened == attended.date){
+                                    return true;
+                                }
+                            });
+                            if(attend == null){
+                                if(user.attendance == undefined){
+                                    user.attendance = [];
+                                }
+                                user.attendance.push(attended.date);
+                            }
+                        }
+                    });
+
+                    UserService.Update(user);
+                }
+            });
+
         }
 
         function studentAttendance(result){
@@ -52,8 +88,8 @@
 
                     if(index >= firstTrainingColumn && index <= lastTraingingColumn){
                         var attended = {};
-
-                        attended[vm.dates[index - firstTrainingColumn].date] = column;
+                        attended.date = vm.dates[index - firstTrainingColumn].date;
+                        attended.didAttend = column;
                         student.attendance.push(attended);
                     }
 

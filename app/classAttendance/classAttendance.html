@@ -23,7 +23,7 @@
         <tr ng-repeat="student in vm.studentsAttendance" class="hover-attempt">
             <td class="class-attendance-names">{{student.name}}</td>
             <td ng-repeat="attended in student.attendance">
-                <span ng-repeat="(key, value) in attended">{{value}}</span>
+                <span>{{attended.didAttend}}</span>
             </td>
 
         </tr>

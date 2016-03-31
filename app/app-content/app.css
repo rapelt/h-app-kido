@@ -389,3 +389,7 @@ label{
 .translation-table-header{
     margin-bottom: 0;
 }
+
+.class-attendance-column-width{
+    width:100px;
+}

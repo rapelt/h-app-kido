@@ -45,7 +45,7 @@
         function populateUsersAttendance(users){
             _.each(users, function(user){
                 var studentAttendance = _.find(vm.studentsAttendance, function(student){
-                    if(student.name == (user.firstName + " " + user.lastName)){
+                    if(student.name.trim() == (user.firstName + " " + user.lastName)){
                         return true;
                     }
                 });
@@ -55,7 +55,7 @@
                     _.each(studentAttendance.attendance, function(attended){
                         if(attended.didAttend == 1){
                             var attend = _.find(user.attendance, function(userAttened){
-                                if(userAttened == attended.date){
+                                if(userAttened == attended.date.trim()){
                                     return true;
                                 }
                             });

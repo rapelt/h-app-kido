@@ -11,7 +11,7 @@
         <thead class="class-attendance-table-header">
         <tr>
             <th class="class-attendance-names">Name</th>
-            <th class="class-attendance-date-headers" ng-repeat="date in vm.dates">{{date.date}} {{date.dayName}}</th>
+            <th class="class-attendance-date-headers class-attendance-column-width" ng-repeat="date in vm.dates">{{date.date}} {{date.dayName}}</th>
         </tr>
         </thead>
     </table>
@@ -22,7 +22,7 @@
         <tbody class="class-attendance-table-body">
         <tr ng-repeat="student in vm.studentsAttendance" class="hover-attempt">
             <td class="class-attendance-names">{{student.name}}</td>
-            <td ng-repeat="attended in student.attendance">
+            <td class="class-attendance-column-width" ng-repeat="attended in student.attendance">
                 <span>{{attended.didAttend}}</span>
             </td>
 

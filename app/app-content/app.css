@@ -92,6 +92,10 @@ label{
     height: 100%;
 }
 
+.color-white{
+    color: white;
+}
+
 .nav-bar-white{
     color: white;
     font-size: 22px;

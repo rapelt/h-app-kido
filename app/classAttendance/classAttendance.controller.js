@@ -8,6 +8,7 @@
     function Controller($rootScope, $scope, GoogleService, FlashService, UserService) {
         var vm = this;
 
+        vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         vm.user = null;
         var daysArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         vm.dates = [];

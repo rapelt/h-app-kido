@@ -86,3 +86,7 @@
     }
 
 })();
+
+window.onload = function () {
+    window.checkAuth();
+};

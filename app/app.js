@@ -209,10 +209,6 @@
     });
 })();
 
-var googleApiClientReady = function() {
 
-};
-
-window.onload = function () { window.checkAuth(); };
 
 

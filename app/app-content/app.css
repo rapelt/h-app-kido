@@ -361,3 +361,31 @@ label{
 .profile-picture{
     border-radius: 50px;
 }
+
+.class-attendance-date-headers{
+    text-align: center;
+}
+
+.class-attendance-table-header{
+    display: table-header-group;
+}
+
+.class-attendance-table{
+    text-align: center;
+    height: 500px;
+    overflow: auto;
+
+}
+
+.class-attendance-names{
+    text-align: left;
+    width: 200px;
+}
+
+.class-attendance-table-body{
+    overflow: auto;
+}
+
+.translation-table-header{
+    margin-bottom: 0;
+}

@@ -5,3 +5,28 @@
 </div>
 
 <h1> Class Attendance</h1>
+
+<div class="table-responsive">
+    <table class="table translation-table translation-table-header">
+        <thead class="class-attendance-table-header">
+        <tr>
+            <th class="class-attendance-names">Name</th>
+            <th class="class-attendance-date-headers" ng-repeat="date in vm.dates">{{date.date}} {{date.dayName}}</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="table-responsive class-attendance-table scrollTable">
+    <table class="table translation-table">
+        <tbody class="class-attendance-table-body">
+        <tr ng-repeat="student in vm.studentsAttendance" class="hover-attempt">
+            <td class="class-attendance-names">{{student.name}}</td>
+            <td ng-repeat="attended in student.attendance">
+                <span ng-repeat="(key, value) in attended">{{value}}</span>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>

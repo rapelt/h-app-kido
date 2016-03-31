@@ -62,18 +62,19 @@
                         redirectTo: 'home'
                     }
                 }
-        }).state('classAttendance', {
-            url: '/classAttendance',
-            templateUrl: 'classAttendance/classAttendance.html',
-            controller: 'ClassAttendance.ClassAttendanceController',
-            controllerAs: 'vm',
-            data: {
-                activeTab: 'classAttendance',
-                permissions: {
-                    only: ['admin'],
-                    redirectTo: 'home'
+            }).state('classAttendance', {
+                url: '/classAttendance',
+                templateUrl: 'classAttendance/classAttendance.html',
+                controller: 'ClassAttendance.ClassAttendanceController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'classAttendance',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
                 }
-            }
+
             }).state('technique', {
                 url: '/technique/:id',
                 templateUrl: 'techniques/technique.html',
@@ -206,11 +207,12 @@
             angular.bootstrap(document, ['app']);
         });
     });
-
 })();
 
 var googleApiClientReady = function() {
-    window.checkAuth();
+
 };
+
+window.onload = function () { window.checkAuth(); }
 
 

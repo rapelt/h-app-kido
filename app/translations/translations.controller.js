@@ -17,6 +17,7 @@
         vm.filterByType = filterByType;
         vm.disable = false;
         vm.trustedUrl = trustedUrl;
+        vm.filteredBy = "";
 
         vm.filters = [];
         vm.user = {};
@@ -56,7 +57,8 @@
                             return translation;
                         }
                     });
-                    vm.filteredTranslations = vm.translations;
+                    vm.filteredBy = vm.filters[0];
+                    vm.filterByType(vm.filteredBy);
                 });
             });
         }

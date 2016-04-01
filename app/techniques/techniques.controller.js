@@ -12,6 +12,7 @@
         vm.removeWhiteSpaceId = removeWhiteSpaceId;
 
         vm.filters = ['Grade', 'Techniques'];
+        vm.filteredBy = vm.filters[0];
         vm.user = {};
 
         vm.techniques = []
@@ -49,6 +50,7 @@
             var techniqueSets = Object.getOwnPropertyNames(vm.techniqueSets);
             vm.sets = TechniqueService.SortTechniques(techniqueSets);
             sortSets();
+            filterByType(vm.filteredBy);
         }
 
         function removeWhiteSpace(str){

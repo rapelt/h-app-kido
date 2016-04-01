@@ -1,7 +1,7 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
     <div class="technique-filters">
         <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Sort by:</span>
-        <select  class="form-control sort-by-options" ng-model="filteredBy" ng-change="vm.filterByType(filteredBy)"
+        <select  class="form-control sort-by-options" ng-model="vm.filteredBy" ng-change="vm.filterByType(vm.filteredBy)"
                  data-ng-options="filter for filter in vm.filters">
         </select>
     </div>

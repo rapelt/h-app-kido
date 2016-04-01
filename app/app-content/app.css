@@ -120,21 +120,6 @@ label{
     text-align: center;
 }
 
-/*.nav-bar-right{
-    position: relative;
-    float: right;
-}*/
-/*
-
-.nav-bar-left{
-    position: absolute;
-}
-*/
-
-/*.nav-bar-brand{
-    margin-left: auto !important;
-}*/
-
 .box-white{
     background-color: whitesmoke;
     color: black;
@@ -224,12 +209,25 @@ label{
     text-align: left;
 }
 
-.sort-by{
-    text-align: left;
-    margin-left: 10%;
-    font-size: 18px;
-    vertical-align: middle;
+@media screen and (max-width: 580px) {
+    .sort-by{
+        text-align: left;
+        margin-left: 15px;
+        font-size: 18px;
+        vertical-align: middle;
+    }
 }
+
+@media screen and (min-width: 580px) {
+    .sort-by{
+        text-align: left;
+        margin-left: 10%;
+        font-size: 18px;
+        vertical-align: middle;
+    }
+}
+
+
 
 .sort-by-field-2{
     text-align: left;
@@ -343,14 +341,6 @@ label{
 
 .file-icon{
     font-size: 75px;
-}
-
-.hide-video{
-    /*height: 0;
-    width: 0;*/
-    /*
-    visibility: hidden;
-    */
 }
 
 .color-black{

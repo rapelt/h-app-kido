@@ -9,7 +9,7 @@
             </div>
             <div ng-if="vm.isMobile">
                 <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Month:</span>
-                <select  class="form-control sort-by-options" ng-model="vm.sortByMonth"
+                <select  class="form-control sort-by-options" ng-model="vm.sortByMonth" ng-change="vm.getSheetData()"
                          data-ng-options="sheet for sheet in vm.sheetNames">
                 </select>
 

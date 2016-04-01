@@ -18,7 +18,13 @@
         vm.sheetNames = [];
         $scope.tableDataLoaded = false;
         vm.getSheetData = getSheetData;
-        vm.buttonsDisabled = false;
+
+        //forMobile
+        vm.sortByMonth = "";
+        vm.sortByDate = "";
+        vm.sortedAttendance = [];
+        vm.displayByDate = displayByDate;
+
 
         initController();
 
@@ -33,24 +39,29 @@
                 vm.user = $rootScope.currentUser;
                 GoogleService.callScriptFunction("getSheets").then(function(result){
                     vm.sheetNames = result;
-                    getSheetData(vm.sheetNames[0]);
+                    vm.sortByMonth = vm.sheetNames[0];
+                    getSheetData();
                 }, function(error){
                     console.log(error);
                 });
             }
         }
 
-        function getSheetData(sheetName){
+        function getSheetData(){
             vm.buttonsDisabled = true;
-            GoogleService.callScriptFunction("getDataByMonth", sheetName).then(function(result){
+            GoogleService.callScriptFunction("getDataByMonth", vm.sortByMonth).then(function(result){
                 vm.dates = [];
                 vm.studentsAttendance = [];
                 firstTrainingColumn = _.findIndex(result[0], findDay);
                 lastTraingingColumn = _.findLastIndex(result[0], findDay);
                 constructDates(result);
+                vm.sortByDate = vm.dates[0];
                 studentAttendance(result);
                 UserService.GetAll().then(function(users){
                     populateUsersAttendance(users)
+                    if(vm.isMobile){
+                        displayByDate();
+                    }
                 });
             }, function(error){
                 console.log(error);
@@ -86,7 +97,6 @@
                     UserService.Update(user);
                 }
             });
-            vm.buttonsDisabled = false;
 
         }
 
@@ -146,6 +156,23 @@
                     vm.dates[index - firstTrainingColumn].date = dateName;
                 }
             });
+        }
+
+        function displayByDate(){
+            console.log("sorted");
+            vm.sortedAttendance = [];
+            _.each(vm.studentsAttendance, function(student){
+               var studentByDate = {};
+                studentByDate.name = student.name;
+                studentByDate.attended = _.find(student.attendance, function(attendance){
+                    if(attendance.date == vm.sortByDate.date){
+                        return true;
+                    }
+                })
+                vm.sortedAttendance.push(studentByDate);
+
+            });
+
         }
 
     }

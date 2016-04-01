@@ -231,6 +231,12 @@ label{
     vertical-align: middle;
 }
 
+.sort-by-field-2{
+    text-align: left;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
 .filter-grades{
     font-size: 14px;
     display: inline-block;

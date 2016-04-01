@@ -5,7 +5,7 @@
         .module('app')
         .factory('GoogleService', Service);
 
-    function Service($q) {
+    function Service($q, $rootScope) {
 
         var service = {};
 
@@ -26,9 +26,10 @@
         function handleAuthResult(authResult) {
             if (authResult && !authResult.error) {
                 console.log("Auth Result Success");
+                $rootScope.googleHasBeenAuthenticated = true;
             } else {
                 console.log("Auth Result Error");
-
+                $rootScope.googleHasBeenAuthenticated = false;
                 gapi.auth.authorize(
                     {
                         'client_id': '419351503178-jm561iaknf03222on371r2k8i70gq6iu.apps.googleusercontent.com',

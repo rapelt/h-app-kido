@@ -18,6 +18,7 @@
         vm.sheetNames = [];
         $scope.tableDataLoaded = false;
         vm.getSheetData = getSheetData;
+        var tries = 0;
 
         //forMobile
         vm.sortByMonth = "";
@@ -34,17 +35,31 @@
                 UserService.GetCurrent().then(function (user) {
                     vm.user = user;
                     $rootScope.currentUser = user;
+                    googleStuff()
                 });
             } else {
                 vm.user = $rootScope.currentUser;
+                googleStuff();
+            }
+        }
+
+        function googleStuff(){
+            if($rootScope.googleHasBeenAuthenticated){
                 GoogleService.callScriptFunction("getSheets").then(function(result){
                     vm.sheetNames = result;
                     vm.sortByMonth = vm.sheetNames[0];
                     getSheetData();
                 }, function(error){
+                    FlashService.Error(error);
                     console.log(error);
                 });
+            }else if($rootScope.googleHasBeenAuthenticated === false && tries != 1){
+                console.log("Attemp Auth 2");
+                tries = 1;
+                GoogleService.checkAuth();
+                googleStuff();
             }
+
         }
 
         function getSheetData(){
@@ -64,6 +79,7 @@
                     }
                 });
             }, function(error){
+                FlashService.Error(error);
                 console.log(error);
             });
         }

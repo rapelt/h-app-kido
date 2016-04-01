@@ -1,21 +1,23 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
     <div class="technique-filters">
-        <div ng-if="!vm.isMobile">
-            <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Month:</span>
-            <select  class="form-control sort-by-options" ng-model="vm.sortByMonth" ng-change="vm.getSheetData()"
-                     data-ng-options="sheet for sheet in vm.sheetNames">
-            </select>
-        </div>
-        <div ng-if="vm.isMobile">
-            <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Month:</span>
-            <select  class="form-control sort-by-options" ng-model="vm.sortByMonth"
-                     data-ng-options="sheet for sheet in vm.sheetNames">
-            </select>
+        <div ng-if="googleHasBeenAuthenticated"></div>
+            <div ng-if="!vm.isMobile">
+                <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Month:</span>
+                <select  class="form-control sort-by-options" ng-model="vm.sortByMonth" ng-change="vm.getSheetData()"
+                         data-ng-options="sheet for sheet in vm.sheetNames">
+                </select>
+            </div>
+            <div ng-if="vm.isMobile">
+                <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Month:</span>
+                <select  class="form-control sort-by-options" ng-model="vm.sortByMonth"
+                         data-ng-options="sheet for sheet in vm.sheetNames">
+                </select>
 
-            <span class="sort-by-field-2" ng-class="'box-' + vm.user.grade.grade">Date:</span>
-            <select  class="form-control sort-by-options" ng-model="vm.sortByDate" ng-change="vm.displayByDate()"
-                     data-ng-options="date.date for date in vm.dates">
-            </select>
+                <span class="sort-by-field-2" ng-class="'box-' + vm.user.grade.grade">Date:</span>
+                <select  class="form-control sort-by-options" ng-model="vm.sortByDate" ng-change="vm.displayByDate()"
+                         data-ng-options="date.date for date in vm.dates">
+                </select>
+            </div>
         </div>
     </div>
 </div>
@@ -25,59 +27,64 @@
 </div>
 
 <h1> Class Attendance</h1>
-
-<!--Desktop-->
-<div ng-if="!vm.isMobile">
-    <div class="table-responsive">
-        <table class="table translation-table translation-table-header">
-            <thead class="class-attendance-table-header">
-            <tr>
-                <th class="class-attendance-names">Name</th>
-                <th class="class-attendance-date-headers class-attendance-column-width" ng-repeat="date in vm.dates">{{date.date}} {{date.dayName}}</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-
-    <div class="table-responsive class-attendance-table scrollTable">
-        <table class="table translation-table">
-            <tbody class="class-attendance-table-body">
-            <tr ng-repeat="student in vm.studentsAttendance" class="hover-attempt">
-                <td class="class-attendance-names">{{student.name}}</td>
-                <td class="class-attendance-column-width" ng-repeat="attended in student.attendance">
-                    <span>{{attended.didAttend}}</span>
-                </td>
-
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<div ng-if="!googleHasBeenAuthenticated">
+    <p>Google didn't authenticate properly, please refresh your page. If the issue continues to occur please email Rebekah at rebekahapelt@gmail.com</p>
 </div>
+<div ng-if="googleHasBeenAuthenticated">
 
-<!--Mobile-->
-<div ng-if="vm.isMobile">
-    <div class="table-responsive">
-        <table class="table translation-table translation-table-header">
-            <thead class="class-attendance-table-header">
-            <tr>
-                <th class="class-attendance-names">Name</th>
-                <th class="class-attendance-date-headers class-attendance-column-width">{{vm.sortByDate.date}}</th>
-            </tr>
-            </thead>
-        </table>
+    <!--Desktop-->
+    <div ng-if="!vm.isMobile">
+        <div class="table-responsive">
+            <table class="table translation-table translation-table-header">
+                <thead class="class-attendance-table-header">
+                <tr>
+                    <th class="class-attendance-names">Name</th>
+                    <th class="class-attendance-date-headers class-attendance-column-width" ng-repeat="date in vm.dates">{{date.date}} {{date.dayName}}</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="table-responsive class-attendance-table scrollTable">
+            <table class="table translation-table">
+                <tbody class="class-attendance-table-body">
+                <tr ng-repeat="student in vm.studentsAttendance" class="hover-attempt">
+                    <td class="class-attendance-names">{{student.name}}</td>
+                    <td class="class-attendance-column-width" ng-repeat="attended in student.attendance">
+                        <span>{{attended.didAttend}}</span>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="table-responsive class-attendance-table scrollTable">
-        <table class="table translation-table">
-            <tbody class="class-attendance-table-body">
-            <tr ng-repeat="student in vm.sortedAttendance" class="hover-attempt">
-                <td class="class-attendance-names">{{student.name}}</td>
-                <td class="class-attendance-column-width">
-                    <span>{{student.attended.didAttend}}</span>
-                </td>
+    <!--Mobile-->
+    <div ng-if="vm.isMobile">
+        <div class="table-responsive">
+            <table class="table translation-table translation-table-header">
+                <thead class="class-attendance-table-header">
+                <tr>
+                    <th class="class-attendance-names">Name</th>
+                    <th class="class-attendance-date-headers class-attendance-column-width">{{vm.sortByDate.date}}</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
 
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive class-attendance-table scrollTable">
+            <table class="table translation-table">
+                <tbody class="class-attendance-table-body">
+                <tr ng-repeat="student in vm.sortedAttendance" class="hover-attempt">
+                    <td class="class-attendance-names">{{student.name}}</td>
+                    <td class="class-attendance-column-width">
+                        <span>{{student.attended.didAttend}}</span>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

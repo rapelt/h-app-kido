@@ -93,7 +93,7 @@
                 });
 
                 if(studentAttendance != null){
-                    user.attendance = [];
+                    //user.attendance = [];
                     _.each(studentAttendance.attendance, function(attended){
                         if(attended.didAttend == 1){
                             var attend = _.find(user.attendance, function(userAttened){

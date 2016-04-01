@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['permission', 'ui.router', 'youtube-embed', 'soundcloud-widget', 'ngSanitize', 'MassAutoComplete'])
+        .module('app', ['permission', 'ui.router', 'youtube-embed', 'soundcloud-widget', 'ngSanitize', 'MassAutoComplete', 'angularSpinners'])
         .config(config)
         .run(run);
 

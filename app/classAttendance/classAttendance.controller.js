@@ -19,6 +19,7 @@
         $scope.tableDataLoaded = false;
         vm.getSheetData = getSheetData;
         var tries = 0;
+        vm.isLoading = true;
 
         //forMobile
         vm.sortByMonth = "";
@@ -63,6 +64,8 @@
         }
 
         function getSheetData(){
+            vm.isLoading = true;
+
             vm.buttonsDisabled = true;
             GoogleService.callScriptFunction("getDataByMonth", vm.sortByMonth).then(function(result){
                 vm.dates = [];
@@ -77,6 +80,7 @@
                     if(vm.isMobile){
                         displayByDate();
                     }
+                    vm.isLoading = false;
                 });
             }, function(error){
                 FlashService.Error(error);

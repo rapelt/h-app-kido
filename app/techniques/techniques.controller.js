@@ -35,9 +35,7 @@
                 TechniqueService.GetAll().then(function (techniques){
                     vm.techniques =_.filter(techniques, function(technique){
                         if(GradeService.UserCanSeeAsset(technique.grade.grade, vm.user.grade.grade)){
-                            if(technique.assetType === "video"){
-                                return technique;
-                            }
+                            return technique;
                         }
                     });
                     setTechniquesForDisplay();

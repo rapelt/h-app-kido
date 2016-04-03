@@ -29,11 +29,13 @@
                 <td>{{translation.korean}}</td>
                 <td>{{translation.english}}</td>
                 <td>
-                    <!--<button type="button" class="btn btn-default btn-xs" ng-if="!translation.loadSound">
+                    <button type="button" class="btn btn-default btn-xs" ng-if="!translation.loadSound">
                         <span class="glyphicon glyphicon-play" ng-click="vm.playTranslation(translation)"></span>
-                    </button>-->
+                    </button>
+                    <div ng-if="translation.loadSound">
+                        <iframe width="65px" height="70px" scrolling="no" frameborder="no" ng-src="{{vm.trustedUrl(translation.url)}}"></iframe>
+                    </div>
 
-                    <iframe width="65px" height="70px" scrolling="no" frameborder="no" ng-src="{{vm.trustedUrl(translation.url)}}"></iframe>
                 </td>
             </tr>
         </tbody>

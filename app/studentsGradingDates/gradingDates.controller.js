@@ -47,6 +47,8 @@
                         googleStuff()
                     });
                 });
+            }else if(vm.user.isAdmin && $rootScope.googleHasBeenAuthenticated){
+                googleStuff();
             }
         }
 

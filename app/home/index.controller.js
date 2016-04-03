@@ -15,30 +15,6 @@
 
         initController();
 
-        $window.checkAuth = function() {
-            if($rootScope.currentUser == null){
-                UserService.GetCurrent().then(function (user) {
-                    $rootScope.currentUser = user;
-                    afterInit(user);
-                    googleServiceCall()
-
-                });
-            } else {
-                afterInit($rootScope.currentUser);
-                angular.element(document).ready(function () {
-                    googleServiceCall()
-                });
-            }
-        };
-
-        window.checkAuth();
-
-        function googleServiceCall(){
-            if(vm.user.isAdmin){
-                GoogleService.checkAuth();
-            }
-        }
-
         function initController() {
             // get current user
             if($rootScope.currentUser == null){

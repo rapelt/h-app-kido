@@ -146,7 +146,8 @@ function update(_id, userParam) {
             grade: userParam.grade,
             isAdmin: userParam.isAdmin,
             isFirstLogin: userParam.isFirstLogin,
-            attendance: userParam.attendance
+            attendance: userParam.attendance,
+            grades: userParam.grades
         };
 
         // update password if it was entered

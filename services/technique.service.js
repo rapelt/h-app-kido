@@ -121,7 +121,6 @@ function update(_id, techniqueParam) {
             techniqueName: techniqueParam.techniqueName,
             techniqueSet: techniqueParam.techniqueSet,
             grade: techniqueParam.grade,
-            assetType: techniqueParam.assetType
         };
 
         techniquesDb.findAndModify(

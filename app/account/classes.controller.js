@@ -14,6 +14,11 @@
     function Controller($scope, $rootScope, UserService) {
         $scope.user = null;
         $scope.classesForTheYear = 0;
+        $scope.classesForTheCurrentMonth = 0;
+
+        $scope.datesAsDates = [];
+        var today = new Date();
+
 
         initController();
 
@@ -23,7 +28,10 @@
                 UserService.GetCurrent().then(function (user) {
                     $scope.user = user;
                     $rootScope.currentUser = user;
+                    setDatesAsDates();
                     getClassesForTheYear();
+                    getClassesForTheMonth();
+
                 });
             } else {
                 $scope.user = $rootScope.user;
@@ -38,6 +46,23 @@
             } else {
                 $scope.classesForTheYear = 0;
             }
+        }
+
+        function setDatesAsDates(){
+            _.each($scope.user.attendance, function(dateString){
+                var dateObj ={};
+                dateObj.date = new Date(dateString);
+                dateObj.dateString = dateString
+                $scope.datesAsDates.push(dateObj);
+            });
+        }
+
+        function getClassesForTheMonth(){
+            _.each($scope.datesAsDates, function(date){
+                if(today.getMonth() === date.date.getMonth()){
+                    $scope.classesForTheCurrentMonth++;
+                }
+            });
         }
 
     }

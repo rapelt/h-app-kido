@@ -11,31 +11,45 @@
 
         service.checkAuth = checkAuth;
         service.callScriptFunction = callScriptFunction;
+        service.checkAuthImmidiateFalse = checkAuthImmidiateFalse;
 
         return service;
 
         function checkAuth() {
-            gapi.auth.authorize(
-                {
-                    'client_id': '419351503178-jm561iaknf03222on371r2k8i70gq6iu.apps.googleusercontent.com',
-                    'scope': ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets'],
-                    'immediate': true
-                }, handleAuthResult);
+            return  $q(function(resolve, reject) {
+                $rootScope.resolve = resolve;
+                $rootScope.reject = reject;
+                gapi.auth.authorize(
+                    {
+                        'client_id': '419351503178-jm561iaknf03222on371r2k8i70gq6iu.apps.googleusercontent.com',
+                        'scope': ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets'],
+                        'immediate': true
+                    }, handleAuthResult);
+            });
         }
 
-        function handleAuthResult(authResult) {
-            if (authResult && !authResult.error) {
-                console.log("Auth Result Success");
-                $rootScope.googleHasBeenAuthenticated = true;
-            } else {
-                console.log("Auth Result Error");
-                $rootScope.googleHasBeenAuthenticated = false;
+        function checkAuthImmidiateFalse() {
+            return  $q(function(resolve, reject) {
+                $rootScope.resolve = resolve;
+                $rootScope.reject = reject;
                 gapi.auth.authorize(
                     {
                         'client_id': '419351503178-jm561iaknf03222on371r2k8i70gq6iu.apps.googleusercontent.com',
                         'scope': ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets'],
                         'immediate': false
                     }, handleAuthResult);
+            });
+        }
+
+        function handleAuthResult(authResult) {
+            if (authResult && !authResult.error) {
+                console.log("Auth Result Success");
+                $rootScope.googleHasBeenAuthenticated = true;
+                $rootScope.resolve();
+            } else {
+                console.log("Auth Result Error");
+                $rootScope.googleHasBeenAuthenticated = false;
+                $rootScope.reject();
             }
         }
 
@@ -46,7 +60,7 @@
                 // Create an execution request object.
                 var request = {
                     'function': functionCall,
-                    'devMode': true,
+                    'devMode': false,
                     'parameters': [sheetName]
                 };
 
@@ -62,8 +76,7 @@
                     if (resp.error && resp.error.status) {
                         // The API encountered a problem before the script
                         // started executing.
-                        reject('Error calling API:');
-                        reject(JSON.stringify(resp, null, 2));
+                        reject('Error calling API:'+ resp.error.message);
                     } else if (resp.error) {
                         // The API executed, but the script returned an error.
 

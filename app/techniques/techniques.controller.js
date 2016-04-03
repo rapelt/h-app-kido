@@ -98,11 +98,6 @@
         }
 
         function sortSets(){
-            var str = "I want to remove the last word.";
-            var lastIndex = str.lastIndexOf(" ");
-
-            str = str.substring(0, lastIndex);
-
             _.each(vm.techniqueSets, function(sets){
                 var lastIndexOfA = sets[0].techniqueName.lastIndexOf(" ");
                 var aString = sets[0].techniqueName.substring(lastIndexOfA, sets[0].techniqueName.length);

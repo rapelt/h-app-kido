@@ -41,6 +41,7 @@
     <script src="account/fees.controller.js"></script>
     <script src="account/personalInformation.controller.js"></script>
     <script src="classAttendance/classAttendance.controller.js"></script>
+    <script src="studentsGradingDates/gradingDates.controller.js"></script>
 
     <script src="editUser/index.controller.js"></script>
     <script src="manual/index.controller.js"></script>
@@ -100,6 +101,7 @@
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editTranslations'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="editTranslations">Edit Translations</a></li>
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editDocuments'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="editDocuments">Edit Documents</a></li>
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'classAttendance'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="classAttendance">Class Attendance</a></li>
+                        <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'gradingDates'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="gradingDates">Grading Dates</a></li>
 
 
                         <li ng-if="currentUser.isAdmin && !isMobile" class="dropdown">
@@ -110,6 +112,8 @@
                                 <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editTranslations'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="editTranslations">Edit Translations</a></li>
                                 <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'editDocuments'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="editDocuments">Edit Documents</a></li>
                                 <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'classAttendance'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="classAttendance">Class Attendance</a></li>
+                                <li ng-if="currentUser.isAdmin" ng-class="{active: activeTab === 'gradingDates'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="gradingDates">Grading Dates</a></li>
+
 
                             </ul>
                         </li>

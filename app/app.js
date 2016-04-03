@@ -74,6 +74,18 @@
                         redirectTo: 'home'
                     }
                 }
+            }).state('gradingDates', {
+                url: '/gradingDates',
+                templateUrl: 'studentsGradingDates/gradingDates.html',
+                controller: 'GradingDates.GradingDatesController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'gradingDates',
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'home'
+                    }
+                }
 
             }).state('technique', {
                 url: '/technique/:id',

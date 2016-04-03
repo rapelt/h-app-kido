@@ -5,7 +5,7 @@
         .module('app')
         .controller('ClassAttendance.ClassAttendanceController', Controller);
 
-    function Controller($rootScope, $scope, GoogleService, FlashService, UserService) {
+    function Controller($window, $rootScope, $scope, GoogleService, FlashService, UserService) {
         var vm = this;
 
         vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -30,17 +30,43 @@
 
         initController();
 
+        $window.checkAuth = function() {
+            if($rootScope.currentUser == null){
+                UserService.GetCurrent().then(function (user) {
+                    $rootScope.currentUser = user;
+                    googleServiceCall()
+
+                });
+            } else {
+                angular.element(document).ready(function () {
+                    googleServiceCall()
+                });
+            }
+        };
+
+        window.checkAuth();
+
+        function googleServiceCall(){
+            if(vm.user.isAdmin && !$rootScope.googleHasBeenAuthenticated){
+                GoogleService.checkAuth().then(function(result){
+                    googleStuff()
+                }, function(error){
+                    GoogleService.checkAuthImmidiateFalse().then(function(result) {
+                        googleStuff();
+                    });
+
+                });
+            }
+        }
 
         function initController() {
             if($rootScope.currentUser == null){
                 UserService.GetCurrent().then(function (user) {
                     vm.user = user;
                     $rootScope.currentUser = user;
-                    googleStuff()
                 });
             } else {
                 vm.user = $rootScope.currentUser;
-                googleStuff();
             }
         }
 
@@ -52,13 +78,11 @@
                     getSheetData();
                 }, function(error){
                     FlashService.Error(error);
-                    console.log(error);
                 });
             }else if($rootScope.googleHasBeenAuthenticated === false && tries != 1){
                 console.log("Attemp Auth 2");
                 tries = 1;
-                GoogleService.checkAuth();
-                googleStuff();
+                googleServiceCall();
             }
 
         }
@@ -84,7 +108,6 @@
                 });
             }, function(error){
                 FlashService.Error(error);
-                console.log(error);
             });
         }
 
@@ -179,7 +202,6 @@
         }
 
         function displayByDate(){
-            console.log("sorted");
             vm.sortedAttendance = [];
             _.each(vm.studentsAttendance, function(student){
                var studentByDate = {};

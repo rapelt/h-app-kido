@@ -30,37 +30,6 @@
 
         initController();
 
-        $window.checkAuth = function() {
-            if($rootScope.currentUser == null){
-                UserService.GetCurrent().then(function (user) {
-                    $rootScope.currentUser = user;
-                    googleServiceCall()
-
-                });
-            } else {
-                angular.element(document).ready(function () {
-                    googleServiceCall()
-                });
-            }
-        };
-
-        window.checkAuth();
-
-        function googleServiceCall(){
-            if(vm.user.isAdmin && !$rootScope.googleHasBeenAuthenticated){
-                GoogleService.checkAuth().then(function(result){
-                    googleStuff()
-                }, function(error){
-                    GoogleService.checkAuthImmidiateFalse().then(function(result) {
-                        googleStuff();
-                    });
-
-                });
-            } else if(vm.user.isAdmin && $rootScope.googleHasBeenAuthenticated){
-                googleStuff();
-            }
-        }
-
         function initController() {
             if($rootScope.currentUser == null){
                 UserService.GetCurrent().then(function (user) {
@@ -72,7 +41,46 @@
             }
         }
 
-        function googleStuff(){
+        $window.getUserForGoogleAuthentication = function() {
+            if($rootScope.currentUser == null){
+                UserService.GetCurrent().then(function (user) {
+                    vm.user = user;
+                    $rootScope.currentUser = user;
+                    googleAuthentication()
+
+                });
+            } else {
+                angular.element(document).ready(function () {
+                    googleAuthentication()
+                });
+            }
+        };
+
+        window.getUserForGoogleAuthentication();
+
+        function googleAuthentication(){
+            if(vm.user.isAdmin && !$rootScope.googleHasBeenAuthenticated){
+                GoogleService.checkAuth().then(function(result){
+                    //Check auth passed
+                    googleGetSheetNames()
+                }, function(error){
+                    //if check auth failed check again with immidiate false
+                    GoogleService.checkAuthImmidiateFalse().then(function(result) {
+                        googleGetSheetNames();
+                    }, function(error){
+                        FlashService.error("Google Authentication Failed please make sure you press allow on the google pop up");
+                    });
+
+                });
+            } else if(vm.user.isAdmin && $rootScope.googleHasBeenAuthenticated){
+                //if check auth had already passed then continue
+                googleGetSheetNames();
+            }
+        }
+
+
+
+        function googleGetSheetNames(){
             if($rootScope.googleHasBeenAuthenticated){
                 GoogleService.callScriptFunction("getSheets").then(function(result){
                     vm.sheetNames = result;
@@ -84,15 +92,15 @@
             }else if($rootScope.googleHasBeenAuthenticated === false && tries != 1){
                 console.log("Attemp Auth 2");
                 tries = 1;
-                googleServiceCall();
+                googleAuthentication();
             }
 
         }
 
         function getSheetData(){
             vm.isLoading = true;
-
             vm.buttonsDisabled = true;
+
             GoogleService.callScriptFunction("getDataByMonth", vm.sortByMonth).then(function(result){
                 vm.dates = [];
                 vm.studentsAttendance = [];
@@ -100,9 +108,9 @@
                 lastTraingingColumn = _.findLastIndex(result[0], findDay);
                 constructDates(result);
                 vm.sortByDate = vm.dates[0];
-                studentAttendance(result);
+                populateStudentAttendance(result);
                 UserService.GetAll().then(function(users){
-                    populateUsersAttendance(users)
+                    populateUsersAttendance(users);
                     if(vm.isMobile){
                         displayByDate();
                     }
@@ -145,7 +153,7 @@
 
         }
 
-        function studentAttendance(result){
+        function populateStudentAttendance(result){
             //vm.studentAttendance
             //student - name - array of attendance
 

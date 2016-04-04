@@ -6,7 +6,7 @@
     "angular-ui-bootstrap": "^1.2.1",
     "angular-youtube-embed": "^1.1.1",
     "bcryptjs": "^2.1.0",
-    "body-parser": "^1.13.2",
+    "body-parser": "^1.15.0",
     "bootstrap": "^3.3.6",
     "ejs": "^2.3.3",
     "express": "^4.13.0",

@@ -32,6 +32,7 @@ app.use('/api/users', require('./controllers/api/users.controller'));
 app.use('/api/technique', require('./controllers/api/technique.controller'));
 app.use('/api/translation', require('./controllers/api/translation.controller'));
 app.use('/api/document', require('./controllers/api/document.controller'));
+app.use('/google', require('./controllers/api/google.controller'));
 
 
 

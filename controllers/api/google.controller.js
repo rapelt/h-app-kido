@@ -8,5 +8,6 @@ module.exports = router;
 
 function googleClassAttendance(req, res) {
     console.log("GOOGLE YAY 8888");
+    console.log(req.params);
     res.sendStatus(200);
 }

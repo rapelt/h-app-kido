@@ -13,7 +13,7 @@ var lastTraingingColumn = 0;
 
 function googleClassAttendance(req, res) {
     var stuff = req.body;
-    getSheetData(stuff);
+    getSheetData(stuff[0]);
     console.log(dates);
 
     res.sendStatus(200);

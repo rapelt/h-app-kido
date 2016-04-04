@@ -7,7 +7,6 @@ router.post('/googleClassAttendance', googleClassAttendance);
 module.exports = router;
 
 function googleClassAttendance(req, res) {
-    console.log("GOOGLE YAY 8888");
-    console.log(req);
+    console.log("request body", req.body);
     res.sendStatus(200);
 }

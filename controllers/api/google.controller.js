@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var _ = require('underscore');
 
 // routes
 router.post('/googleClassAttendance', googleClassAttendance);

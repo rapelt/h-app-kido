@@ -19,8 +19,7 @@ var studentsAttendance = [];
 function googleClassAttendance(req, res) {
     var stuff = req.body;
     getSheetData(stuff[0]);
-    console.log(dates);
-
+    console.log("studentAttendance", studentsAttendance);
     res.sendStatus(200);
 }
 
@@ -106,7 +105,6 @@ function populateUsersAttendance(users, data){
             userService.update(user._id, user);
         }
     });
-    console.log(studentsAttendance);
 
 }
 

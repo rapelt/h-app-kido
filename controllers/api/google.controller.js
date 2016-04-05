@@ -103,11 +103,10 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-            //UserService.Update(user);
             userService.update(user._id, user);
-            console.log(user);
         }
     });
+    console.log(studentsAttendance);
 
 }
 

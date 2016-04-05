@@ -68,6 +68,8 @@ function getAllUsers(req, res, data) {
             if (users) {
                 populateUsersAttendance(users, data)
             }
+        }).catch(function (err) {
+            console.log("No Users");
         });
 }
 
@@ -125,6 +127,8 @@ function populateStudentAttendance(result){
 
         if(student.name != null && student.name != "" && student.name != "Name"){
             studentsAttendance.push(student);
+            console.log("stuff", student.name);
+
         }
     });
 }

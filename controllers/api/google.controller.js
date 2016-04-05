@@ -90,6 +90,8 @@ function populateUsersAttendance(users, data){
                             return true;
                         }
                     });
+
+                    console.log(attended);
                     if(attend == null){
                         if(user.attendance == undefined){
                             user.attendance = [];

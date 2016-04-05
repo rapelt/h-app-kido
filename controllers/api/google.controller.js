@@ -82,8 +82,6 @@ function populateUsersAttendance(users, data){
             }
         });
 
-        console.log("83", studentAttendance.name);
-
         if(studentAttendance != null){
             _.each(studentAttendance.attendance, function(attended){
                 if(attended.didAttend == 1){
@@ -101,7 +99,9 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-            userService.update(user._id, user);
+            userService.update(user._id, user).then(function () {
+                console.log("Student Updates", user.firstName + " With: " + user.attendance);
+            });
         }
     });
 
@@ -127,8 +127,6 @@ function populateStudentAttendance(result){
 
         if(student.name != null && student.name != "" && student.name != "Name"){
             studentsAttendance.push(student);
-            console.log("stuff", student.name);
-
         }
     });
 }

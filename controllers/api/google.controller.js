@@ -19,7 +19,6 @@ var studentsAttendance = [];
 function googleClassAttendance(req, res) {
     var stuff = req.body;
     getSheetData(stuff[0]);
-    console.log("studentAttendance", studentsAttendance);
     res.sendStatus(200);
 }
 
@@ -81,7 +80,7 @@ function populateUsersAttendance(users, data){
             }
         });
 
-        console.log("86, student Att", studentAttendance);
+        console.log("83", studentAttendance);
 
         if(studentAttendance != null){
             _.each(studentAttendance.attendance, function(attended){

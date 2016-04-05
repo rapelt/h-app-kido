@@ -27,9 +27,9 @@ function getSheetData(result){
         dates = [];
         firstTrainingColumn = _.findIndex(result[0], findDay);
         lastTraingingColumn = _.findLastIndex(result[0], findDay);
-        constructDates(result[0]);
+        constructDates(result);
         console.log("dates", dates);
-        getAllUsers(null, populateUsersAttendance, result[0]);
+        getAllUsers(null, null, result);
 }
 
 
@@ -68,15 +68,13 @@ function getAllUsers(req, res, data) {
     userService.getAll()
         .then(function (users) {
             if (users) {
-                res(users, data);
+                populateUsersAttendance(users, data)
             }
-        })
-        .catch(function (err) {
-            res.status(400).send(err);
         });
 }
 
 function populateUsersAttendance(users, data){
+    console.log("users", users);
     populateStudentAttendance(data);
     _.each(users, function(user){
         var studentAttendance = _.find(studentsAttendance, function(student){
@@ -84,6 +82,8 @@ function populateUsersAttendance(users, data){
                 return true;
             }
         });
+
+        console.log("86, student Att", studentAttendance);
 
         if(studentAttendance != null){
             //user.attendance = [];
@@ -114,6 +114,7 @@ function populateStudentAttendance(result){
         var student = {};
         student.attendance = [];
         _.each(row, function(column, index){
+            console.log("studentname", column);
             if(index == 1){
                 student.name = column;
             }

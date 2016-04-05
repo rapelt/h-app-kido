@@ -22,6 +22,7 @@ function googleClassAttendance(req, res) {
     studentsAttendance = [];
 
     var stuff = req.body;
+    console.log(stuff.test);
     getSheetData(stuff[0]);
     res.sendStatus(200);
 }

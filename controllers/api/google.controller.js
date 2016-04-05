@@ -27,8 +27,9 @@ function getSheetData(result){
         dates = [];
         firstTrainingColumn = _.findIndex(result[0], findDay);
         lastTraingingColumn = _.findLastIndex(result[0], findDay);
-        constructDates(result);
-        getAllUsers(null, populateUsersAttendance, result)
+        constructDates(result[0]);
+        console.log("dates", dates);
+        getAllUsers(null, populateUsersAttendance, result[0]);
 }
 
 

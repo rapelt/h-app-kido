@@ -17,6 +17,10 @@ var studentsAttendance = [];
 
 
 function googleClassAttendance(req, res) {
+    firstTrainingColumn = 0;
+    lastTraingingColumn = 0;
+    studentsAttendance = [];
+
     var stuff = req.body;
     getSheetData(stuff[0]);
     res.sendStatus(200);

@@ -28,7 +28,6 @@ function getSheetData(result){
         firstTrainingColumn = _.findIndex(result[0], findDay);
         lastTraingingColumn = _.findLastIndex(result[0], findDay);
         constructDates(result);
-        console.log("dates", dates);
         getAllUsers(null, null, result);
 }
 
@@ -74,7 +73,6 @@ function getAllUsers(req, res, data) {
 }
 
 function populateUsersAttendance(users, data){
-    console.log("users", users);
     populateStudentAttendance(data);
     _.each(users, function(user){
         var studentAttendance = _.find(studentsAttendance, function(student){
@@ -86,7 +84,6 @@ function populateUsersAttendance(users, data){
         console.log("86, student Att", studentAttendance);
 
         if(studentAttendance != null){
-            //user.attendance = [];
             _.each(studentAttendance.attendance, function(attended){
                 if(attended.didAttend == 1){
                     var attend = _.find(user.attendance, function(userAttened){
@@ -111,17 +108,17 @@ function populateUsersAttendance(users, data){
 
 function populateStudentAttendance(result){
     _.each(result, function(row){
+        console.log(row);
         var student = {};
         student.attendance = [];
         _.each(row, function(column, index){
-            console.log("studentname", column);
             if(index == 1){
                 student.name = column;
             }
 
             if(index >= firstTrainingColumn && index <= lastTraingingColumn){
                 var attended = {};
-                attended.date = vm.dates[index - firstTrainingColumn].date;
+                attended.date = dates[index - firstTrainingColumn].date;
                 attended.didAttend = column;
                 student.attendance.push(attended);
             }

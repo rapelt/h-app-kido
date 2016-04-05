@@ -80,7 +80,7 @@ function populateUsersAttendance(users, data){
             }
         });
 
-        console.log("83", studentAttendance);
+        console.log("83", studentAttendance.name);
 
         if(studentAttendance != null){
             _.each(studentAttendance.attendance, function(attended){
@@ -107,7 +107,6 @@ function populateUsersAttendance(users, data){
 
 function populateStudentAttendance(result){
     _.each(result, function(row){
-        console.log(row);
         var student = {};
         student.attendance = [];
         _.each(row, function(column, index){

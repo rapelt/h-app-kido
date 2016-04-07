@@ -169,11 +169,7 @@
 
     }
 
-
-
-
-    function run($http, $rootScope, $window, PermissionStore, GoogleService) {
-
+    function run($http, $rootScope, $window, PermissionStore, StatsService) {
 
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
@@ -208,6 +204,17 @@
             if(toState != undefined) {
                 $rootScope.activeTab = toState.data.activeTab;
             }
+            var stat = { };
+            if($rootScope.currentUser != undefined){
+                stat.user = $rootScope.currentUser.username
+            } else {
+                stat.user = "unknown";
+            }
+
+            stat.stat=  toState.name;
+
+            StatsService.Create(stat);
+
         });
     }
 

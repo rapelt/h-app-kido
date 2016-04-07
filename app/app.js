@@ -212,6 +212,7 @@
             }
 
             stat.stat=  toState.name;
+            stat.time = new Date().toLocaleString();
 
             StatsService.Create(stat);
 

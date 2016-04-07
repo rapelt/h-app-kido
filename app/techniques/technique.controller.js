@@ -9,6 +9,11 @@
         var vm = this;
         vm.user = {};
         vm.technique = {};
+        vm.index = $stateParams.index;
+        vm.techniqueSet = $stateParams.techniquesSet;
+        vm.previousDisabled = true;
+        vm.nextDisabled = true;
+
 
         vm.playerVars = {
             autoplay: 1,
@@ -22,15 +27,23 @@
         initController();
 
         function initController() {
-            UserService.GetCurrent().then(function(user){
-                vm.user = user;
-                $rootScope.currentUser = user;
-            })
+            if(vm.index != null){
+                UserService.GetCurrent().then(function(user){
+                    vm.user = user;
+                    $rootScope.currentUser = user;
+                });
 
-            TechniqueService.GetById($stateParams.id).then(function(technique){
-                vm.technique = technique;
-            })
+                TechniqueService.GetById($stateParams.id).then(function(technique){
+                    vm.technique = technique;
+                    if(vm.index > 0){
+                        vm.previousDisabled = false;
+                    }
 
+                    if(vm.index < vm.techniqueSet.length-1){
+                        vm.nextDisabled = false;
+                    }
+                });
+            }
         }
     }
 

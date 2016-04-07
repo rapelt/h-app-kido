@@ -393,3 +393,8 @@ label{
 .class-attendance-column-width{
     width:100px;
 }
+
+.technique-box-text{
+    display: inline-block;
+}
+

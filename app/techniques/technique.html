@@ -1,6 +1,18 @@
 <div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
     <div class="blue-box-centered">
-        <div>{{vm.technique.techniqueName}}</div>
+        <div class="technique-box-text technique-previous">
+            <button type="button" class="btn btn-default" ng-disabled="vm.previousDisabled" ui-sref="technique({id: vm.techniqueSet[vm.index - 1]._id, techniquesSet: vm.techniqueSet, index: vm.index - 1 })">
+                <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+        </div>
+
+        <div class="technique-box-text technique-name">{{vm.technique.techniqueName}}</div>
+        <div class="technique-box-text technique-next">
+            <button type="button" class="btn btn-default" ng-disabled="vm.nextDisabled" ui-sref="technique({id: vm.techniqueSet[vm.index + 1]._id, techniquesSet: vm.techniqueSet, index: vm.index + 1 })">
+                <span class="glyphicon glyphicon-step-forward"></span>
+            </button>
+        </div>
+
     </div>
 </div>
 <div class="header-padding"></div>

@@ -38,19 +38,11 @@
                             return technique;
                         }
                     });
-                    setTechniquesForDisplay();
+                    filterByType(vm.filteredBy);
                 });
             });
         }
-
-        function setTechniquesForDisplay(){
-            vm.techniqueSets = _.groupBy(vm.techniques, function(technique){ return technique.techniqueSet });
-            var techniqueSets = Object.getOwnPropertyNames(vm.techniqueSets);
-            vm.sets = TechniqueService.SortTechniques(techniqueSets);
-            sortSets();
-            filterByType(vm.filteredBy);
-        }
-
+        
         function removeWhiteSpace(str){
             return str.replace(/\s+/g, '')+ '-id';
 
@@ -69,7 +61,10 @@
                         return technique;
                     }
                 });
-                setTechniquesForDisplay();
+                vm.techniqueSets = _.groupBy(vm.techniques, function(technique){ return technique.techniqueSet });
+                var techniqueSets = Object.getOwnPropertyNames(vm.techniqueSets);
+                vm.sets = TechniqueService.SortTechniques(techniqueSets);
+                sortSets();
             } else if(type === vm.filters[0]){
                 //grade
                 var gradeTechniques =_.filter(vm.techniques, function(technique){

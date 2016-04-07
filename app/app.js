@@ -94,6 +94,10 @@
                 controllerAs: 'vm',
                 data: {
                     activeTab: 'technique'
+                },
+                params: {
+                    techniquesSet: null,
+                    index: null
                 }
 
             }).state('techniques', {
@@ -169,7 +173,7 @@
 
     }
 
-    function run($http, $rootScope, $window, PermissionStore, StatsService) {
+    function run($http, $rootScope, $window, $state, PermissionStore, StatsService) {
 
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
@@ -203,7 +207,15 @@
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             if(toState != undefined) {
                 $rootScope.activeTab = toState.data.activeTab;
+
+                if(toState.name === "technique"){
+                    if(toParams.index == null){
+                        $state.go('techniques');
+                    }
+
+                }
             }
+
             var stat = { };
             if($rootScope.currentUser != undefined){
                 stat.user = $rootScope.currentUser.username

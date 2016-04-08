@@ -217,8 +217,8 @@
             }
 
             var stat = { };
-            if($rootScope.currentUser != undefined){
-                stat.user = $rootScope.currentUser.username
+            if($rootScope.currentUser != null){
+                stat.user = $rootScope.currentUser.username;
                 saveStat();
             } else {
                 UserService.GetCurrent().then(function(user){

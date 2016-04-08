@@ -166,6 +166,8 @@ function getAllUsersGrades(req, res, data) {
 
 
 function populateUsersGrades(users, data){
+    studentGrades = [];
+    gradesNames = [];
     setUpDataBasedOnGoogleResults(data);
     _.each(users, function(user){
         var studentGrade = _.find(studentGrades, function(student){
@@ -226,10 +228,6 @@ function setUpDataBasedOnGoogleResults(results){
                 grade.grade = gradesNames[index-1];
                 student.grades.push(grade);
             }
-            if(student.name == "Aaron Henry"){
-                console.log(student.grades);
-            }
-
         });
 
         if(student.name != null && student.name != "" && student.name != "Name"){

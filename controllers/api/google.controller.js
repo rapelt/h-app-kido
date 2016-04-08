@@ -160,7 +160,7 @@ function getAllUsersGrades(req, res, data) {
                 populateUsersGrades(users, data)
             }
         }).catch(function (err) {
-        console.log("No Users");
+        console.log("No Users", err);
     });
 }
 

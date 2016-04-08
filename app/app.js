@@ -212,7 +212,6 @@
                     if(toParams.index == null){
                         $state.go('techniques');
                     }
-
                 }
             }
 

@@ -6,6 +6,8 @@ var userService = require('services/user.service');
 
 // routes
 router.post('/googleClassAttendance', googleClassAttendance);
+router.post('/googleGrades', googleGrades);
+
 
 module.exports = router;
 
@@ -138,3 +140,97 @@ function populateStudentAttendance(result){
     });
 }
 
+//Grades
+var gradesNames = [];
+var studentGrades = [];
+
+function googleGrades(req, res){
+    var googleResult = req.body;
+    getAllUsersGrades(null, null, googleResult);
+
+    res.sendStatus(200);
+
+
+}
+
+function getAllUsersGrades(req, res, data) {
+    userService.getAll()
+        .then(function (users) {
+            if (users) {
+                populateUsersGrades(users, data)
+            }
+        }).catch(function (err) {
+        console.log("No Users");
+    });
+}
+
+
+function populateUsersGrades(users, data){
+    setUpDataBasedOnGoogleResults(data);
+    _.each(users, function(user){
+        var studentGrade = _.find(studentGrades, function(student){
+            if(student.name.trim() == (user.firstName + " " + user.lastName)){
+                return true;
+            }
+        });
+
+        if(studentGrade != null){
+            //user.attendance = [];
+            _.each(studentGrade.grades, function(grade){
+                if(grade.date != ""){
+                    var userGrade = _.find(user.grades, function(userGrade){
+                        if(grade.grade == userGrade.grade){
+                            return true;
+                        }
+                    });
+                    if(userGrade == null){
+                        if(user.grades == undefined){
+                            user.grades = [];
+                        }
+                        user.grades.push(grade);
+                    }
+                }
+            });
+
+            UserService.Update(user);
+        }
+    });
+
+}
+
+
+
+function setUpDataBasedOnGoogleResults(results){
+    _.each(results[0], function(grades, $index){
+        if($index != 0){
+            gradesNames.push(grades);
+        }
+    });
+
+    _.each(results, function(row){
+        var student = {};
+        student.grades = [];
+        _.each(row, function(column, index){
+            if(index == 0){
+                student.name = column;
+            } else {
+                var grade = {};
+                grade.date = column != "" ? sheetDateToDate(column) : "";
+                grade.grade = gradesNames[index-1];
+                student.grades.push(grade);
+            }
+
+        });
+
+        if(student.name != null && student.name != "" && student.name != "Name"){
+            studentGrades.push(student);
+            console.log(student);
+        }
+    });
+}
+
+function sheetDateToDate(sheetDate){
+    var daysSinceUnixTime = sheetDate - 25569;
+    var millisSinceUnixTime = daysSinceUnixTime * 24 * 60 * 60 * 1000;
+    return new Date(millisSinceUnixTime);
+}

@@ -17,20 +17,6 @@ var firstTrainingColumn = 0;
 var lastTraingingColumn = 0;
 var studentsAttendance = [];
 
-var grades = [
-    {"id": 0, "grade": "white", "displayName": "White"},
-    {"id": 1, "grade": "yellow1", "displayName": "Yellow 1"},
-    {"id": 2, "grade": "yellow2", "displayName": "Yellow 2"},
-    {"id": 3, "grade": "yellow3", "displayName": "Yellow 3"},
-    {"id": 4, "grade": "blue1", "displayName": "Blue 1"},
-    {"id": 5, "grade": "blue2", "displayName": "Blue 2"},
-    {"id": 6, "grade": "blue3", "displayName": "Blue 3"},
-    {"id": 7, "grade": "red1", "displayName": "Red 1"},
-    {"id": 8, "grade": "red2", "displayName": "Red 2"},
-    {"id": 9, "grade": "red3", "displayName": "Red 3"},
-    {"id": 10, "grade": "black", "displayName": "Black"}
-];
-
 
 function googleClassAttendance(req, res) {
     firstTrainingColumn = 0;
@@ -122,32 +108,13 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-            user.grade = UpdateUserGrade(user);
+
 
             userService.update(user._id, user).then(function () {
                 console.log("Student Updates", user.firstName + " With: " + user.attendance);
             });
         }
     });
-}
-
-function UpdateUserGrade(user){
-    user.grades.sort(function(a, b){
-        var indexOfa =  _.indexOf(grades, GetCurrentByDisplayName(a.grade));
-        var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b.grade));
-        return indexOfa - indexOfb;
-    });
-
-    var grade =  GetCurrentByDisplayName(user.grades[user.grades.length -1].grade);
-
-    return grade;
-}
-
-function GetCurrentByDisplayName(gradestr) {
-    if(gradestr === "4th Dan" || gradestr === "3rd Dan" || gradestr === "2nd Dan" || gradestr === "1st Dan"){
-        gradestr = "Black";
-    }
-    return _.find(grades, function(grade){ return grade.displayName == gradestr  });
 }
 
 function populateStudentAttendance(result){
@@ -174,7 +141,28 @@ function populateStudentAttendance(result){
     });
 }
 
+
+
+
+
+
+
+
 //Grades
+
+var grades = [
+    {"id": 0, "grade": "white", "displayName": "White"},
+    {"id": 1, "grade": "yellow1", "displayName": "Yellow 1"},
+    {"id": 2, "grade": "yellow2", "displayName": "Yellow 2"},
+    {"id": 3, "grade": "yellow3", "displayName": "Yellow 3"},
+    {"id": 4, "grade": "blue1", "displayName": "Blue 1"},
+    {"id": 5, "grade": "blue2", "displayName": "Blue 2"},
+    {"id": 6, "grade": "blue3", "displayName": "Blue 3"},
+    {"id": 7, "grade": "red1", "displayName": "Red 1"},
+    {"id": 8, "grade": "red2", "displayName": "Red 2"},
+    {"id": 9, "grade": "red3", "displayName": "Red 3"},
+    {"id": 10, "grade": "black", "displayName": "Black"}
+];
 var gradesNames = [];
 var studentGrades = [];
 
@@ -228,6 +216,9 @@ function populateUsersGrades(users, data){
                 }
             });
 
+            user.grade = UpdateUserGrade(user);
+            console.log("user grade", user.grade);
+
             userService.update(user._id, user).then(function () {
                 console.log("Student Updates", user.firstName + " With: " + user.grades[user.grades.length - 1].grade);
             });
@@ -271,4 +262,26 @@ function sheetDateToDate(sheetDate){
     var millisSinceUnixTime = daysSinceUnixTime * 24 * 60 * 60 * 1000;
     var date = new Date(millisSinceUnixTime);
     return date;
+}
+
+
+function UpdateUserGrade(user){
+    user.grades.sort(function(a, b){
+        var indexOfa =  _.indexOf(grades, GetCurrentByDisplayName(a.grade));
+        var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b.grade));
+        return indexOfa - indexOfb;
+    });
+
+    var grade =  GetCurrentByDisplayName(user.grades[user.grades.length -1].grade);
+
+    console.log(grade);
+
+    return grade;
+}
+
+function GetCurrentByDisplayName(gradestr) {
+    if(gradestr === "4th Dan" || gradestr === "3rd Dan" || gradestr === "2nd Dan" || gradestr === "1st Dan"){
+        gradestr = "Black";
+    }
+    return _.find(grades, function(grade){ return grade.displayName == gradestr  });
 }

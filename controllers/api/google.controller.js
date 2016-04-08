@@ -179,7 +179,7 @@ function populateUsersGrades(users, data){
             _.each(studentGrade.grades, function(grade){
                 if(grade.date != ""){
                     var userGrade = _.find(user.grades, function(userGrade){
-                        if(grade.grade == userGrade.grade){
+                        if(grade.date == userGrade.date){
                             return true;
                         }
                     });

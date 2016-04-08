@@ -217,7 +217,7 @@ function setUpDataBasedOnGoogleResults(results){
                 student.name = column;
             } else {
                 var grade = {};
-                grade.date = column != "" ? (sheetDateToDate(column)).$date : "";
+                grade.date = column != "" ? sheetDateToDate(column) : "";
                 grade.grade = gradesNames[index-1];
                 student.grades.push(grade);
             }
@@ -233,5 +233,7 @@ function setUpDataBasedOnGoogleResults(results){
 function sheetDateToDate(sheetDate){
     var daysSinceUnixTime = sheetDate - 25569;
     var millisSinceUnixTime = daysSinceUnixTime * 24 * 60 * 60 * 1000;
-    return new Date(millisSinceUnixTime);
+    var date = new Date(millisSinceUnixTime);
+    console.log(date);
+    return date;
 }

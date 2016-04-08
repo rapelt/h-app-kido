@@ -202,17 +202,6 @@
         //add JWT token as default auth header
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
 
-        UserService.GetCurrent().then(function(user){
-            $rootScope.currentUser = user;
-            var grade = GradeService.UpdateUserGrade($rootScope.currentUser);
-            if(grade !== $rootScope.currentUser.grade){
-                $rootScope.currentUser.grade = grade;
-                UserService.Update($rootScope.currentUser).then(function(user){
-                    $rootScope.currentUser = user;
-                });
-            }
-        });
-
         // update active tab on state change
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             if(toState != undefined) {

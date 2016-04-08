@@ -217,6 +217,9 @@
             }
 
             var stat = { };
+            if(toParams.id != undefined){
+                stat.id = toParams.id;
+            }
             if($rootScope.currentUser != null){
                 stat.user = $rootScope.currentUser.username;
                 saveStat();

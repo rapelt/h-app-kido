@@ -108,9 +108,8 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-            _.each(user.grade, function(grade){
+            _.each(user.grades, function(grade){
                 console.log("before update ", user.username, " grade ", grade.grade, " date ", grade.date);
-
             });
 
             userService.update(user._id, user).then(function () {

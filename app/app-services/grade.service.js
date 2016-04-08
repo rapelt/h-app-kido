@@ -20,7 +20,7 @@
             {"id": 8, "grade": "red2", "displayName": "Red 2"},
             {"id": 9, "grade": "red3", "displayName": "Red 3"},
             {"id": 10, "grade": "black", "displayName": "Black"}
-        ]
+        ];
 
         service.GetCurrent = GetCurrent;
         service.SubtractGrade = SubtractGrade;
@@ -31,6 +31,7 @@
         service.FilterByGrade = FilterByGrade;
         service.SortGrades = SortGrades;
         service.SortTechniquesByGrades = SortTechniquesByGrades;
+        service.UpdateUserGrade = UpdateUserGrade;
 
 
         return service;
@@ -40,6 +41,9 @@
         }
 
         function GetCurrentByDisplayName(gradestr) {
+            if(gradestr === "4th Dan" || gradestr === "3rd Dan" || gradestr === "2nd Dan" || gradestr === "1st Dan"){
+                gradestr = "Black";
+            }
             return _.find(grades, function(grade){ return grade.displayName == gradestr  });
         }
 
@@ -99,6 +103,20 @@
                 return indexOfa - indexOfb;
             });
             return gradesArray;
+        }
+
+        function UpdateUserGrade(user){
+            user.grades.sort(function(a, b){
+                var indexOfa =  _.indexOf(grades, GetCurrentByDisplayName(a.grade));
+                var indexOfb =  _.indexOf(grades, GetCurrentByDisplayName(b.grade));
+                return indexOfa - indexOfb;
+            });
+
+            var grade =  GetCurrentByDisplayName(user.grades[user.grades.length -1].grade);
+
+            return grade;
+
+            //return user.grade;
         }
     }
 

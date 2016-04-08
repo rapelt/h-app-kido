@@ -192,9 +192,9 @@ function populateUsersGrades(users, data){
                 }
             });
 
-            _.each(user.grades, function(grade){
+           /* _.each(user.grades, function(grade){
                 console.log(new Date().toLocaleString(), " before update ", user.username, " grade ", grade.grade, " date ", grade.date);
-            });
+            });*/
 
             userService.update(user._id, user).then(function () {
                 //console.log("Student Updates", user.firstName + " With: " + user.grades[0].grade);
@@ -225,6 +225,9 @@ function setUpDataBasedOnGoogleResults(results){
                 grade.date = column != "" ? date.toLocaleString() : "";
                 grade.grade = gradesNames[index-1];
                 student.grades.push(grade);
+            }
+            if(student.name == "Aaron Henry"){
+                console.log(student.grades);
             }
 
         });

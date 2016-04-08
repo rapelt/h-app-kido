@@ -193,7 +193,7 @@ function populateUsersGrades(users, data){
             });
 
             userService.update(user._id, user).then(function () {
-                console.log("Student Updates", user.firstName + " With: " + user.grades);
+                console.log("Student Updates", user.firstName + " With: " + user.grades.grade);
             });
         }
     });

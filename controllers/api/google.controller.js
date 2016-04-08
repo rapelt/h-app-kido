@@ -193,6 +193,7 @@ function populateUsersGrades(users, data){
             });
 
             UserService.Update(user);
+            console.log(user);
         }
     });
 
@@ -224,7 +225,6 @@ function setUpDataBasedOnGoogleResults(results){
 
         if(student.name != null && student.name != "" && student.name != "Name"){
             studentGrades.push(student);
-            console.log(student);
         }
     });
 }

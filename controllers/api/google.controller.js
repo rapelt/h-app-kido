@@ -108,12 +108,8 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-            _.each(user.grades, function(grade){
-                console.log("before update ", user.username, " grade ", grade.grade, " date ", grade.date);
-            });
-
             userService.update(user._id, user).then(function () {
-                //console.log("Student Updates", user.firstName + " With: " + user.attendance);
+                console.log("Student Updates", user.firstName + " With: " + user.attendance);
             });
         }
     });
@@ -196,8 +192,12 @@ function populateUsersGrades(users, data){
                 }
             });
 
+            _.each(user.grades, function(grade){
+                console.log(new Date().toLocaleString(), " before update ", user.username, " grade ", grade.grade, " date ", grade.date);
+            });
+
             userService.update(user._id, user).then(function () {
-                console.log("Student Updates", user.firstName + " With: " + user.grades[0].grade);
+                //console.log("Student Updates", user.firstName + " With: " + user.grades[0].grade);
             });
         }
     });

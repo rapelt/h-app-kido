@@ -1,7 +1,7 @@
 ﻿body {
     padding: 51px 0;
     background-color: #000066;
-    background-image: url("/images/kick-icon-blue.png");
+    background-image: url("https://happkido.s3-ap-southeast-2.amazonaws.com/kick-icon-blue.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: -80px 380px;
@@ -29,6 +29,10 @@
 
 .flash-message {
     margin-top: 20px;
+}
+
+h5 {
+    font-size: 12px;
 }
 
 a:link {
@@ -108,12 +112,13 @@ label{
 
 .blue-box {
     height: 45px;
-    font-size: 28px;
+    font-size: 20px;
     color: #000000;
     right: 0;
     left: 0;
     position: fixed;
     z-index: 999;
+    padding-top: 6px;
 }
 
 .blue-box-centered{
@@ -126,7 +131,7 @@ label{
 }
 
 .box-yellow1{
-    background-color: #ffea91;
+    background-color: #fffe9b;
     color: black;
 }
 
@@ -136,7 +141,7 @@ label{
 }
 
 .box-yellow3{
-    background-color: #ffd400;
+    background-color: #ffc135;
     color: black;
 }
 
@@ -253,8 +258,6 @@ label{
 }
 
 .sort-by-options{
-    vertical-align: top;
-    margin-top: 6px;
     width: auto;
     display: inline-block;
     height: 31px;

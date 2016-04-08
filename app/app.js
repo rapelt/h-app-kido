@@ -173,7 +173,7 @@
 
     }
 
-    function run($http, $rootScope, $window, $state, PermissionStore, StatsService) {
+    function run($http, $rootScope, $window, $state, PermissionStore, StatsService, UserService) {
 
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
@@ -219,17 +219,28 @@
             var stat = { };
             if($rootScope.currentUser != undefined){
                 stat.user = $rootScope.currentUser.username
+                saveStat();
             } else {
-                stat.user = "unknown";
+                UserService.GetCurrent().then(function(user){
+                    stat.user = user.username;
+                    $rootScope.currentUser = user;
+                    saveStat();
+                });
             }
 
-            stat.stat=  toState.name;
-            stat.time = new Date().toLocaleString();
+            function saveStat(){
+                if(stat.user != "admin"){
+                    stat.stat=  toState.name;
+                    stat.time = new Date().toLocaleString();
+                    StatsService.Create(stat);
+                }
 
-            StatsService.Create(stat);
+            }
 
         });
     }
+
+
 
     // manually bootstrap angular after the JWT token is retrieved from the server
     $(function () {

@@ -193,7 +193,7 @@ function populateUsersGrades(users, data){
             });
 
             userService.update(user._id, user).then(function () {
-                console.log("Student Updates", user.firstName + " With: " + user.grades[0].grade);
+                console.log("Student Updates", user.firstName + " With: " + user.grades[0].date);
             });
         }
     });
@@ -217,7 +217,8 @@ function setUpDataBasedOnGoogleResults(results){
                 student.name = column;
             } else {
                 var grade = {};
-                grade.date = column != "" ? sheetDateToDate(column) : "";
+                var date = sheetDateToDate(column);
+                grade.date = column != "" ? date : "";
                 grade.grade = gradesNames[index-1];
                 student.grades.push(grade);
             }
@@ -234,6 +235,5 @@ function sheetDateToDate(sheetDate){
     var daysSinceUnixTime = sheetDate - 25569;
     var millisSinceUnixTime = daysSinceUnixTime * 24 * 60 * 60 * 1000;
     var date = new Date(millisSinceUnixTime);
-    console.log(date);
     return date;
 }

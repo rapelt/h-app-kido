@@ -108,8 +108,6 @@ function populateUsersAttendance(users, data){
                 }
             });
 
-
-
             userService.update(user._id, user).then(function () {
                 console.log("Student Updates", user.firstName + " With: " + user.attendance);
             });
@@ -148,6 +146,11 @@ function populateStudentAttendance(result){
 
 
 
+
+
+
+
+
 //Grades
 
 var grades = [
@@ -171,8 +174,6 @@ function googleGrades(req, res){
     getAllUsersGrades(null, null, googleResult);
 
     res.sendStatus(200);
-
-
 }
 
 function getAllUsersGrades(req, res, data) {

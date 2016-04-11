@@ -11,8 +11,11 @@
         vm.editTechnique = editTechnique;
         vm.create = create;
         vm.dismiss = dismiss;
+        vm.sort = sort;
+
         vm.user = {};
 
+        vm.sortBy = ["No url", "All"];
 
         vm.technique = null;
 
@@ -21,6 +24,8 @@
 
 
         vm.techniques = [];
+        vm.sortedTechniques = [];
+
 
         initController();
 
@@ -91,6 +96,17 @@
                     .catch(function (error) {
                         FlashService.Error(error);
                     });
+            }
+
+        }
+
+        function sort(sortbyThis){
+            if(sortbyThis === "No url"){
+                var some= _.filter(vm.techniques, function(technique){ return technique.url == undefined });
+                vm.sortedTechniques = some;
+
+            } else {
+                vm.sortedTechniques = vm.techniques;
             }
 
         }

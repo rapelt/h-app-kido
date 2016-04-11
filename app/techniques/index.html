@@ -1,4 +1,11 @@
-﻿<div class="blue-box" ng-class="'box-' + vm.user.grade.grade"></div>
+﻿<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+    <div class="technique-filters">
+        <span class="sort-by" ng-class="'box-' + vm.user.grade.grade">Sort by:</span>
+        <select  class="form-control sort-by-options" ng-model="sortBy" ng-change="vm.sort(sortBy)"
+                 data-ng-options="sort for sort in vm.sortBy">
+        </select>
+    </div>
+</div>
 <div class="header-padding"></div>
 <div class="flash-message" ng-if="flash">
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
@@ -6,7 +13,7 @@
 
 
 <h1>Edit Techniques</h1>
-<li ng-repeat="technique in vm.techniques">
+<li ng-repeat="technique in vm.sortedTechniques">
     <p>{{technique.techniqueName}}
         - <a ng-click="vm.editTechnique(technique, $index)" data-toggle="modal" data-target="#techniqueModal">Edit</a>
         - <a href="#" ng-click="vm.deleteTechnique(technique._id)">Delete</a>

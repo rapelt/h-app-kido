@@ -173,7 +173,7 @@
 
     }
 
-    function run($http, $rootScope, $window, $state, PermissionStore, StatsService, UserService, GradeService) {
+    function run($http, $rootScope, $window, PermissionStore) {
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
         };
@@ -203,42 +203,7 @@
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
 
         // update active tab on state change
-        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            if(toState != undefined) {
-                $rootScope.activeTab = toState.data.activeTab;
 
-                if(toState.name === "technique"){
-                    if(toParams.index == null){
-                        $state.go('techniques');
-                    }
-                }
-            }
-
-            var stat = { };
-            if(toParams.id != undefined){
-                stat.id = toParams.id;
-            }
-            if($rootScope.currentUser != null){
-                stat.user = $rootScope.currentUser.username;
-                saveStat();
-            } else {
-                UserService.GetCurrent().then(function(user){
-                    stat.user = user.username;
-                    $rootScope.currentUser = user;
-                    saveStat();
-                });
-            }
-
-            function saveStat(){
-                if(stat.user != "admin"){
-                    stat.stat=  toState.name;
-                    stat.time = (new Date()).toLocaleString();
-                    StatsService.Create(stat);
-                }
-
-            }
-
-        });
     }
 
     // manually bootstrap angular after the JWT token is retrieved from the server

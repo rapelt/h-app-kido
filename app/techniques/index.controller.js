@@ -32,7 +32,9 @@
         function initController() {
             TechniqueService.GetAll().then(function (techniques){
                 vm.techniques = techniques;
-            })
+                vm.sortedTechniques = techniques;
+            });
+
 
             UserService.GetCurrent().then(function(user){
                 vm.user = user;

@@ -11,8 +11,6 @@
 
         });
 
-    function Controller($scope) {
-        console.log("yay");
-
+    function Controller() {
     }
 })();

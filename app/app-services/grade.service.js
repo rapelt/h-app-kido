@@ -5,7 +5,7 @@
         .module('app')
         .factory('GradeService', Service);
 
-    function Service($http, $q) {
+    function Service() {
         var service = {};
 
         var grades = [
@@ -25,10 +25,9 @@
         service.GetCurrent = GetCurrent;
         service.SubtractGrade = SubtractGrade;
         service.AddGrade = AddGrade;
-        service.GetDisplayName = GetDisplayName;
+        service.GetCurrentByDisplayName = GetCurrentByDisplayName;
         service.UserCanSeeAsset = UserCanSeeAsset;
         service.GetAvaliableGrades = GetAvaliableGrades;
-        service.FilterByGrade = FilterByGrade;
         service.SortGrades = SortGrades;
         service.SortTechniquesByGrades = SortTechniquesByGrades;
         service.UpdateUserGrade = UpdateUserGrade;
@@ -45,11 +44,6 @@
                 gradestr = "Black";
             }
             return _.find(grades, function(grade){ return grade.displayName == gradestr  });
-        }
-
-        function GetDisplayName(gradestr) {
-            var grade = GetCurrent(gradestr);
-            return grade.displayName;
         }
 
         function AddGrade(gradestr) {
@@ -75,16 +69,6 @@
         function GetAvaliableGrades(userGrade){
             var indexOfUser =  _.indexOf(grades, GetCurrent(userGrade));
             return grades.slice(0, indexOfUser + 2);
-        }
-
-        function FilterByGrade(grade, techniqueGrade){
-            var indexOfGrade =  _.indexOf(grades, GetCurrent(grade.grade));
-            var indexOfTechniqueGrade =  _.indexOf(grades, GetCurrent(techniqueGrade.grade));
-
-            if(indexOfTechniqueGrade == indexOfGrade){
-                return true;
-            }
-            return false;
         }
 
         function SortGrades(gradesArray){
@@ -115,8 +99,6 @@
             var grade =  GetCurrentByDisplayName(user.grades[user.grades.length -1].grade);
 
             return grade;
-
-            //return user.grade;
         }
     }
 

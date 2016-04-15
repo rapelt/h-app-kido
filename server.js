@@ -37,6 +37,8 @@ app.use('/google', require('./controllers/api/google.controller'));
 
 
 
+
+
 /*app.all('/!*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('index.html', { root: __dirname });

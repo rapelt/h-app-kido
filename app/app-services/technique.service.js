@@ -11,6 +11,7 @@
         var techniqueSets = [
             "Stepping Form",
             "Break falls",
+            "Kibon Hosin Sul",
             "Son Bag Ki",
             "Pal Chagi",
             "Yon Kuel Pal Chagi",

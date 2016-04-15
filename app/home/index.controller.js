@@ -5,7 +5,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller($rootScope, $window, UserService, FlashService, GoogleService) {
+    function Controller($rootScope, UserService, FlashService, StatsService) {
         var vm = this;
 
         vm.user = null;
@@ -60,6 +60,43 @@
             }
 
         }
+
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            if(toState != undefined) {
+                $rootScope.activeTab = toState.data.activeTab;
+
+                if(toState.name === "technique"){
+                    if(toParams.index == null){
+                        $state.go('techniques');
+                    }
+                }
+            }
+
+            var stat = { };
+            if(toParams.id != undefined){
+                stat.id = toParams.id;
+            }
+            if($rootScope.currentUser != null){
+                stat.user = $rootScope.currentUser.username;
+                saveStat();
+            } else {
+                UserService.GetCurrent().then(function(user){
+                    stat.user = user.username;
+                    $rootScope.currentUser = user;
+                    saveStat();
+                });
+            }
+
+            function saveStat(){
+                if(stat.user != "admin"){
+                    stat.stat=  toState.name;
+                    stat.time = (new Date()).toLocaleString();
+                    StatsService.Create(stat);
+                }
+
+            }
+
+        });
 
     }
 

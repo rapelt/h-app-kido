@@ -34,12 +34,13 @@
                     getClassesForTheYear();
                     getClassesForTheMonth();
                     getClassesSinceLastGrading();
-
-
                 });
             } else {
                 $scope.user = $rootScope.user;
+                setDatesAsDates();
                 getClassesForTheYear();
+                getClassesForTheMonth();
+                getClassesSinceLastGrading();
             }
 
         }

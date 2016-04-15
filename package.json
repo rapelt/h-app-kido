@@ -2,7 +2,9 @@
   "name": "Happkido",
   "description": "A web application to assist with home training of Hapkido",
   "dependencies": {
+    "angular": "^1.5.3",
     "angular-permission": "^2.0.1",
+    "angular-sanitize": "^1.5.3",
     "angular-ui-bootstrap": "^1.2.1",
     "angular-youtube-embed": "^1.1.1",
     "bcryptjs": "^2.1.0",
@@ -12,6 +14,7 @@
     "express": "^4.13.0",
     "express-jwt": "^3.0.1",
     "express-session": "^1.11.3",
+    "jquery": "^2.2.3",
     "jsonwebtoken": "^5.0.2",
     "lodash": "^3.10.0",
     "mongodb": "^1.4.34",
@@ -20,5 +23,12 @@
     "request": "^2.58.0",
     "rootpath": "^0.1.2",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.3",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
   }
 }

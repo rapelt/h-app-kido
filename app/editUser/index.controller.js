@@ -52,6 +52,7 @@
             UserService.Delete(id)
                 .then(function () {
                     refresh();
+                    vm.userForEdit = null;
                 })
                 .catch(function (error) {
                     FlashService.Error(error);

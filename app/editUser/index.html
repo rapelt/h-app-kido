@@ -9,7 +9,6 @@
 <li ng-repeat="user in vm.allUsers">
     <p>{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.grade.displayName}}
     - <a href="#" ng-click="vm.editUser(user, $index)" data-toggle="modal" data-target="#userModal">Edit</a>
-    - <a href="#" ng-click="vm.deleteUser(user._id)">Delete</a>
     - <a href="#" ng-click="vm.addGrade(user)">Increase Grade</a>
     </p>
 </li>
@@ -69,6 +68,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" ng-click="vm.deleteUser(vm.userForEdit._id)" data-dismiss="modal">Delete</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.dismiss(vm.userForEdit)">Close</button>
                 <button type="submit" class="btn btn-primary" ng-click="vm.create()" data-dismiss="modal">Save</button>
             </div>

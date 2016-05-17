@@ -12,8 +12,7 @@
     Add new user
 </button>
 
-<!--Desktop-->
-<div ng-if="!vm.isMobile">
+<div ng-if="true">
     <div class="table-responsive scrollTable">
         <table class="table translation-table">
             <thead class="class-attendance-table-header">
@@ -22,7 +21,6 @@
                 <th class="class-attendance-names">First name</th>
                 <th class="class-attendance-names">Last name</th>
                 <th class="class-attendance-names">Grade</th>
-
                 <th class="class-attendance-names">Username</th>
                 <th class="class-attendance-names">Attendance (Year)</th>
                 <th class="class-attendance-names">Last Logged In</th>
@@ -43,30 +41,6 @@
         </table>
     </div>
 </div>
-
-<!--Mobile-->
-<div ng-if="vm.isMobile">
-    <div class="table-responsive scrollTable">
-        <table class="table translation-table">
-            <thead class="class-attendance-table-header">
-            <tr>
-                <th class="">Edit</th>
-                <th class="class-attendance-names">First name</th>
-                <th class="class-attendance-names">Last name</th>
-            </tr>
-            </thead>
-            <tbody class="class-attendance-table-body">
-            <tr ng-repeat="student in vm.allUsers" class="hover-attempt">
-                <td class=""><a href="#" ng-click="vm.editUser(student, $index)" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-pencil"></span> </a></td>
-                <td class="class-attendance-names">{{student.firstName}}</td>
-                <td class="class-attendance-names">{{student.lastName}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
 
 <!-- Modal -->
 <div class="modal fade modal-text-colour" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal">

@@ -31,3 +31,10 @@
     height: 100px;
     border-radius: 50px;
 }
+
+.fees-button {
+    margin-bottom: 35px;
+    display: inline-block;
+    width: 370px;
+    vertical-align: top;
+}

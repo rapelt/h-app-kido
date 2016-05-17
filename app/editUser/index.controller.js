@@ -19,6 +19,7 @@
         var isEdit = false;
         vm.editUser = editUser;
         var index = -1;
+        vm.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 
         initController();

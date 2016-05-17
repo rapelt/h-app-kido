@@ -14,7 +14,7 @@
 
 <!--Desktop-->
 <div ng-if="!vm.isMobile">
-    <div class="table-responsive class-attendance-table scrollTable">
+    <div class="table-responsive scrollTable">
         <table class="table translation-table">
             <thead class="class-attendance-table-header">
             <tr>
@@ -46,26 +46,20 @@
 
 <!--Mobile-->
 <div ng-if="vm.isMobile">
-    <div class="table-responsive">
-        <table class="table translation-table translation-table-header">
+    <div class="table-responsive scrollTable">
+        <table class="table translation-table">
             <thead class="class-attendance-table-header">
             <tr>
-                <th class="class-attendance-names">Name</th>
-                <th class="class-attendance-date-headers class-attendance-column-width">{{vm.sortByDate.date}}</th>
+                <th class="">Edit</th>
+                <th class="class-attendance-names">First name</th>
+                <th class="class-attendance-names">Last name</th>
             </tr>
             </thead>
-        </table>
-    </div>
-
-    <div class="table-responsive class-attendance-table scrollTable">
-        <table class="table translation-table">
             <tbody class="class-attendance-table-body">
-            <tr ng-repeat="student in vm.sortedAttendance" class="hover-attempt">
-                <td class="class-attendance-names">{{student.name}}</td>
-                <td class="class-attendance-column-width">
-                    <span>{{student.attended.didAttend}}</span>
-                </td>
-
+            <tr ng-repeat="student in vm.allUsers" class="hover-attempt">
+                <td class=""><a href="#" ng-click="vm.editUser(student, $index)" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-pencil"></span> </a></td>
+                <td class="class-attendance-names">{{student.firstName}}</td>
+                <td class="class-attendance-names">{{student.lastName}}</td>
             </tr>
             </tbody>
         </table>

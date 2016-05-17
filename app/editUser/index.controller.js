@@ -5,7 +5,7 @@
         .module('app')
         .controller('EditUser.IndexController', Controller);
 
-    function Controller($window, $rootScope, $state, UserService, FlashService, GradeService) {
+    function Controller($window, $rootScope, $state, UserService, FlashService, GradeService, StatsService) {
         var vm = this;
 
         vm.user = null;
@@ -28,6 +28,8 @@
                 vm.user = user;
                 $rootScope.currentUser = user;
             });
+
+
             refresh();
         }
 
@@ -62,6 +64,19 @@
         function refresh() {
             UserService.GetAll().then(function (users){
                 vm.allUsers = users;
+
+                _.each(vm.allUsers, function (user) {
+                    StatsService.GetByUsername(user).then(function(stat){
+                        if(stat[0] != undefined){
+                            var statNames = Object.getOwnPropertyNames(stat);
+                            user.lastLoggedIn = stat[statNames[statNames.length-1]].time;
+                            user.timesLoggenIn = statNames.length;
+                            console.log(user);
+                        }
+
+                    });
+                });
+
             })
         }
 

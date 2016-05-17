@@ -72,7 +72,7 @@
                 }
             }
 
-            var stat = { };
+            /*var stat = { };
             if(toParams.id != undefined){
                 stat.id = toParams.id;
             }
@@ -94,7 +94,7 @@
                     StatsService.Create(stat);
                 }
 
-            }
+            }*/
 
         });
 

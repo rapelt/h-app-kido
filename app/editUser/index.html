@@ -6,16 +6,72 @@
 
 
 <h1>Edit User</h1>
-<li ng-repeat="user in vm.allUsers">
-    <p>{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.grade.displayName}}
-    - <a href="#" ng-click="vm.editUser(user, $index)" data-toggle="modal" data-target="#userModal">Edit</a>
-    - <a href="#" ng-click="vm.addGrade(user)">Increase Grade</a>
-    </p>
-</li>
+
 
 <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#userModal">
     Add new user
 </button>
+
+<!--Desktop-->
+<div ng-if="!vm.isMobile">
+    <div class="table-responsive class-attendance-table scrollTable">
+        <table class="table translation-table">
+            <thead class="class-attendance-table-header">
+            <tr>
+                <th class="">Edit</th>
+                <th class="class-attendance-names">First name</th>
+                <th class="class-attendance-names">Last name</th>
+                <th class="class-attendance-names">Grade</th>
+
+                <th class="class-attendance-names">Username</th>
+                <th class="class-attendance-names">Attendance (Year)</th>
+                <th class="class-attendance-names">Last Logged In</th>
+            </tr>
+            </thead>
+            <tbody class="class-attendance-table-body">
+            <tr ng-repeat="student in vm.allUsers" class="hover-attempt">
+                <td class=""><a href="#" ng-click="vm.editUser(student, $index)" data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-pencil"></span> </a></td>
+                <td class="class-attendance-names">{{student.firstName}}</td>
+                <td class="class-attendance-names">{{student.lastName}}</td>
+                <td class="class-attendance-names">{{student.grade.displayName}}</td>
+
+                <td class="class-attendance-names">{{student.username}}</td>
+                <td class="class-attendance-names">{{student.attendance.length}}</td>
+                <td class="class-attendance-names">{{student.lastLoggedIn}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Mobile-->
+<div ng-if="vm.isMobile">
+    <div class="table-responsive">
+        <table class="table translation-table translation-table-header">
+            <thead class="class-attendance-table-header">
+            <tr>
+                <th class="class-attendance-names">Name</th>
+                <th class="class-attendance-date-headers class-attendance-column-width">{{vm.sortByDate.date}}</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="table-responsive class-attendance-table scrollTable">
+        <table class="table translation-table">
+            <tbody class="class-attendance-table-body">
+            <tr ng-repeat="student in vm.sortedAttendance" class="hover-attempt">
+                <td class="class-attendance-names">{{student.name}}</td>
+                <td class="class-attendance-column-width">
+                    <span>{{student.attended.didAttend}}</span>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 
 <!-- Modal -->
@@ -68,8 +124,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" ng-click="vm.deleteUser(vm.userForEdit._id)" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.dismiss(vm.userForEdit)">Close</button>
+                <button class="btn btn-danger" ng-click="vm.deleteUser(vm.userForEdit._id)" data-dismiss="modal">Delete</button>
                 <button type="submit" class="btn btn-primary" ng-click="vm.create()" data-dismiss="modal">Save</button>
             </div>
         </div>

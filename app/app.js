@@ -173,7 +173,7 @@
 
     }
 
-    function run($http, $rootScope, $window, PermissionStore) {
+    function run($http, $rootScope, $window, PermissionStore, StatsService, UserService) {
         $rootScope.closeDropDown =  function(){
             $('.navbar-collapse').collapse('hide');
         };
@@ -198,6 +198,9 @@
             }
             return false;
         });
+
+
+
 
         //add JWT token as default auth header
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;

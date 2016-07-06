@@ -135,6 +135,10 @@ describe("Account.Index.Controller.Test", function(){
         expect($rootScope.flash.message).toBe('error');
     });
 
+    it('should fail', function(){
+        expect(1).toBe(2);
+    });
+
 
 
 });

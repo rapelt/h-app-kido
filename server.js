@@ -8,7 +8,6 @@ var config = require('config.json');
 var http = require("http");
 var fs = require("fs");
 var path = require("path");
-var mime = require("mime");
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');

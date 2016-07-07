@@ -20,7 +20,7 @@
                 data: { activeTab: '' }
             })
             .state('account', {
-                url: '/account',
+                url: '/account-tests',
                 templateUrl: 'account/index.html',
                 controller: 'Account.IndexController',
                 controllerAs: 'vm',
@@ -64,7 +64,7 @@
                 }
             }).state('classAttendance', {
                 url: '/classAttendance',
-                templateUrl: 'classAttendance/classAttendance.html',
+                templateUrl: 'class-attendance/classAttendance.html',
                 controller: 'ClassAttendance.ClassAttendanceController',
                 controllerAs: 'vm',
                 data: {
@@ -76,7 +76,7 @@
                 }
             }).state('gradingDates', {
                 url: '/gradingDates',
-                templateUrl: 'studentsGradingDates/gradingDates.html',
+                templateUrl: 'students-grading-dates/gradingDates.html',
                 controller: 'GradingDates.GradingDatesController',
                 controllerAs: 'vm',
                 data: {
@@ -158,8 +158,8 @@
                 }
             })
             .state('editUser', {
-                url: '/editUser',
-                templateUrl: 'editUser/index.html',
+                url: '/edit-user',
+                templateUrl: 'edit-user/index.html',
                 controller: 'EditUser.IndexController',
                 controllerAs: 'vm',
                 data: {

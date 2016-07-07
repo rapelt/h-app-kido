@@ -1,14 +1,20 @@
-describe("Class Attendance.Controller.Test", function(){
+describe("Edit User.Controller.Test", function(){
     var $controller;
     var controller;
     var utils;
     var $rootScope;
-    var $scope;
-    var vm = null;
     var userService;
     var flashService;
-    var googleService;
-    var window;
+    var gradeService;
+    var statsService;
+    var $scope;
+
+    var stats = {"0": {
+        "_id": "573a5a66e39cc71100b0d987",
+        "stat": "translations",
+        "time": "5/17/2016, 9:40:22 AM",
+        "user": "Sabomnim"}}
+    ;
 
     var user = {
         "_id": {
@@ -56,7 +62,7 @@ describe("Class Attendance.Controller.Test", function(){
     beforeEach(module("app"));
 
 
-    beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, UserService, _utils_, $httpBackend, FlashService, $window, GoogleService){
+    beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, UserService, _utils_, FlashService, GradeService, StatsService, $httpBackend){
         //$httpBackend = $injector.get('$httpBackend');
         $httpBackend.when('GET', 'home/index.html').respond({ body: '<html><body>Mock homepage</body></html>'});
 
@@ -64,28 +70,36 @@ describe("Class Attendance.Controller.Test", function(){
         $rootScope = _$rootScope_;
         userService = UserService;
         flashService = FlashService;
-        googleService = GoogleService;
-        window = $window;
+        gradeService = GradeService;
+        statsService = StatsService;
 
         utils = _utils_;
-        utils.resolvePromise(UserService, 'GetCurrent', user);
+        utils.resolvePromise(userService, 'GetCurrent', user);
+        utils.resolvePromise(userService, 'GetAll', [user]);
+        utils.resolvePromise(statsService, 'GetByUsername', stats);
+
+
 
         $controller = _$controller_;
-        controller = $controller('ClassAttendance.ClassAttendanceController', { $window: window, $rootScope: $rootScope, $scope: $scope, UserService: userService, FlashService: flashService, GoogleService: googleService });
+        controller = $controller('EditUser.IndexController', {$rootScope: $rootScope, UserService: userService, FlashService: flashService, GradeService: gradeService, StatsService: statsService });
         vm = controller;
 
         $scope.$apply();
 
     }));
 
-    it('can get an instance of Classes Controller', function(){
+    it('initController can get an instance of EditUser Controller', function(){
         expect(controller).toBeDefined();
     });
 
-    it('rootScope user should be defined', function(){
+    it('initController rootScope user should be defined', function(){
+        //utils.resolvePromise(statsService, 'GetByUsername', user);
+
         expect($rootScope.currentUser).toBeDefined();
         expect(vm.user).toBeDefined();
         expect($rootScope.currentUser.firstName).toBe("Darryl");
+
+
     });
 
 });

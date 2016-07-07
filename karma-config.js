@@ -24,9 +24,14 @@ module.exports = function(config) {
       'app/app.js',
       'app/app-services/*.js',
       'app/account/*.js',
-      'app/classAttendance/*.js',
-      'app/test/*Spec.js'
-
+      'app/edit-user/*.js',
+      'app/class-attendance/*.js',
+      'app/test/*Spec.js',
+      'app/test/account-tests/*Spec.js',
+      'app/test/app-services-tests/*Spec.js',
+      'app/test/techniques-tests/*Spec.js',
+      'app/test/class-attendance-tests/*Spec.js',
+      'app/test/edit-users-tests/*Spec.js'
     ],
 
 

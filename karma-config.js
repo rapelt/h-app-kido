@@ -7,7 +7,6 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
@@ -23,15 +22,20 @@ module.exports = function(config) {
       'app/js/*.js',
       'app/app.js',
       'app/app-services/*.js',
+      'app/manual/*.js',
+      'app/home/*.js',
+      'app/students-grading-dates/*.js',
+      'app/techniques/*.js',
+      'app/translations/*.js',
       'app/account/*.js',
       'app/edit-user/*.js',
       'app/class-attendance/*.js',
-      'app/test/*Spec.js',
       'app/test/account-tests/*Spec.js',
       'app/test/app-services-tests/*Spec.js',
       'app/test/techniques-tests/*Spec.js',
       'app/test/class-attendance-tests/*Spec.js',
-      'app/test/edit-users-tests/*Spec.js'
+      'app/test/edit-users-tests/*Spec.js',
+      'app/test/manual-tests/*Spec.js'
     ],
 
 

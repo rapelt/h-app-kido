@@ -5,7 +5,7 @@
         .module('app')
         .controller('Documents.IndexController', Controller);
 
-    function Controller($state, DocumentService, FlashService, GradeService, UserService) {
+    function Controller(DocumentService, FlashService, GradeService, UserService) {
         var vm = this;
         vm.deleteDocument = deleteDocument;
         vm.editDocument = editDocument;
@@ -29,11 +29,11 @@
         function initController() {
             DocumentService.GetAll().then(function (documents){
                 vm.documents = documents;
-            })
+            });
 
             UserService.GetCurrent().then(function(user){
                 vm.user = user;
-            })
+            });
 
         }
 

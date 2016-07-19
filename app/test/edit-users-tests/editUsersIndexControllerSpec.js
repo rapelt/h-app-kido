@@ -58,6 +58,48 @@ describe("Edit User.Controller.Test", function(){
         ]
     };
 
+    var editedUser = {
+        "_id": {
+            "$oid": "56f125b6ddb0d01100f34deb"
+        },
+        "firstName": "Darryl",
+        "lastName": "Cox",
+        "username": "darrylcox",
+        "grade": {
+            "id": 2,
+            "grade": "yellow2",
+            "displayName": "Yellow 2"
+        },
+        "isFirstLogin": false,
+        "hash": "$2a$10$YforekNRJvFlVJyLHxOhseiovo20gQ.wt4QhJyP2HfoByCdA/kWgC",
+        "isAdmin": null,
+        "attendance": [
+            "21-Jan-16",
+            "28-Jan-16",
+            "3-Mar-16",
+            "8-Mar-16",
+            "10-Mar-16",
+            "15-Mar-16",
+            "17-Mar-16",
+            "22-Mar-16",
+            "29-Mar-16",
+            "9-Feb-16",
+            "11-Feb-16",
+            "18-Feb-16",
+            "23-Feb-16"
+        ],
+        "grades": [
+            {
+                "date": "2016-02-25T00:00:00.000Z",
+                "grade": "Yellow 1"
+            },
+            {
+                "date": "2016-03-03T00:00:00.000Z",
+                "grade": "Yellow 2"
+            }
+        ]
+    };
+
     beforeEach(module("testUtils"));
     beforeEach(module("app"));
 
@@ -93,13 +135,47 @@ describe("Edit User.Controller.Test", function(){
     });
 
     it('initController rootScope user should be defined', function(){
-        //utils.resolvePromise(statsService, 'GetByUsername', user);
-
         expect($rootScope.currentUser).toBeDefined();
         expect(vm.user).toBeDefined();
         expect($rootScope.currentUser.firstName).toBe("Darryl");
-
-
     });
+
+    it('dismiss should get the saved user and replace the existing one in the array', function(){
+        utils.resolvePromise(userService, 'GetById', editedUser);
+
+        controller.editUser(user, 0);
+        controller.dismiss(user);
+
+        $scope.$apply();
+
+        expect(controller.allUsers[0].username).toBe("darrylcox");
+    });
+
+    it('create should make a new user', function(){
+        utils.resolvePromise(gradeService, 'GetCurrent', "yellow1");
+        utils.resolvePromise(userService, 'Create');
+        controller.userForEdit = user;
+
+        controller.create(user);
+
+        $scope.$apply();
+
+        expect(controller.userForEdit).toBe(null);
+    });
+
+    it('create should update an existing user', function(){
+        utils.resolvePromise(gradeService, 'GetCurrent', "yellow1");
+        utils.resolvePromise(userService, 'Update');
+        controller.userForEdit = user;
+
+        controller.editUser(user, 0);
+        controller.create(user);
+
+        $scope.$apply();
+        
+        expect(controller.userForEdit).toBe(null);
+    });
+
+
 
 });

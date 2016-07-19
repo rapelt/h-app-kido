@@ -15,6 +15,7 @@
     "express": "^4.13.0",
     "express-jwt": "^3.0.1",
     "express-session": "^1.11.3",
+    "gulp-mocha": "^2.2.0",
     "jquery": "^2.2.3",
     "jsonwebtoken": "^5.0.2",
     "lodash": "^3.10.0",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "angular-mocks": "^1.5.3",
     "gulp": "^3.9.1",
+    "gulp-mocha-selenium": "^1.0.0",
     "gulp-util": "^3.0.7",
     "gulp-webdriver": "^2.0.2",
     "jasmine-core": "^2.4.1",

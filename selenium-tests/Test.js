@@ -16,9 +16,13 @@ usingServer('http://hub-cloud.browserstack.com/wd/hub').
 withCapabilities(capabilities).
 build();
 
-driver.get('http://www.google.com');
-driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack');
-driver.findElement(webdriver.By.name('btnG')).click();
+driver.get('http://testHappkido.heroku.com');
+/*driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack');
+driver.findElement(webdriver.By.name('btnG')).click();*/
+
+driver.findElement(webdriver.By.id("username")).sendKeys("admin");
+driver.findElement(webdriver.By.id("password")).sendKeys("admin");
+driver.findElement(webdriver.By.id("submit-button")).click();
 
 driver.getTitle().then(function(title) {
     console.log(title);

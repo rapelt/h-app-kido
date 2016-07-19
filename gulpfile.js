@@ -3,6 +3,7 @@
  */
 var gulp = require('gulp');
 var Server = require('karma').Server;
+var mochaSelenium = require('gulp-mocha');
 
 gulp.task('test', function (done) {
     new Server({
@@ -11,4 +12,11 @@ gulp.task('test', function (done) {
     }, done).start();
 });
 
-gulp.task('default', ['test']);
+gulp.task('selenium', function () {
+    return gulp.src('selenium-tests/Test.js', {read: false})
+        .pipe(mochaSelenium({
+            reporter: 'nyan'
+        }));
+});
+
+gulp.task('default', ['test', 'selenium']);

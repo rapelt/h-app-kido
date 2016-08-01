@@ -1,24 +1,15 @@
 var webdriver = require('selenium-webdriver');
+var chrome = require('selenium-webdriver/chrome');
+var path = require('chromedriver').path;
 
-// Input capabilities
-var capabilities = {
-    'browserName' : 'Chrome',
-    'browser_version' : '51.0',
-    'os' : 'Windows',
-    'os_version' : '7',
-    'resolution' : '1024x768',
-    'browserstack.user' : 'rebekahapelt1',
-    'browserstack.key' : 'azL4tv1uZGa2NFSuz5QU'
-};
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
 
-var driver = new webdriver.Builder().
-usingServer('http://hub-cloud.browserstack.com/wd/hub').
-withCapabilities(capabilities).
-build();
+var driver = new webdriver.Builder()
+    .withCapabilities(webdriver.Capabilities.chrome())
+    .build();
 
 driver.get('http://testHappkido.heroku.com');
-/*driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack');
-driver.findElement(webdriver.By.name('btnG')).click();*/
 
 driver.findElement(webdriver.By.id("username")).sendKeys("admin");
 driver.findElement(webdriver.By.id("password")).sendKeys("admin");
@@ -27,5 +18,27 @@ driver.findElement(webdriver.By.id("submit-button")).click();
 driver.getTitle().then(function(title) {
     console.log(title);
 });
+
+
+
+/*driver.get('http://www.google.com');
+
+var element = driver.findElement(webdriver.By.name('q'));
+element.sendKeys('Cheese!');
+element.submit();
+
+driver.getTitle().then(function(title) {
+    console.log('Page title is: ' + title);
+});
+
+driver.wait(function() {
+    return driver.getTitle().then(function(title) {
+        return title.toLowerCase().lastIndexOf('cheese!', 0) === 0;
+    });
+}, 3000);
+
+driver.getTitle().then(function(title) {
+    console.log('Page title is: ' + title);
+});*/
 
 driver.quit();

@@ -9,6 +9,7 @@ router.post('/googleClassAttendance', googleClassAttendance);
 router.post('/googleGrades', googleGrades);
 
 
+
 module.exports = router;
 
 var daysArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -217,8 +218,10 @@ function populateUsersGrades(users, data){
                 }
             });
 
+            user.feedback.comment = studentGrade.feedback;
+            //user.feedback.date = studentGrade
+
             user.grade = UpdateUserGrade(user);
-            console.log("user grade", user.grade);
 
             userService.update(user._id, user).then(function () {
                 console.log("Student Updates", user.firstName + " With: " + user.grades[user.grades.length - 1].grade);
@@ -243,6 +246,9 @@ function setUpDataBasedOnGoogleResults(results){
         _.each(row, function(column, index){
             if(index == 0){
                 student.name = column;
+            } else if(index == 15){
+                console.log(column);
+                student.feedback = column;
             } else {
                 var grade = {};
                 var date = sheetDateToDate(column);
@@ -286,21 +292,5 @@ function GetCurrentByDisplayName(gradestr) {
     }
     return _.find(grades, function(grade){ return grade.displayName == gradestr  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Payment
 
 

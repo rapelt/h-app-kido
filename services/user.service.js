@@ -1,4 +1,4 @@
-﻿var config = require('config.json');
+﻿//var config = require('config.json');
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk(process.env.MONGOLAB_URI);

@@ -93,6 +93,8 @@
                         <li ng-class="{active: activeTab === 'techniques'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="techniques"><img src="https://happkido.s3-ap-southeast-2.amazonaws.com/Techniques.png" height="22px"> Techniques</a></li>
                         <li ng-class="{active: activeTab === 'translations'}"><a ng-click="closeDropDown()" class="menu-link" ui-sref="translations"> <img src="https://happkido.s3-ap-southeast-2.amazonaws.com/Hangul.png" height="22px"> Translations</a></li>
                         <li ng-class="{active: activeTab === 'manuals'}"><a ng-click="closeDropDown()" class="menu-link dropdown-toggle" ui-sref="manuals"><img src="https://happkido.s3-ap-southeast-2.amazonaws.com/Manual.png" height="22px"> Manual</a></li>
+                        <li><a ng-click="closeDropDown()" class="menu-link dropdown-toggle"><img src="https://happkido.s3-ap-southeast-2.amazonaws.com/feedback-icon.png" height="22px"> Feedback</a></li>
+
                         <li><a href="#" ng-click="closeDropDownOpenProfileModal()" class="menu-link"><img class="profile-picture" src="https://happkido.s3-ap-southeast-2.amazonaws.com/no-profile-picture.gif" height="22px"> Account</a></li>
                         <li ng-if="currentUser.isAdmin" role="separator" class="divider"></li>
                         <li ng-if="currentUser.isAdmin && isMobile" ng-class="{active: activeTab === 'editUser'}"><a ng-click="closeDropDown()" class="menu-link dropdown-toggle" ui-sref="editUser">Edit Users</a></li>

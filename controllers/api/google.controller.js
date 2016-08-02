@@ -278,8 +278,6 @@ function UpdateUserGrade(user){
 
     var grade =  GetCurrentByDisplayName(user.grades[user.grades.length -1].grade);
 
-    console.log(grade);
-
     return grade;
 }
 

@@ -231,11 +231,11 @@ function populateUsersGrades(users, data){
 
                 if (feedbackExists === undefined){
                     if(studentGrade.feedback != undefined){
-                        console.log(user.feedback);
-                        var newFeedBack = [];
+                        //console.log(user.feedback);
+                        //var newFeedBack = [];
                         var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
-                        newFeedBack.push(userFeedback);
-                        user.feedback = newFeedBack;
+                        user.feedback.push(userFeedback);
+                        //user.feedback = newFeedBack;
                     }
                 }
             }

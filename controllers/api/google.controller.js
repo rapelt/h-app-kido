@@ -229,9 +229,9 @@ function populateUsersGrades(users, data){
                 });
 
                 if (feedbackExists === undefined){
-                    var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
-                    user.feedback.add(feedback);
-                    console.log(feedback);
+                    var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
+                    console.log(userFeedback);
+                    user.feedback.push(userFeedback);
 
                 }
             }

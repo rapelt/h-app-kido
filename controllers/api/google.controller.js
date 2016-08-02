@@ -218,7 +218,23 @@ function populateUsersGrades(users, data){
                 }
             });
 
-            user.feedback = studentGrade.feedback;
+            if(user.feedback === undefined){
+                user.feedback = [];
+                var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
+                user.feedback.push(feedback);
+            } else {
+                var feedbackExists = _.find(user.feedback, function (userFeedback) {
+                    if(userFeedback.date === user.feedbackDate){
+                        return true;
+                    }
+                });
+
+                if (feedbackExists === undefined){
+                    var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
+                    user.feedback.push(feedback);
+                }
+            }
+
             user.grade = UpdateUserGrade(user);
 
             userService.update(user._id, user).then(function () {
@@ -246,6 +262,8 @@ function setUpDataBasedOnGoogleResults(results){
                 student.name = column;
             } else if(index == 15){
                 student.feedback = column;
+            } else if(index == 16){
+                student.feedbackDate = column;
             } else {
                 var grade = {};
                 var date = sheetDateToDate(column);

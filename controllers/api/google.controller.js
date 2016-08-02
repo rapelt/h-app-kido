@@ -224,9 +224,8 @@ function populateUsersGrades(users, data){
                 }
             } else {
                 var feedbackExists = _.find(user.feedback, function (userFeedback) {
-                    console.log(userFeedback.date === user.feedbackDate && userFeedback.comment === user.feedback.comment);
-                    console.log(userFeedback.date, user.feedbackDate, userFeedback.comment, user.feedback.comment);
-                    if(userFeedback.date === user.date && userFeedback.comment === user.feedback.comment){
+                    console.log(userFeedback.date, studentGrade.feedbackDate, userFeedback.comment, studentGrade.feedback);
+                    if(userFeedback.date === studentGrade.date && userFeedback.comment === studentGrade.feedback){
                         return true;
                     }
                 });

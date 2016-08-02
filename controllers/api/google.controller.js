@@ -232,7 +232,7 @@ function populateUsersGrades(users, data){
 
                 if (feedbackExists === undefined){
                     var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
-                    //user.feedback.push(feedback);
+                    user.feedback.push(feedback);
                     console.log(feedback);
 
                 }

@@ -217,6 +217,8 @@ function populateUsersGrades(users, data){
                     }
                 }
             });
+
+            user.feedback = {};
             user.feedback.comment = studentGrade.feedback;
             console.log("omg &&@*$(@*$(@*$(", user.feedback.comment);
 

@@ -135,6 +135,15 @@
                     activeTab: 'manual'
                 }
             })
+            .state('feedback', {
+                url: '/feedback',
+                templateUrl: 'feedback/feedback.html',
+                controller: 'Feedback.FeedbackController',
+                controllerAs: 'vm',
+                data: {
+                    activeTab: 'feedback'
+                }
+            })
             .state('editDocuments', {
                 url: '/editDocuments',
                 templateUrl: 'manual/index.html',

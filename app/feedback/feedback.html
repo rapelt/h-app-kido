@@ -1,0 +1,25 @@
+<div class="blue-box" ng-class="'box-' + vm.user.grade.grade">
+</div>
+<div class="header-padding"></div>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+<h1>Feedback</h1>
+
+<div class="table-responsive">
+    <table class="table translation-table">
+        <thead>
+        <tr>
+            <th>Feedback</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="feedback in vm.user.feedback" class="hover-attempt">
+            <td>{{feedback.comment}}</td>
+            <td>{{feedback.date}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

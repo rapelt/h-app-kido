@@ -266,7 +266,7 @@ function setUpDataBasedOnGoogleResults(results){
             } else if(index == 15){
                 student.feedback = column;
             } else if(index == 16){
-                student.feedbackDate = column;
+                student.feedbackDate = sheetDateToDate(column);
             } else {
                 var grade = {};
                 var date = sheetDateToDate(column);

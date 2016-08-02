@@ -217,7 +217,7 @@ function populateUsersGrades(users, data){
                 }
             });
 
-            if(user.feedback === undefined){
+            if(user.feedback == undefined){
                 if(studentGrade.feedback != null){
                     var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
                     user.feedback = [userFeedback];
@@ -225,7 +225,7 @@ function populateUsersGrades(users, data){
             } else {
                 var feedbackExists = _.find(user.feedback, function (userFeedback) {
                     console.log(userFeedback.date, studentGrade.feedbackDate, userFeedback.comment, studentGrade.feedback);
-                    if(userFeedback.date === studentGrade.date && userFeedback.comment === studentGrade.feedback){
+                    if(userFeedback.date === studentGrade.feedbackDate && userFeedback.comment === studentGrade.feedback){
                         return true;
                     }
                 });

@@ -217,7 +217,7 @@ function populateUsersGrades(users, data){
                     }
                 }
             });
-
+            console.log("feedback $$$$ ^^^", studentGrade.feedback);
             user.feedback.comment = studentGrade.feedback;
             //user.feedback.date = studentGrade
 
@@ -244,12 +244,10 @@ function setUpDataBasedOnGoogleResults(results){
         var student = {};
         student.grades = [];
         _.each(row, function(column, index){
-            console.log(column, index);
-
             if(index == 0){
                 student.name = column;
             } else if(index == 15){
-                console.log(column);
+                console.log("feedback $$$$$$", column);
                 student.feedback = column;
             } else {
                 var grade = {};

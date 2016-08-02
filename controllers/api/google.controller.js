@@ -201,7 +201,6 @@ function populateUsersGrades(users, data){
         });
 
         if(studentGrade != null){
-            //user.attendance = [];
             _.each(studentGrade.grades, function(grade){
                 if(grade.date != ""){
                     var userGrade = _.find(user.grades, function(userGrade){
@@ -220,8 +219,8 @@ function populateUsersGrades(users, data){
 
             if(user.feedback === undefined){
                 user.feedback = [];
-                var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
-                user.feedback.push(feedback);
+                var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
+                user.feedback.push(userFeedback);
                 console.log(user.feedback);
 
             } else {

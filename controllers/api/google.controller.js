@@ -231,9 +231,9 @@ function populateUsersGrades(users, data){
 
                 if (feedbackExists === undefined){
                     if(studentGrade.feedback != undefined){
+                        console.log(user.feedback);
                         var newFeedBack = [];
                         var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
-                        console.log(userFeedback);
                         newFeedBack.push(userFeedback);
                         user.feedback = newFeedBack;
                     }

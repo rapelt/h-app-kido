@@ -217,14 +217,13 @@ function populateUsersGrades(users, data){
                     }
                 }
             });
-            console.log("feedback $$$$ ^^^", studentGrade.feedback);
             user.feedback.comment = studentGrade.feedback;
-            //user.feedback.date = studentGrade
+            console.log(user.feedback.comment);
 
             user.grade = UpdateUserGrade(user);
 
             userService.update(user._id, user).then(function () {
-                console.log("Student Updates", user.firstName + " With: " + user.grades[user.grades.length - 1].grade);
+                console.log("Student Updates", user.firstName + " With: " + user.feedback.comment);
             });
         }
     });

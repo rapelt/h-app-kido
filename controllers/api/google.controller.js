@@ -222,6 +222,8 @@ function populateUsersGrades(users, data){
                 user.feedback = [];
                 var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
                 user.feedback.push(feedback);
+                console.log(user.feedback);
+
             } else {
                 var feedbackExists = _.find(user.feedback, function (userFeedback) {
                     if(userFeedback.date === user.feedbackDate){
@@ -232,6 +234,8 @@ function populateUsersGrades(users, data){
                 if (feedbackExists === undefined){
                     var feedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
                     user.feedback.push(feedback);
+                    console.log(user.feedback);
+
                 }
             }
 

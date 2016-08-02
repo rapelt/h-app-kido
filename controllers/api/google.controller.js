@@ -224,18 +224,17 @@ function populateUsersGrades(users, data){
                 }
             } else {
                 var feedbackExists = _.find(user.feedback, function (userFeedback) {
-                    if(userFeedback.date === user.feedbackDate){
+                    console.log(userFeedback.date === user.feedbackDate && userFeedback.comment === user.feedback.comment);
+                    console.log(userFeedback.date, user.feedbackDate, userFeedback.comment, user.feedback.comment);
+                    if(userFeedback.date === user.date && userFeedback.comment === user.feedback.comment){
                         return true;
                     }
                 });
 
                 if (feedbackExists == null){
                     if(studentGrade.feedback != undefined){
-                        //console.log(user.feedback);
-                        //var newFeedBack = [];
                         var userFeedback = { "comment": studentGrade.feedback, "date": studentGrade.feedbackDate};
                         user.feedback.push(userFeedback);
-                        //user.feedback = newFeedBack;
                     }
                 }
             }

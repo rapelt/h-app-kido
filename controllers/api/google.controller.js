@@ -244,6 +244,8 @@ function setUpDataBasedOnGoogleResults(results){
         var student = {};
         student.grades = [];
         _.each(row, function(column, index){
+            console.log(column, index);
+
             if(index == 0){
                 student.name = column;
             } else if(index == 15){

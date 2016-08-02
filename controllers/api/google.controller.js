@@ -229,7 +229,7 @@ function populateUsersGrades(users, data){
                     }
                 });
 
-                if (feedbackExists === undefined){
+                if (feedbackExists == null){
                     if(studentGrade.feedback != undefined){
                         //console.log(user.feedback);
                         //var newFeedBack = [];

@@ -40,13 +40,30 @@
                 $('#myModal').modal('show')
             } else {
                 $('#myModal').modal('hide')
+            }
 
+            displayFeedback();
+        }
+
+        function displayFeedback(){
+            var display = _.find(vm.user.feedback, function(feedback){
+                var today = new Date();
+                var feedbackdate = new Date(feedback.date);
+                feedbackdate.setDate(feedbackdate.getDate() + 7);
+
+                if(feedbackdate >= today){
+                    return true;
+                }
+            });
+            if(display != null){
+                console.log(display);
+                FlashService.Success("New Feedback: " + display.comment);
             }
         }
 
         function newPassword(){
             if(vm.user.password === vm.confirmPassword) {
-                $('#myModal').modal('hide')
+                $('#myModal').modal('hide');
                 vm.user.isFirstLogin = false;
                 UserService.Update(vm.user)
                     .then(function () {
